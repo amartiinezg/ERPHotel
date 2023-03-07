@@ -1,4 +1,4 @@
-package com.erphotel.erphotel;
+package com.erphotel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

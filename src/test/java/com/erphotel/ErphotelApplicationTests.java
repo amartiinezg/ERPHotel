@@ -1,4 +1,4 @@
-package com.erphotel.erphotel;
+package com.erphotel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

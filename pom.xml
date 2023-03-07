@@ -11,8 +11,8 @@
     <groupId>com.erphotel</groupId>
     <artifactId>erphotel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>erphotel</name>
-    <description>erphotel</description>
+    <name>ERPHotel</name>
+    <description>ERP per Gestio Hotel</description>
     <properties>
         <java.version>17</java.version>
     </properties>
