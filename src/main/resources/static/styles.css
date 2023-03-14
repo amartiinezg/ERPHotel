@@ -65,7 +65,8 @@ form input {
 
 form button[type="submit"] {
     background-color: #333;
-    color: #fff;padding: 10px 20px;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -74,4 +75,116 @@ form button[type="submit"] {
 /* Mostrar el formulario activo */
 form.active {
     display: block;
+}
+
+/* Nuevos campos de registro */
+form#register-form label[for="fullname"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#register-form input#fullname {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#register-form label[for="email"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#register-form input#email {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#register-form label[for="reg-username"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#register-form input#reg-username {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#register-form label[for="reg-password"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#register-form input#reg-password {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#register-form label[for="nombre"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#register-form input#nombre {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Estilo de mensaje de éxito */
+.success-message {
+    color: green;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para botones de registro e inicio de sesión */
+.form-btns button.register-btn,
+.form-btns button.login-btn {
+    margin-right: 10px;
+}
+
+/* Estilos para formulario de inicio de sesión */
+form#login-form label[for="log-username"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#login-form input#log-username {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#login-form label[for="log-password"] {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form#login-form input#log-password {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
