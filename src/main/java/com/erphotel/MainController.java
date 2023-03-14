@@ -17,6 +17,11 @@ public class MainController {
         return "indice";
     }
 
+    @GetMapping("/rooms")
+    public String roomWidget() {
+        return "rooms";
+    }
+
     @GetMapping("/home")
     public String home(HttpSession session) {
         if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
