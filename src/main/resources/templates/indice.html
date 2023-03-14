@@ -23,18 +23,40 @@
         </form>
         <form id="register-form">
             <h2>Registrarse</h2>
-            <label for="fullname">Nombre Completo</label>
-            <input type="text" id="fullname" required />
-            <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" required />
-            <label for="reg-username">Nombre de Usuario</label>
-            <input type="text" id="reg-username" required />
-            <label for="reg-password">Contraseña</label>
-            <input type="password" id="reg-password" required />
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required />
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required />
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required />
+            <label for="dni">DNI</label>
+            <input type="text" id="dni" name="dni" required />
+            <label for="trabajador">¿Eres trabajador?</label>
+            <input type="checkbox" id="trabajador" name="trabajador" />
+            <div id="departamentos" style="display: none;">
+                <label for="departamento">Departamento</label>
+                <select name="departamento" id="departamento">
+                    <option value="recepcion">Recepción</option>
+                    <option value="restaurante">Restaurante</option>
+                    <option value="limpieza">Limpieza</option>
+                </select>
+            </div>
             <button type="submit">Registrarse</button>
         </form>
     </div>
 </div>
 <script src="/script.js"></script>
+<script>
+    const trabajadorCheckbox = document.getElementById('trabajador');
+    const departamentosDiv = document.getElementById('departamentos');
+
+    trabajadorCheckbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            departamentosDiv.style.display = 'block';
+        } else {
+            departamentosDiv.style.display = 'none';
+        }
+    });
+</script>
 </body>
 </html>
