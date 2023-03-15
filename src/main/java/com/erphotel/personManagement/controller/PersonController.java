@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PersonController {
 
     @Autowired
-    private PersonService personaServicio;
+    private PersonService personService;
 
     @GetMapping({"/Person", "/person", "/personas", "/persona"})
     public String listPerson(Model model) {
 
-        List<PersonDomain> personas = personaServicio.listPersonas();
+        List<PersonDomain> personas = personService.listPersonas();
         model.addAttribute("personas", personas);
 
         return "person";

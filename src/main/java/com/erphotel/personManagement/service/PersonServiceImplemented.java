@@ -1,13 +1,13 @@
 package com.erphotel.personManagement.service;
 
-import com.erphotel.Login.domain.LoginDomain;
 import com.erphotel.personManagement.dao.PersonDAO;
 import com.erphotel.personManagement.domain.PersonDomain;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class PersonServiceImplemented implements PersonService {
 
     @Autowired

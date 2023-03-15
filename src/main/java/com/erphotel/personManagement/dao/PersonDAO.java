@@ -1,9 +1,10 @@
 package com.erphotel.personManagement.dao;
 
-import com.erphotel.Login.domain.LoginDomain;
 import com.erphotel.personManagement.domain.PersonDomain;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PersonDAO extends CrudRepository<PersonDomain, Long> {
+@Repository
+public interface PersonDAO extends JpaRepository<PersonDomain, Long> {
 
 }
