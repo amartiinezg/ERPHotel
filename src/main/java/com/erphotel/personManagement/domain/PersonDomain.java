@@ -13,10 +13,9 @@ public class PersonDomain implements Serializable {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String telefono;
+    private Long person_id;
+    private String name;
+    private String surname;
+    private String phone_number;
     private String dni;
-    private int employees_employee_id;
 }
