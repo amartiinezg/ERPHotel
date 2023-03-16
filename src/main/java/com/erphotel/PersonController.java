@@ -22,18 +22,17 @@ public class PersonController {
 
         List<PersonDomain> personas = personService.listPersonas();
         model.addAttribute("personas", personas);
-
         return "person";
     }
 
-    @GetMapping("/person/new")
+    @GetMapping("/person/new") 
     public String mostrarFormularioDeRegistrtarPersona(Model modelo) {
         PersonDomain persona = new PersonDomain();
         modelo.addAttribute("persona", persona);
         return "newPerson";
     }
 
-    @PostMapping("/savePersona/{person_id}")
+    @PostMapping("/actualizarPersona/{person_id}")
     public String actualizarPersona(PersonDomain persona) {
         personService.salvar(persona);
         return "redirect:/persona";
@@ -52,8 +51,8 @@ public class PersonController {
         return "editPerson";
     }
 
-    @PostMapping("/savePersona/")
-    public String guardarPersona(PersonDomain persona) {
+    @PostMapping("/savePersona")
+    public String guardarPersona(@ModelAttribute("persona") PersonDomain persona) {
         personService.salvar(persona);
         return "redirect:/persona";
     }
