@@ -236,26 +236,9 @@
         <a id="btn-toggle" href="#" class="sidebar-toggler break-point-sm">
           <i class="ri-menu-line ri-xl"></i>
         </a>
-        <h1 style="margin-bottom: 0">Dashboard Principal</h1>
-        <span style="display: inline-block">
-          [Resúmen de clientes / Facturación]
-        </span>
         <br />
       </div>
-      <div id="roomWidget"></div>
-      <div>
-        <h2>Características</h2>
-        <ul>
-          <li>Lo que veais...</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Recursos</h2>
-        <ul>
-          <li>
-            <a target="_blank" href="https://remixicon.com/">Iconos</a>
-          </li>
-        </ul>
+      <div id="roomWidget">
       </div>
     </main>
     <div class="overlay"></div>
@@ -270,7 +253,7 @@
     var btnDashboard = document.getElementById("btn_dashboard");
 
     botonIframe.onclick = function () {
-      zonaIframe.innerHTML = '<iframe src="rooms" width="1400" height="500"></iframe>';
+      zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="900"></iframe>';
     };
     btnDashboard.onclick = function () {
       zonaIframe.innerHTML = '';
