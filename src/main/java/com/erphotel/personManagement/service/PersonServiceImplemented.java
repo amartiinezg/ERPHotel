@@ -30,6 +30,6 @@ public class PersonServiceImplemented implements PersonService {
 
     @Override
     public PersonDomain localizarPersona(PersonDomain persona) {
-      return personaDAO.findById(persona.getId()).orElse(null);
+      return personaDAO.findById(persona.getPerson_id()).orElse(null);
     }
 }

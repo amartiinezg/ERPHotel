@@ -15,7 +15,7 @@
             </div>
         </nav>
 
-        <div class="container" th:if="${personas != null and !personas.empty}">
+        <div class="container" th:if="${personas != null and !personas.isEmpty()}">
             <div class="row" style="text-align:center">
                 <h1 class="text-center">Lista de personas</h1>
             </div>
@@ -36,13 +36,13 @@
                 </thead>
                 <tbody>
                     <tr th:each="persona: ${personas}">
-                        <td th:text="${persona.nombre}"> Muestra nombre </td> 
-                        <td th:text="${persona.apellido}"> Muestra apellidos </td>
-                        <td th:text="${persona.telefono}"> Muestra telefono </td>
+                        <td th:text="${persona.name}"> Muestra nombre </td>
+                        <td th:text="${persona.surname}"> Muestra apellidos </td>
+                        <td th:text="${persona.phone_number}"> Muestra telefono </td>
                         <td th:text="${persona.dni}"> Muestra Dni </td>
                         <td>
-                            <a th:href="@{/person/editPerson/{id}(id=${persona.id})}" class="btn btn-info">Editar</a>
-                            <a th:href="@{/person/} + ${persona.id}" class="btn btn-danger">Eliminar</a>  
+                            <a th:href="@{/person/editPerson/{person_id}(person_id=${persona.person_id})}" class="btn btn-info">Editar</a>
+                            <a th:href="@{/person/} + ${persona.person_id}" class="btn btn-danger">Eliminar</a>
                         </td>
 
                     </tr>

@@ -39,13 +39,13 @@
             return "redirect:/persona";
         }
 
-        @GetMapping("/person/{id}")
+        @GetMapping("/person/{person_id}")
         public String eliminarPerson(PersonDomain persona) {
             personService.borrar(persona);
             return "redirect:/person";
         }
 
-        @GetMapping("/person/editPerson/{id}")
+        @GetMapping("/person/editPerson/{person_id}")
         public String cambiarPersona(PersonDomain persona, Model model) {
             persona = personService.localizarPersona(persona);
             model.addAttribute("persona", persona);
