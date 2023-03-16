@@ -14,4 +14,5 @@ public class LoginDomain {
     private String apellido;
     private String telefono;
     private String dni;
+    private int employees_employee_id;
 }
