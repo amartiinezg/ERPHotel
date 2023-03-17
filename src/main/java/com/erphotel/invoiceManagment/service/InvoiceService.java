@@ -1,10 +1,11 @@
 package com.erphotel.invoiceManagment.service;
 
 import com.erphotel.invoiceManagment.domain.InvoiceDomain;
-import com.erphotel.invoiceManagment.domain.InvoiceLinesDomain;
+
+import java.util.List;
 
 public interface InvoiceService {
-    public Iterable<InvoiceLinesDomain> invoiceList();
+    public List<InvoiceDomain> invoiceList();
 
     public void save(InvoiceDomain invoice);
 

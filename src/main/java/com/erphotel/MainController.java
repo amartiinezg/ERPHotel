@@ -44,8 +44,9 @@ public class MainController {
         return "invoice";
     }
 
-    @GetMapping ("MakeInvoiceLines")
-    private String MakeInvoiceLines(){
-        return "invoiceLine";
+    @GetMapping ("/testing")
+    public static String testing(){
+        return "newInvoiceLineForm";
     }
+
 }

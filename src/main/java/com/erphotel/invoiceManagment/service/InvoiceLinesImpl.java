@@ -1,32 +1,34 @@
 package com.erphotel.invoiceManagment.service;
 
-import com.erphotel.invoiceManagment.dao.InvoiceDAO;
+import com.erphotel.invoiceManagment.dao.InvoiceLinesDAO;
 import com.erphotel.invoiceManagment.domain.InvoiceDomain;
 import com.erphotel.invoiceManagment.domain.InvoiceLinesDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class InvoiceLinesImpl implements InvoiceService{
+public class InvoiceLinesImpl implements InvoiceLinesService{
     @Autowired
-    InvoiceDAO invoiceDAO;
+    InvoiceLinesDAO invoiceLinesDAO;
     @Override
-    public Iterable<InvoiceLinesDomain> invoiceList() {
-        return null;
+    public List<InvoiceLinesDomain> invoiceLines() {
+        return (List<InvoiceLinesDomain>) invoiceLinesDAO.findAll();
     }
 
     @Override
-    public void save(InvoiceDomain invoice) {
-
-    }
-
-    @Override
-    public void delete(InvoiceDomain invoice) {
+    public void save(InvoiceLinesDomain invoiceLine) {
 
     }
 
     @Override
-    public InvoiceDomain findInvoice(InvoiceDomain invoice) {
+    public void delete(InvoiceLinesDomain invoiceLine) {
+
+    }
+
+    @Override
+    public InvoiceLinesDomain findInvoiceLine(InvoiceLinesDomain invoiceLine) {
         return null;
     }
 }

@@ -1,18 +1,19 @@
 package com.erphotel.invoiceManagment.service;
 
-import com.erphotel.invoiceManagment.dao.InvoiceLinesDAO;
+import com.erphotel.invoiceManagment.dao.InvoiceDAO;
 import com.erphotel.invoiceManagment.domain.InvoiceDomain;
-import com.erphotel.invoiceManagment.domain.InvoiceLinesDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class InvoiceImpl implements InvoiceService{
     @Autowired
-    InvoiceLinesDAO invoiceLinesDAO;
+InvoiceDAO invoiceDAO;
     @Override
-    public Iterable<InvoiceLinesDomain> invoiceList() {
-        return invoiceLinesDAO.findAll();
+    public List<InvoiceDomain> invoiceList() {
+        return (List<InvoiceDomain>) invoiceDAO.findAll();
     }
 
     @Override
