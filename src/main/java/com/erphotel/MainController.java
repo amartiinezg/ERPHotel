@@ -38,4 +38,14 @@ public class MainController {
             return "redirect:/";
         }
     }
+
+    @GetMapping ("/MakeInvoice")
+    public static String makeInvoice(){
+        return "invoice";
+    }
+
+    @GetMapping ("MakeInvoiceLines")
+    private String MakeInvoiceLines(){
+        return "invoiceLine";
+    }
 }
