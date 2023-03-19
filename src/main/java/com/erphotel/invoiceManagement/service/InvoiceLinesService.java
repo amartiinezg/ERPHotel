@@ -1,8 +1,6 @@
-package com.erphotel.invoiceManagment.service;
+package com.erphotel.invoiceManagement.service;
 
-import com.erphotel.invoiceManagment.domain.InvoiceLinesDomain;
-import com.erphotel.personManagement.domain.PersonDomain;
-import org.springframework.stereotype.Service;
+import com.erphotel.invoiceManagement.domain.InvoiceLinesDomain;
 
 import java.util.List;
 

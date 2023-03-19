@@ -1,6 +1,6 @@
-package com.erphotel.invoiceManagment.domain;
+package com.erphotel.invoiceManagement.domain;
 
-import com.erphotel.invoiceManagment.enums.PayMethodsEnum;
+import com.erphotel.invoiceManagement.enums.PayMethodsEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class InvoiceDomain implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int invoice_id;
+    private  long invoice_id;
     private Date invoice_date;
     private int invoice_status;
     private float invoice_quantity;

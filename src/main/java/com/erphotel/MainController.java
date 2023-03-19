@@ -46,7 +46,12 @@ public class MainController {
 
     @GetMapping ("/testing")
     public static String testing(){
-        return "newInvoiceLineForm";
+        return "createNewInvoiceForm";
+    }
+
+    @GetMapping ("/testing2")
+    public static String testing2(){
+        return "createNewInvoiceForm";
     }
 
 }

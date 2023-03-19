@@ -1,6 +1,6 @@
-package com.erphotel.invoiceManagment.domain;
+package com.erphotel.invoiceManagement.domain;
 
-import com.erphotel.invoiceManagment.enums.InvoiceTypesENUM;
+import com.erphotel.invoiceManagement.enums.InvoiceTypesENUM;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,6 +17,8 @@ public class InvoiceLinesDomain implements Serializable {
     private int invoice_line_id;
     @Enumerated (EnumType.STRING)
     private InvoiceTypesENUM invoice_line_type;
+
+    private float invoice_line_price;
     private Date invoice_line_date;
 
     @ManyToOne

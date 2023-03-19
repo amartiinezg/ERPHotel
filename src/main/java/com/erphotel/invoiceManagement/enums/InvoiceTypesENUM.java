@@ -1,4 +1,4 @@
-package com.erphotel.invoiceManagment.enums;
+package com.erphotel.invoiceManagement.enums;
 
 
 public enum InvoiceTypesENUM {

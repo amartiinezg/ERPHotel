@@ -1,8 +1,7 @@
-package com.erphotel.invoiceManagment.service;
+package com.erphotel.invoiceManagement.service;
 
-import com.erphotel.invoiceManagment.dao.InvoiceLinesDAO;
-import com.erphotel.invoiceManagment.domain.InvoiceDomain;
-import com.erphotel.invoiceManagment.domain.InvoiceLinesDomain;
+import com.erphotel.invoiceManagement.dao.InvoiceLinesDAO;
+import com.erphotel.invoiceManagement.domain.InvoiceLinesDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
