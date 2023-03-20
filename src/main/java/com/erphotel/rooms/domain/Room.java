@@ -10,10 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import javax.persistence.Column;
 import lombok.Data;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 /**
  *
