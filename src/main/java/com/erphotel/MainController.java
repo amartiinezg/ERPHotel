@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.erphotel.Booking.domain.Book;
 import com.erphotel.Booking.service.BookService;
+import com.erphotel.personManagement.domain.PersonDomain;
+import com.erphotel.personManagement.service.PersonService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,7 +22,7 @@ public class MainController {
     private final String PASSWORD = "wipe";
 
     @Autowired
-    private BookService bookService;
+    private PersonService personService;
 
     @GetMapping("/")
     public String loginScreen() {
@@ -34,11 +36,11 @@ public class MainController {
 
     @GetMapping("/hotel_booking")
     public String bookingWidget(Model model) {
-        List<Book> books = bookService.listBooks();
-        for (Book book : books) {
-            System.out.println(book.toString());
+        List<PersonDomain> personas = personService.listPersonas();
+        for (PersonDomain person : personas) {
+            System.out.println(person.toString());
         }
-        model.addAttribute("books", books);
+        model.addAttribute("personas", personas);
         return "hotel_booking";
     }
 
