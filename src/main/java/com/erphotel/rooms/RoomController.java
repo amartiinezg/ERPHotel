@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -27,11 +29,21 @@ public class RoomController {
     public String mainRoom(Model model) {
         List<Room> roomList = roomService.roomList();
         System.out.println(roomList.get(0).toString());
-        model.addAttribute("roomList", roomList);
-        
+        model.addAttribute("roomList", roomList);  
         
         return "rooms";
-
+    }
+    
+    @GetMapping("/room/new") 
+    public String mostrarFormularioDeRegistrtarPersona(Model modelo) {
+        modelo.addAttribute("room", new Room());
+        return "newRoom";
+    }
+    
+    @PostMapping("/saveRoom")
+    public String guardarPersona(@ModelAttribute("room") Room room) {
+        roomService.save(room);
+        return "redirect:/room";
     }
 
 }
