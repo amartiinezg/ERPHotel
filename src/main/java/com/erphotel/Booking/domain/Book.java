@@ -3,8 +3,6 @@ package com.erphotel.Booking.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.erphotel.Booking.service.BookServiceImplement;
-
 import jakarta.persistence.*;
 import lombok.Data;
 
