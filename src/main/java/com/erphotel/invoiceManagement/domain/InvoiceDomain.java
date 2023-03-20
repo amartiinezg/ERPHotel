@@ -13,8 +13,9 @@ import java.util.List;
 @Table (name = "invoices")
 
 public class InvoiceDomain implements Serializable {
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private  long invoice_id;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int invoice_id;
     private Date invoice_date;
     private int invoice_status;
     private float invoice_quantity;

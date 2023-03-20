@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,7 +32,7 @@ public class InvoiceController {
     }
 
     @PostMapping("/saveInvoice")
-    public String saveNewInvoice(@Valid InvoiceDomain invoiceEntity, Model model){
+    public String saveNewInvoice(@ModelAttribute ("invoice") InvoiceDomain invoiceEntity, Model model){
         invoiceService.save(invoiceEntity);
     return "redirect:/invoice";
     }

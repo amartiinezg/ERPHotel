@@ -12,22 +12,15 @@ import java.util.Optional;
 public class InvoiceImpl implements InvoiceService{
     @Autowired
     InvoiceDAO invoiceDAO;
+
     @Override
     public List<InvoiceDomain> invoiceList() {
-        return (List<InvoiceDomain>) invoiceDAO.findAll();
+        return invoiceDAO.findAll();
     }
 
     @Override
-    public int save(InvoiceDomain invoice) {
-    int res = 0;
-
-    InvoiceDomain invoiceDomain = invoiceDAO.save(invoice);
-
-    if(invoiceDomain != null){
-        res = 1;
-    }
-
-    return res;
+    public void save(InvoiceDomain invoice) {
+        invoiceDAO.save(invoice);
     }
 
     @Override
@@ -37,7 +30,7 @@ public class InvoiceImpl implements InvoiceService{
 
     @Override
     public Optional<InvoiceDomain> findByInvoiceID(int invoice_id) {
-        return invoiceDAO.findById((long) invoice_id);
+        return invoiceDAO.findById(invoice_id);
     }
 
 

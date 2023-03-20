@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InvoiceDAO extends JpaRepository<InvoiceDomain, Long> {
+public interface InvoiceDAO extends JpaRepository<InvoiceDomain, Integer> {
 }
