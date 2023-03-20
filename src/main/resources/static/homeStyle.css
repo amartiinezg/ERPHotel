@@ -7,7 +7,6 @@
   padding: 20px;
 }
 .layout .content {
-  padding: 12px 50px;
   display: flex;
   flex-direction: column;
 }
