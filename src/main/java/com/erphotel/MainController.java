@@ -1,10 +1,15 @@
 package com.erphotel;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.erphotel.Booking.domain.Book;
+import com.erphotel.Booking.service.BookService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -14,6 +19,7 @@ public class MainController {
     private final String PASSWORD = "wipe";
 
     @Autowired
+    private BookService bookService;
 
     @GetMapping("/")
     public String loginScreen() {
@@ -23,6 +29,15 @@ public class MainController {
     @GetMapping("/rooms")
     public String roomWidget() {
         return "rooms";
+    }
+
+    @GetMapping("/hotel_booking")
+    public String bookingWidget() {
+        List<Book> books = bookService.listBooks();
+        for (Book book : books) {
+            System.out.println(book.toString());
+        }
+        return "hotel_booking";
     }
 
     @GetMapping("/home")
