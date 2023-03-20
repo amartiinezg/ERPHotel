@@ -1,9 +1,7 @@
 package com.erphotel.Login.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
 @Table (name = "personas")
 public class LoginDomain {
@@ -14,4 +12,6 @@ public class LoginDomain {
     private String apellido;
     private String telefono;
     private String dni;
+
+
 }
