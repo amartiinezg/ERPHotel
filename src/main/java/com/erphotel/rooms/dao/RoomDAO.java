@@ -5,12 +5,15 @@
 package com.erphotel.rooms.dao;
 
 import com.erphotel.rooms.domain.Room;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author alejandro
  */
-public interface RoomDAO extends CrudRepository<Room, Long>{
+@Repository
+public interface RoomDAO extends JpaRepository<Room, Long>{
     
 }

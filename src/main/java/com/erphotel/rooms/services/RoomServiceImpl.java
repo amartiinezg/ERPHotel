@@ -8,12 +8,14 @@ import com.erphotel.rooms.dao.RoomDAO;
 import com.erphotel.rooms.domain.Room;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author alejandro
  */
+@Service
 public class RoomServiceImpl implements RoomService{
     
     @Autowired
@@ -40,7 +42,7 @@ public class RoomServiceImpl implements RoomService{
     @Override
     @Transactional
     public Room getRoom(Room room) {
-        return roomDAO.findById(room.getRoomId()).orElse(null);
+        return roomDAO.findById(room.getRoom_id()).orElse(null);
     }
     
 }

@@ -10,7 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import javax.persistence.Column;
 import lombok.Data;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  *
@@ -23,12 +26,20 @@ public class Room implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long roomId;
-    private int roomNumber;
-    private RoomTypeEnum roomType; 
-    private boolean roomStatus;
+    private long room_id;
+
+    private int room_number;
+    
+    private String room_type;
+
+    private boolean status;
+
     private float price;
-    private boolean isClean;
+
+    private boolean is_clean;
+
     private boolean safe;
+    
+    
 
 }

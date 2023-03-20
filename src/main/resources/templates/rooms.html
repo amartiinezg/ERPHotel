@@ -22,7 +22,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="table-wrap">
+					<div class="table-wrap" th:if="${roomList != null and !roomList.empty}">
 						<table class="table table-striped">
 						  <thead>
 						    <tr>
@@ -35,6 +35,15 @@
 						    </tr>
 						  </thead>
 						  <tbody>
+                                                      <tr th:each="room : ${roomList}">
+                                                          <td th:text="${room.room_number}"></td>
+                                                          <td th:text="${room.room_type}"></td>
+                                                          <td th:text="${room.price}"></td>
+                                                          <td th:text="${room.safe}"></td>
+                                                          <td th:text="${room.status}"></td>
+                                                          <td th:text="${room.is_clean}"></td>
+                                                          
+                                                      </tr>
 						  </tbody>
 						</table>
 					</div>
