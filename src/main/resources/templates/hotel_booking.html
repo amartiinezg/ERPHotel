@@ -36,6 +36,7 @@
               <option value="blank" selected></option>
               <th:block th:each="persona : ${personas}">
                 <option th:value="${persona.person_id}" th:text="${persona.name} + ' ' + ${persona.surname}"></option>
+                <div id="divPerson" th:text="${persona}" hidden></div>
               </th:block>
             </select>
             <label for="fruit">Cliente</label>
@@ -125,7 +126,7 @@
     src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.js'></script>
   <script
     src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.min.js'></script>
-  <script src="./booking/script.js"></script>
+  <script src="/booking/script.js"></script>
 
 </body>
 
