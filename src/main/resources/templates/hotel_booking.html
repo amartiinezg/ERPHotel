@@ -32,10 +32,10 @@
         <div class="col-1-4">
           <div class="controls">
             <i class="fa fa-sort"></i>
-            <select class="floatLabel">
-              <option value="Sin seleccionar" selected>Sin seleccionar</option>
-              <th:block th:each="book : ${books}">
-                <option th:value="${book.book_id}" th:text="${book.book_id}"></option>
+            <select class="floatLabel" id="guestSelection">
+              <option value="blank" selected></option>
+              <th:block th:each="persona : ${personas}">
+                <option th:value="${persona.person_id}" th:text="${persona.name} + ' ' + ${persona.surname}"></option>
               </th:block>
             </select>
             <label for="fruit">Cliente</label>
