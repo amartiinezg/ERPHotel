@@ -480,8 +480,8 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px; }
+  margin-right: -50px;
+  margin-left: -50px; }
 
 .no-gutters {
   margin-right: 0;
@@ -2150,7 +2150,9 @@ fieldset:disabled a.btn {
 .btn-info {
   color: #fff;
   background-color: #17a2b8;
-  border-color: #17a2b8; }
+  border-color: #17a2b8; 
+  margin-bottom: 10px;
+}
   .btn-info:hover {
     color: #fff;
     background-color: #138496;
@@ -2200,7 +2202,9 @@ fieldset:disabled a.btn {
 .btn-danger {
   color: #fff;
   background-color: #dc3545;
-  border-color: #dc3545; }
+  border-color: #dc3545; 
+  margin-bottom: 10px;
+}
   .btn-danger:hover {
     color: #fff;
     background-color: #c82333;
