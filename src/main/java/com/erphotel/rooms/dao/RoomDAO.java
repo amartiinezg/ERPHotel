@@ -6,7 +6,6 @@ package com.erphotel.rooms.dao;
 
 import com.erphotel.rooms.domain.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**

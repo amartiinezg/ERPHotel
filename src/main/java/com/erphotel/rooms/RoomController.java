@@ -8,6 +8,7 @@ import com.erphotel.rooms.domain.Room;
 import com.erphotel.rooms.services.RoomService;
 
 import java.util.List;
+import java.util.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,16 +26,27 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    @GetMapping("/room")
+    @GetMapping("/rooms")
     public String mainRoom(Model model) {
         List<Room> roomList = roomService.roomList();
+        roomList.sort(new Comparator<Room>() {
+            @Override
+            public int compare(Room t, Room t1) {
+                if (t.getRoom_number() < t1.getRoom_number()) {
+                    return -1;
+                } else if (t.getRoom_number() > t1.getRoom_number()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
         System.out.println(roomList.get(0).toString());
         model.addAttribute("roomList", roomList);
 
         return "rooms";
     }
 
-    @GetMapping("/room/new")
+    @GetMapping("/newRoom")
     public String addRoom(Model model) {
         model.addAttribute("room", new Room());
         return "newRoom";
@@ -43,7 +55,7 @@ public class RoomController {
     @GetMapping("/room/{room_id}")
     public String deleteRoom(Room room) {
         roomService.delete(room);
-        return "redirect:/room";
+        return "redirect:/rooms";
     }
 
     @GetMapping("/room/edit/{room_id}")
@@ -57,12 +69,12 @@ public class RoomController {
     @PostMapping("/saveRoom")
     public String saveRoom(@ModelAttribute("room") Room room) {
         roomService.save(room);
-        return "redirect:/room";
+        return "redirect:/rooms";
     }
 
     @PostMapping("/updateRoom/{room_id}")
     public String updateRoom(Room room) {
         roomService.save(room);
-        return "redirect:/room";
+        return "redirect:/rooms";
     }
 }
