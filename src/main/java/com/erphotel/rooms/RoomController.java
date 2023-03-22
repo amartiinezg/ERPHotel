@@ -25,7 +25,7 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    @GetMapping("/room")
+    @GetMapping("/rooms")
     public String mainRoom(Model model) {
         List<Room> roomList = roomService.roomList();
         System.out.println(roomList.get(0).toString());
@@ -43,7 +43,7 @@ public class RoomController {
     @GetMapping("/room/{room_id}")
     public String deleteRoom(Room room) {
         roomService.delete(room);
-        return "redirect:/room";
+        return "redirect:/rooms";
     }
 
     @GetMapping("/room/edit/{room_id}")
@@ -57,12 +57,12 @@ public class RoomController {
     @PostMapping("/saveRoom")
     public String saveRoom(@ModelAttribute("room") Room room) {
         roomService.save(room);
-        return "redirect:/room";
+        return "redirect:/rooms";
     }
 
     @PostMapping("/updateRoom/{room_id}")
     public String updateRoom(Room room) {
         roomService.save(room);
-        return "redirect:/room";
+        return "redirect:/rooms";
     }
 }

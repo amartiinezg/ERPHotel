@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.erphotel.Booking.domain.Book;
-import com.erphotel.Booking.service.BookService;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
 
@@ -27,11 +25,6 @@ public class MainController {
     @GetMapping("/")
     public String loginScreen() {
         return "indice";
-    }
-
-    @GetMapping("/rooms")
-    public String roomWidget() {
-        return "rooms";
     }
 
     @GetMapping("/hotel_booking")
