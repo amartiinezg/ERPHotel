@@ -27,11 +27,6 @@ public class MainController {
         return "indice";
     }
 
-    @GetMapping("/rooms")
-    public String roomWidget() {
-        return "rooms";
-    }
-
     @GetMapping("/hotel_booking")
     public String bookingWidget(Model model) {
         List<PersonDomain> personas = personService.listPersonas();
