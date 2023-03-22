@@ -8,6 +8,7 @@ import com.erphotel.rooms.domain.Room;
 import com.erphotel.rooms.services.RoomService;
 
 import java.util.List;
+import java.util.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,17 @@ public class RoomController {
     @GetMapping("/rooms")
     public String mainRoom(Model model) {
         List<Room> roomList = roomService.roomList();
+        roomList.sort(new Comparator<Room>() {
+            @Override
+            public int compare(Room t, Room t1) {
+                if (t.getRoom_number() < t1.getRoom_number()) {
+                    return -1;
+                } else if (t.getRoom_number() > t1.getRoom_number()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
         System.out.println(roomList.get(0).toString());
         model.addAttribute("roomList", roomList);
 
