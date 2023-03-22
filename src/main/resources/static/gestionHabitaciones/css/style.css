@@ -221,7 +221,9 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; }
+  -webkit-appearance: button; 
+  appearance: none;
+}
 
 button:not(:disabled),
 [type="button"]:not(:disabled),
