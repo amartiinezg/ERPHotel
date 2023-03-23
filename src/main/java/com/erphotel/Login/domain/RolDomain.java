@@ -18,10 +18,4 @@ public class RolDomain implements Serializable{
 
         @NotEmpty
         private String name;
-
-        //PREGUNTAR SI ES NECESARIO YA QUE EN SU EJEMPLO NO ESTA
-        //@ManyToOne
-        //@JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-        //private LoginDomain login;
-
 }

@@ -15,24 +15,35 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity //Habilita la seguretat web
 @Slf4j
 public class ConfigurationAutentificator {
+
     @Autowired
     private UserDetailsService userDetailsService; //Objecte per recuperar l'usuari
 
+    /*AUTENTICACIÓ*/
+ /*Injectem mitjançant @Autowired, els mètodes de la classe AuthenticationManagerBuilder. Mitjançant
+     *aquesta classe cridarem al mètode userDetailsService de la classe AuthenticationManagerBuilder què és el mètode que
+     *realitzarà l'autenticació. Per parm̀etre el sistema li passa l'usuari introduit en el formulari d'autenticació.
+     *Aquest usuari ens el retorna el mètode loadUserByUsername implementat en UsuariService.
+     *
+     *Cridem al mètode passwordEncoder passant-li com a paràmetre un objecte de tipus BCryptPasswordEncoder()
+     *per encriptar el password introduït per l'usuari en el moment d'autenticar-se i comparar-lo
+     *amb l'encriptació del password guardat a la BBDD corresponent a l'username introduït també en l'autenticació.
+     */
     @Autowired
     public void autenticacio(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
-    @Bean
     //L'indica al sistema que el mètode és un Bean, en aquest cas perquè crea un objecte de la classe HttpSecurity
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/person/**", "/room/**", "/hotel_booking", "/home/**").hasAnyAuthority("staff", "recepcio")
-                        .anyRequest().authenticated() )
-                .formLogin((form) -> form.loginPage("/login").permitAll() )
+                .requestMatchers("/").permitAll()
+                .requestMatchers("/person/**", "/room/**", "/hotel_booking", "/home/**").hasAnyAuthority("staff", "recepcio")
+                .anyRequest().authenticated())
+                .formLogin((form) -> form.loginPage("/login").permitAll())
                 .exceptionHandling((exception) -> exception.accessDeniedPage("/errors/error403"))
                 .build();
-
     }
 }

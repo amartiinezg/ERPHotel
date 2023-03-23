@@ -26,7 +26,7 @@ public class LoginDomain implements Serializable {
     @NotEmpty
     private String password;
     @OneToMany
-    @JoinColumn(name="id_usuari")
+    @JoinColumn(name="employee_id")
     private List<RolDomain> rols;
 
 }
