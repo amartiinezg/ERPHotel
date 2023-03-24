@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section">Información de las habitaciones</h2>
+                        <h2 class="heading-section bolded">Información de las habitaciones</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -38,12 +38,15 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="room : ${roomList}">
-                                        <td th:text="${room.room_number}"></td>
+                                        <td th:text="${room.room_number}" class ="bolded"></td>
                                         <td th:text="${room.room_type}"></td>
-                                        <td th:text="${room.price}"></td>
-                                        <td th:text="${room.safe}"></td>
-                                        <td th:text="${room.status}"></td>
-                                        <td th:text="${room.is_clean}"></td>
+                                        <td th:text="${room.price + '€'}"></td>
+                                        <td th:if="${room.safe == true}">Contratada</td>
+                                        <td th:if="${room.safe == false}">No contratada</td>
+                                        <td th:if="${room.status == true}">Libre</td>
+                                        <td th:if="${room.status} == false">Ocupada</td>
+                                        <td th:if="${room.is_clean == true}">Limpia</td>
+                                        <td th:if="${room.is_clean} == false">No limpia</td>
                                         <td>
                                             <a th:href="@{/room/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
                                             <a th:href="@{/room/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
