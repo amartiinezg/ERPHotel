@@ -46,7 +46,7 @@ public class RoomController {
         return "rooms";
     }
     
-    @GetMapping("/room/cleaningStatus")
+    @GetMapping("/cleaningStatus")
     public String cleaningStatus(Model model) {
         List<Room> roomList = roomService.roomList();
         roomList.sort(new Comparator<Room>() {
