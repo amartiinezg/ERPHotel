@@ -1,6 +1,5 @@
 package com.erphotel.personManagement.service;
 
-import com.erphotel.Login.domain.LoginDomain;
 import com.erphotel.personManagement.domain.PersonDomain;
 
 import java.util.List;

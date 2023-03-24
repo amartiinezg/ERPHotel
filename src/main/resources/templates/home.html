@@ -8,7 +8,7 @@
   <link rel='stylesheet' href='https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css'>
   <link rel='stylesheet'
     href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap'>
-  <link rel="stylesheet" href="./homeStyle.css">
+  <link rel="stylesheet" href="/homeStyle.css">
 
 </head>
 
@@ -36,7 +36,7 @@
                   <span class="menu-icon">
                     <i class="ri-dashboard-fill"></i>
                   </span>
-                  <span class="menu-title">Dashboard</span>
+                  <span id="btn_dashboard" class="menu-title">Dashboard</span>
                 </a>
               </li>
               <li class="menu-item sub-menu">
@@ -53,12 +53,12 @@
                   <ul>
                     <li class="menu-item">
                       <a href="#">
-                        <span class="menu-title">Grid</span>
+                        <span id="btn_addBooking" class="menu-title">Añadir Reserva</span>
                       </a>
                     </li>
                     <li class="menu-item">
                       <a href="#">
-                        <span class="menu-title">Layout</span>
+                        <span class="menu-title">Reservas</span>
                       </a>
                     </li>
                     <li class="menu-item sub-menu">
@@ -157,16 +157,16 @@
                     <li class="menu-item">
                     <li class="menu-item">
                       <a href="#">
-                        <span class="menu-title">Añadir habitación</span>
+                        <span id="btn_addRoom" class="menu-title">Añadir habitación</span>
                       </a>
                     </li>
                     <a href="#">
-                      <span class="menu-title">Estado de habitaciones</span>
+                      <span id="btn_statusRoom" class="menu-title">Estado de habitaciones</span>
                     </a>
               </li>
               <li class="menu-item">
                 <a href="#">
-                  <span class="menu-title">Estado de la limpieza</span>
+                  <span id="btn_cleaningStatus" class="menu-title">Estado de la limpieza</span>
                 </a>
               </li>
               <li class="menu-item">
@@ -236,25 +236,8 @@
         <a id="btn-toggle" href="#" class="sidebar-toggler break-point-sm">
           <i class="ri-menu-line ri-xl"></i>
         </a>
-        <h1 style="margin-bottom: 0">Dashboard Principal</h1>
-        <span style="display: inline-block">
-          [Resúmen de clientes / Facturación]
-        </span>
-        <br />
       </div>
-      <div>
-        <h2>Características</h2>
-        <ul>
-          <li>Lo que veais...</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Recursos</h2>
-        <ul>
-          <li>
-            <a target="_blank" href="https://remixicon.com/">Iconos</a>
-          </li>
-        </ul>
+      <div class="content" id="ModuleWidget">
       </div>
     </main>
     <div class="overlay"></div>
@@ -262,8 +245,8 @@
   </div>
   <!-- partial -->
   <script src='https://unpkg.com/@popperjs/core@2'></script>
-  <script src="./homeScript.js"></script>
-
+  <script src="/homeScript.js"></script>
+  <script src="/functions/widgets.js"></script>
 </body>
 
 </html>

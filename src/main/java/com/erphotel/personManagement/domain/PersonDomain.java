@@ -6,17 +6,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "personas")
+@Table(name = "persons")
 public class PersonDomain implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nombre;
-    private String apellido;
-    private String telefono;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long person_id;
+    private String name;
+    private String surname;
+    private String phone_number;
     private String dni;
-
 }
