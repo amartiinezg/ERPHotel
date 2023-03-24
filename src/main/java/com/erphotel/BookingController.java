@@ -36,11 +36,14 @@ public class BookingController {
         return "hotel_booking";
     }
 
+    @GetMapping("/book_confirm")
+    public void bookingWidget() {
+    }
+
     @PostMapping("/processFormBooking")
     public String create(@ModelAttribute("persona") PersonDomain persona, @ModelAttribute("reserva") Book book,
             @RequestParam("room_type") String roomType, @RequestParam("nonselected") String existentGuest) {
         List<Room> rooms = roomService.roomList();
-
         while (book.getRoom_id() == null) {
             for (Room room : rooms) {
                 if (room.getRoom_type().equals(roomType)) {
@@ -55,11 +58,11 @@ public class BookingController {
         }
         if (!existentGuest.equals("blank")) {
             bookService.save(book);
+            return "book_confirm";
         } else {
             personService.salvar(persona);
             bookService.save(book);
+            return "book_confirm";
         }
-
-        return "hotel_booking";
     }
 }
