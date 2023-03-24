@@ -23,9 +23,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-wrap" th:switch="${roomList != null and !roomList.empty}">
-                            <table th:case="true" class="table table-striped">
+                    <div class="col-md-12" th:switch="${roomList != null and !roomList.empty}">
+                        <div class="table-wrap" th:case="true">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nº habitación</th>
@@ -42,9 +42,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div th:case="false" class="alert alert-info" role="alert">
-                                Todas las habitaciones estan limpias!
-                            </div>
+                        </div>
+                        <div th:case="false" class="alert alert-info" role="alert">
+                            Todas las habitaciones estan limpias!
                         </div>
                     </div>
                 </div>
