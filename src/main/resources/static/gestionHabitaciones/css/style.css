@@ -96,6 +96,7 @@ select {
   display: grid;
   grid-template-areas: "select";
   align-items: center;
+  margin-bottom: 20px;
 }
 
 select,
@@ -117,6 +118,8 @@ select,
 select::-ms-expand {
   display: none;
 }
+
+.bolded { font-weight: bold; }
 
 hr {
   -webkit-box-sizing: content-box;
