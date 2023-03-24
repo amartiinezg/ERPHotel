@@ -36,6 +36,9 @@ public class Room implements Serializable {
     private boolean safe;
     
     public Room() {
+        this.status = true;
+        this.is_clean = true;
+        this.safe = false;
         
     }
 
