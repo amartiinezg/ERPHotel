@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Basic hotel booking form</title>
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="./booking/style.css">
@@ -12,7 +11,7 @@
 
 <body>
 
-  <form action="">
+  <form action="/processFormBooking" method="POST">
     <!--  General -->
     <h2 class="heading">Reserva</h2>
     <div class="form-group">
@@ -32,19 +31,22 @@
         <div class="col-1-4">
           <div class="controls">
             <i class="fa fa-sort"></i>
-            <select class="floatLabel" id="guestSelection">
-              <option value="blank" selected></option>
-              <th:block th:each="persona : ${personas}">
-                <option th:value="${persona.person_id}" th:text="${persona.name} + ' ' + ${persona.surname}"></option>
-                <div id="divPerson" th:text="${persona}" hidden></div>
-              </th:block>
+            <select class="floatLabel" name="nonselected" id="guestSelection">
+              <option value="blank" selected>Sin seleccionar</option>
+              <option th:each="persona : ${personas}" 
+              th:value="${persona.person_id}"
+              th:name="${persona.name}"
+              th:surname="${persona.surname}"
+              th:phone_number="${persona.phone_number}"
+              th:dni="${persona.dni}"
+              th:text="${persona.name} + ' ' + ${persona.surname}"></option>
             </select>
             <label for="fruit">Cliente</label>
           </div>
         </div>
       </div>
       <div class="controls">
-        <input type="tel" id="phone" class="floatLabel" name="phone">
+        <input type="tel" id="phone" class="floatLabel" name="phone_number">
         <label for="phone">Teléfono</label>
       </div>
       <div class="controls">
@@ -58,13 +60,13 @@
       <div class="grid">
         <div class="col-1-4 col-1-4-sm">
           <div class="controls">
-            <input type="date" id="arrive" class="floatLabel" name="arrive" value="<?php echo date('Y-m-d'); ?>">
+            <input type="date" id="arrive" class="floatLabel" name="check_in" value="<?php echo date('Y-m-d'); ?>">
             <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Llegada</label>
           </div>
         </div>
         <div class="col-1-4 col-1-4-sm">
           <div class="controls">
-            <input type="date" id="depart" class="floatLabel" name="depart" value="<?php echo date('Y-m-d'); ?>" />
+            <input type="date" id="depart" class="floatLabel" name="check_out" value="<?php echo date('Y-m-d'); ?>" />
             <label for="depart" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Salida</label>
           </div>
         </div>
@@ -73,9 +75,10 @@
         <div class="col-1-3 col-1-3-sm">
           <div class="controls">
             <i class="fa fa-sort"></i>
-            <select class="floatLabel">
-              <option value="1">1</option>
-              <option value="2" selected>2</option>
+            <select class="floatLabel" name="number_people">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
@@ -88,9 +91,11 @@
         <div class="col-1-3 col-1-3-sm">
           <div class="controls">
             <i class="fa fa-sort"></i>
-            <select class="floatLabel">
-              <option value="deluxe" selected>With Bathroom</option>
-              <option value="Zuri-zimmer">Without Bathroom</option>
+            <select class="floatLabel" name="room_type">
+              <option value="Habitación matrimonial">Habitación matrimonial</option>
+              <option value="Habitación familiar" selected>Habitación familiar</option>
+              <option value="Habitación compartida" selected>Habitación compartida</option>
+              <option value="Suite principal" selected>Suite principal</option>
             </select>
             <label for="fruit">Habitación</label>
           </div>
@@ -99,9 +104,13 @@
         <div class="col-1-3 col-1-3-sm">
           <div class="controls">
             <i class="fa fa-sort"></i>
-            <select class="floatLabel">
-              <option value="single-bed">Zweibett</option>
-              <option value="double-bed" selected>Doppelbett</option>
+            <select class="floatLabel" name="pension">
+              <option value="single-bed">Alojamiento</option>
+              <option value="double-bed" selected>Alojamiento y Desayuno</option>
+              <option value="double-bed" selected>Media Pensión</option>
+              <option value="double-bed" selected>Pensión Completa</option>
+              <option value="double-bed" selected>Todo Incluido</option>
+              <option value="double-bed" selected>Según Programa</option>
             </select>
             <label for="fruit">Pensión</label>
           </div>
