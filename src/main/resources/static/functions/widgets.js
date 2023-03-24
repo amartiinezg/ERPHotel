@@ -1,13 +1,21 @@
-var botonIframe = document.getElementById("btn_statusRoom");
 var zonaIframe = document.getElementById("ModuleWidget");
 var btnDashboard = document.getElementById("btn_dashboard");
 var btnAddBooking = document.getElementById("btn_addBooking");
+var btnStatusRoom = document.getElementById("btn_statusRoom");
+var btnAddRoom = document.getElementById("btn_addRoom");
+var btnCleaningStatus = document.getElementById("btn_cleaningStatus");
 
 
 
-botonIframe.onclick = function () {
-  zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="900"></iframe>';
+btnStatusRoom.onclick = function () {
+  zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="100%"></iframe>';
 };
+btnAddRoom.onclick = function () {
+  zonaIframe.innerHTML = '<iframe src="newRoom" width="100%" height="100%"></iframe>';
+};
+btnCleaningStatus.onclick = function () {
+  zonaIframe.innerHTML = '<iframe src="cleaningStatus" width="100%" height="100%"></iframe>';
+}
 btnDashboard.onclick = function () {
   zonaIframe.innerHTML = '';
 }

@@ -1,4 +1,3 @@
-
 package com.erphotel;
 
 import java.util.List;
@@ -17,8 +16,6 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainController {
-    private final String USERNAME = "admin";
-    private final String PASSWORD = "wipe";
 
     @Autowired
     private PersonService personService;
