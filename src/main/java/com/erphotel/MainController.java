@@ -1,3 +1,4 @@
+
 package com.erphotel;
 
 import java.util.List;
@@ -6,47 +7,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.erphotel.Booking.domain.Book;
-import com.erphotel.Booking.service.BookService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainController {
+    private final String USERNAME = "admin";
+    private final String PASSWORD = "wipe";
 
     @Autowired
-    private BookService bookService;
     private PersonService personService;
 
-    @GetMapping("person")
-    public String listPerson(Model model, @AuthenticationPrincipal User username) {
-        List<PersonDomain> personas = personService.listPersonas();
-        model.addAttribute("personas", personas);
-        return "person";
-    }
-
-    /*@AuthenticationPrincipal retorna l'usuari autenticat actualment com un objecte User de Spring security*/
-    @GetMapping("/") //Pàgina inicial dels gossos    
-    public String inici(Model model, @AuthenticationPrincipal User username) {
-        List<PersonDomain> personas = personService.listPersonas();
-        model.addAttribute("personas", personas);
-        return "person";
-    }
-
-    @GetMapping("/rooms")
-    public String roomWidget() {
-        return "rooms";
+    @GetMapping("/")
+    public String loginScreen() {
+        return "home";
     }
 
     @GetMapping("/hotel_booking")
     public String bookingWidget(Model model) {
-        List<Book> books = bookService.listBooks();
-        for (Book book : books) {
-            System.out.println(book.toString());
+        List<PersonDomain> personas = personService.listPersonas();
+        for (PersonDomain person : personas) {
+            System.out.println(person.toString());
         }
-        model.addAttribute("books", books);
+        model.addAttribute("personas", personas);
         return "hotel_booking";
+    }
+
+    @GetMapping("/home")
+    public String home(Model model) {
+            return "home";
+
     }
 }

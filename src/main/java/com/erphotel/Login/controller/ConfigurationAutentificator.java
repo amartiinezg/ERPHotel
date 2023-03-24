@@ -33,13 +33,18 @@ public class ConfigurationAutentificator {
     public void autenticacio(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
+    String[] staticResources = {
+        "/css/**",
+        "/images/**",
+        "/fonts/**",
+        "/scripts/**"};
 
     //L'indica al sistema que el mètode és un Bean, en aquest cas perquè crea un objecte de la classe HttpSecurity
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/").permitAll()
+                .requestMatchers(staticResources).permitAll()
                 .requestMatchers("/person/**", "/room/**", "/hotel_booking", "/home/**").hasAnyAuthority("staff", "recepcio")
                 .anyRequest().authenticated())
                 .formLogin((form) -> form.loginPage("/login").permitAll())
