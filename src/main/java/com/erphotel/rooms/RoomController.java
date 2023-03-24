@@ -45,7 +45,7 @@ public class RoomController {
 
         return "rooms";
     }
-    
+
     @GetMapping("/cleaningStatus")
     public String cleaningStatus(Model model) {
         List<Room> roomList = roomService.roomList();
@@ -60,7 +60,8 @@ public class RoomController {
                 return 0;
             }
         });
-        System.out.println(roomList.get(0).toString());
+
+        roomList.removeIf(o -> o.isIs_clean());
         model.addAttribute("roomList", roomList);
 
         return "cleaningStatus";
@@ -77,13 +78,13 @@ public class RoomController {
         roomService.delete(room);
         return "redirect:/rooms";
     }
-    
+
     @GetMapping("/room/editCleaning/{room_id}")
     public String editCleaningStatus(Room room) {
         room = roomService.getRoom(room);
         room.setIs_clean(true);
         roomService.save(room);
-        return "redirect:/room/cleaningStatus";
+        return "redirect:/cleaningStatus";
     }
 
     @GetMapping("/room/edit/{room_id}")
