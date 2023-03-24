@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-                    <h1 class="text-center">Registro de habitaciones</h1>
+                    <h1 class="text-center">Editar habitaciones</h1>
                     <div class="card-body">
                         <form th:action="@{/updateRoom/{room_id}(room_id=${room.room_id})}" th:object="${room}" method="POST">
                             <div class="form-group">
@@ -35,6 +35,36 @@
                                         <option value="Habitacion familiar">Habitacion familiar</option>
                                         <option value="Habitacion compartida">Habitacion compartida</option>
                                         <option value="Suite principal">Suite principal</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Estado de la caja fuerte : </label>
+                                <div class="select">
+                                    <select id="standard-select" th:field="*{safe}">
+                                        <option value="true">Contratada</option>
+                                        <option value="false">No contratada</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Estado de la limpieza : </label>
+                                <div class="select">
+                                    <select id="standard-select" th:field="*{is_clean}">
+                                        <option value="true">Limpia</option>
+                                        <option value="false">Aún por limpiar</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Estado : </label>
+                                <div class="select">
+                                    <select id="standard-select" th:field="*{status}">
+                                        <option value="true">Libre</option>
+                                        <option value="false">Ocupada</option>
                                     </select>
                                 </div>
 
