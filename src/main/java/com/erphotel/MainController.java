@@ -73,7 +73,7 @@ public class MainController {
 
     @GetMapping ("/testing2")
     public static String testing2(){
-        return "createNewInvoiceForm";
+        return "createNewInvoiceLineForm";
     }
 
 }

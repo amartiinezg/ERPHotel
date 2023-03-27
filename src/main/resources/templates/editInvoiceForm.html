@@ -15,18 +15,14 @@
             <form class="custom-form" th:action="@{/saveInvoice}" th:object="${invoice}" method="post">
                 <h1>Gestionar Factura</h1>
                 <div class="row form-group">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Seleccionar Reserva</label></div>
-                    <div class="col-sm-6 input-column" style="margin-bottom: 30px">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">ID Factura</label></div>
+                    <div class="col-sm-6 input-column">
 
-                        <select th:class="form-select"  aria-label="Default select example"th:field="*{invoice_id}">
-                            <option selected th:value="${invoice.getInvoice_id()}"></option>
-                            <option th:each="book : ${books_list}" th:value="${book.getBook_id()}" th:text="${book.getBook_id()}">
-                            </option>
-                        </select>
+                        <input type="hidden" name="invoiceid" th:field="*{invoice_id}"/>
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Fecha Factura</label></div>
-                    <div class="col-sm-6 input-column"><input class="form-control" th:field="*{invoice_date}" type="date" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" th:field="*{invoice_date}" type="date" placeholder = "AAAA-MM-DD" required="" pattern="\d{4}-\d{2}-\d{2}"></div>
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Estado Factura</label></div>
@@ -40,13 +36,23 @@
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="dropdown-input-field">Método Pago</label></div>
                     <div class="col-sm-4 input-column">
 
-                        <select id = "paymentMethod" class="form-select" aria-label="Default select example" th:field="*{pay_method}">
+                        <label for="paymentMethod">Seleccionar método de pago:</label>
+                        <select id="paymentMethod" th:field="*{pay_method}">
                             <option th:value="Tarjeta" th:text="Tarjeta"></option>
                             <option th:value="Efectivo" th:text="Efectivo"></option>
                             <option th:value="Transferencia" th:text="Transferencia"></option>
                             <option th:value="Bitcoin" th:text="Bitcoin"></option>
                         </select>
 
+                        <script>
+                            var select = document.getElementById("paymentMethod");
+                            var label = document.querySelector("label[for='paymentMethod']");
+
+                            select.addEventListener("change", function() {
+                                var selectedValue = select.value;
+                                label.textContent = "Método de pago seleccionado: " + selectedValue;
+                            });
+                        </script>
                     </div>
                 </div>
 

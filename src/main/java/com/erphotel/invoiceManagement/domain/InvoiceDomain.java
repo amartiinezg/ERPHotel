@@ -14,14 +14,14 @@ import java.util.List;
 
 public class InvoiceDomain implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int invoice_id;
     private Date invoice_date;
     private int invoice_status;
     private float invoice_quantity;
     @Enumerated (EnumType.STRING)
     private PayMethodsEnum pay_method;
-    @OneToMany
-    private List<InvoiceLinesDomain> invoiceLines;
+
+    @OneToMany (mappedBy = "invoice_id")
+    List<InvoiceLinesDomain> invoiceLinesDomainList;
 
 }

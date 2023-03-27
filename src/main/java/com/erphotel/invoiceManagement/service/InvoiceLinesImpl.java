@@ -11,23 +11,27 @@ import java.util.List;
 public class InvoiceLinesImpl implements InvoiceLinesService{
     @Autowired
     InvoiceLinesDAO invoiceLinesDAO;
+
     @Override
-    public List<InvoiceLinesDomain> invoiceLines() {
+    public List<InvoiceLinesDomain> invoiceList() {
         return (List<InvoiceLinesDomain>) invoiceLinesDAO.findAll();
     }
 
     @Override
-    public void save(InvoiceLinesDomain invoiceLine) {
-
+    public void save(InvoiceLinesDomain invoiceLines) {
+    invoiceLinesDAO.save(invoiceLines);
     }
 
     @Override
-    public void delete(InvoiceLinesDomain invoiceLine) {
-
+    public void delete(int id) {
+        invoiceLinesDAO.deleteById(id);
     }
 
     @Override
-    public InvoiceLinesDomain findInvoiceLine(InvoiceLinesDomain invoiceLine) {
+    public List<InvoiceLinesDomain> findAllById(int invoice_id) {
         return null;
     }
+
+
+
 }

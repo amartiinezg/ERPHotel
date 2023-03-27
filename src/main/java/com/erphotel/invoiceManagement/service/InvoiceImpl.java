@@ -24,9 +24,10 @@ public class InvoiceImpl implements InvoiceService{
     }
 
     @Override
-    public void delete(InvoiceDomain invoice) {
-
+    public void delete(int id) {
+        invoiceDAO.deleteById(id);
     }
+
 
     @Override
     public Optional<InvoiceDomain> findByInvoiceID(int invoice_id) {

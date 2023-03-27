@@ -10,6 +10,6 @@ public interface InvoiceService {
 
     public void save(InvoiceDomain invoice);
 
-    public void delete(InvoiceDomain invoice);
+    public void delete(int id);
     public Optional<InvoiceDomain> findByInvoiceID(int invoice_id);
 }
