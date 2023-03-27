@@ -8,6 +8,7 @@ import com.erphotel.rooms.domain.Room;
 import com.erphotel.rooms.services.RoomService;
 
 import java.util.List;
+import java.util.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,22 +29,61 @@ public class RoomController {
     @GetMapping("/rooms")
     public String mainRoom(Model model) {
         List<Room> roomList = roomService.roomList();
+        roomList.sort(new Comparator<Room>() {
+            @Override
+            public int compare(Room t, Room t1) {
+                if (t.getRoom_number() < t1.getRoom_number()) {
+                    return -1;
+                } else if (t.getRoom_number() > t1.getRoom_number()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
         System.out.println(roomList.get(0).toString());
         model.addAttribute("roomList", roomList);
 
         return "rooms";
     }
+    
+    @GetMapping("/cleaningStatus")
+    public String cleaningStatus(Model model) {
+        List<Room> roomList = roomService.roomList();
+        roomList.sort(new Comparator<Room>() {
+            @Override
+            public int compare(Room t, Room t1) {
+                if (t.getRoom_number() < t1.getRoom_number()) {
+                    return -1;
+                } else if (t.getRoom_number() > t1.getRoom_number()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
+        System.out.println(roomList.get(0).toString());
+        model.addAttribute("roomList", roomList);
 
-    @GetMapping("/room/new")
+        return "cleaningStatus";
+    }
+
+    @GetMapping("/newRoom")
     public String addRoom(Model model) {
         model.addAttribute("room", new Room());
         return "newRoom";
     }
 
-    @GetMapping("/room/{room_id}")
+    @GetMapping("/room/delete/{room_id}")
     public String deleteRoom(Room room) {
         roomService.delete(room);
         return "redirect:/rooms";
+    }
+    
+    @GetMapping("/room/editCleaning/{room_id}")
+    public String editCleaningStatus(Room room) {
+        room = roomService.getRoom(room);
+        room.setIs_clean(true);
+        roomService.save(room);
+        return "redirect:/room/cleaningStatus";
     }
 
     @GetMapping("/room/edit/{room_id}")
