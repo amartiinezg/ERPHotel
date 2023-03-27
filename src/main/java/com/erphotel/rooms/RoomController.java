@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -26,22 +27,27 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    @GetMapping("/rooms")
-    public String mainRoom(Model model) {
-        List<Room> roomList = roomService.roomList();
-        roomList.sort(new Comparator<Room>() {
-            @Override
-            public int compare(Room t, Room t1) {
-                if (t.getRoom_number() < t1.getRoom_number()) {
-                    return -1;
-                } else if (t.getRoom_number() > t1.getRoom_number()) {
-                    return 1;
+    @RequestMapping(path = {"/rooms", "rooms/search"})
+    public String mainRoom(Model model, String keyword) {
+        if (keyword == null) {
+            List<Room> roomList = roomService.roomList();
+            roomList.sort(new Comparator<Room>() {
+                @Override
+                public int compare(Room t, Room t1) {
+                    if (t.getRoom_number() < t1.getRoom_number()) {
+                        return -1;
+                    } else if (t.getRoom_number() > t1.getRoom_number()) {
+                        return 1;
+                    }
+                    return 0;
                 }
-                return 0;
-            }
-        });
-        System.out.println(roomList.get(0).toString());
-        model.addAttribute("roomList", roomList);
+            });
+
+            model.addAttribute("roomList", roomList);
+        }else {
+            List<Room> roomList = roomService.getByKeyword(keyword);
+            model.addAttribute("roomList", roomList);
+        }
 
         return "rooms";
     }
