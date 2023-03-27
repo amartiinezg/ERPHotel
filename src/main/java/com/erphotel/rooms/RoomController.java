@@ -44,8 +44,19 @@ public class RoomController {
             });
 
             model.addAttribute("roomList", roomList);
-        }else {
+        } else {
             List<Room> roomList = roomService.getByKeyword(keyword);
+            roomList.sort(new Comparator<Room>() {
+                @Override
+                public int compare(Room t, Room t1) {
+                    if (t.getRoom_number() < t1.getRoom_number()) {
+                        return -1;
+                    } else if (t.getRoom_number() > t1.getRoom_number()) {
+                        return 1;
+                    }
+                    return 0;
+                }
+            });
             model.addAttribute("roomList", roomList);
         }
 
