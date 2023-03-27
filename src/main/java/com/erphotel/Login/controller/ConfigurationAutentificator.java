@@ -45,7 +45,8 @@ public class ConfigurationAutentificator {
 
         return http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/person/**", "/room/**", "/hotel_booking", "/home/**").hasAnyAuthority("staff", "recepcio")
+                .requestMatchers("/person/**", "/rooms/**", "/hotel_booking/**", "/home/**").hasAnyAuthority("recepcio", "neteja").anyRequest().authenticated()
+                .requestMatchers("/**").hasAnyAuthority("staff")
                 .anyRequest().authenticated())
                 .formLogin((form) -> form.loginPage("/login").permitAll())
                 .exceptionHandling((exception) -> exception.accessDeniedPage("/errors/error403"))
