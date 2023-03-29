@@ -21,7 +21,7 @@ public class InvoiceDomain implements Serializable {
     @Enumerated (EnumType.STRING)
     private PayMethodsEnum pay_method;
 
-    @OneToMany (mappedBy = "invoice_id")
+    @OneToMany (mappedBy = "invoice_id", cascade = CascadeType.ALL)
     List<InvoiceLinesDomain> invoiceLinesDomainList;
 
 }

@@ -4,6 +4,7 @@ import com.erphotel.Booking.domain.Book;
 import com.erphotel.Booking.service.BookService;
 import com.erphotel.invoiceManagement.domain.InvoiceDomain;
 import com.erphotel.invoiceManagement.domain.InvoiceLinesDomain;
+import com.erphotel.invoiceManagement.enums.InvoiceTypesENUM;
 import com.erphotel.invoiceManagement.service.InvoiceLinesImpl;
 import com.erphotel.invoiceManagement.service.InvoiceLinesService;
 import com.erphotel.invoiceManagement.service.InvoiceService;
@@ -61,7 +62,9 @@ public class InvoiceController {
 
     @GetMapping ("/deleteInvoice/{invoice_id}")
     private String deleteInvoice(@PathVariable int invoice_id, Model model){
+
         invoiceService.delete(invoice_id);
+
         return "redirect:/invoice";
     }
 
@@ -82,14 +85,28 @@ public class InvoiceController {
         return "invoiceLine";
     }
 
-    @GetMapping ("/editInvoiceLines/{invoice_line_id}")
+    @GetMapping ("/editInvoiceLine/{invoice_line_id}")
     private String editInvoiceLines(Model model, @PathVariable int invoice_line_id){
+       Optional<InvoiceLinesDomain> invoiceLinesDomain = invoiceLinesService.findById(invoice_line_id);
 
-        return "redirect:/invoiceLines/"+invoice_id_temp;
+        model.addAttribute("invoiceLine", invoiceLinesDomain);
+        return "createNewInvoiceLineForm";
     }
 
-    @PostMapping ("/saveInvoiceLines")
-    private String saveInvoiceLines(@ModelAttribute ("invoiceLines") InvoiceLinesDomain invoiceLinesDomain, Model model){
+    @GetMapping ("/newInvoiceLine")
+    private String newInvoiceLine(Model model){
+        InvoiceLinesDomain invoiceLine = new InvoiceLinesDomain();
+        InvoiceTypesENUM[] services = InvoiceTypesENUM.values();
+
+        model.addAttribute("invoiceLine", invoiceLine);
+        model.addAttribute("services", services);
+        model.addAttribute("invoice_id", invoice_id_temp);
+        return "createNewInvoiceLineForm";
+    }
+
+    @PostMapping ("/saveInvoiceLine/{invoice_id}")
+    private String saveInvoiceLines(@ModelAttribute ("invoiceLine") InvoiceLinesDomain invoiceLinesDomain, Model model, @PathVariable InvoiceDomain invoice_id){
+        invoiceLinesDomain.setInvoice_id(invoice_id);
         invoiceLinesService.save(invoiceLinesDomain);
         return "redirect:/invoiceLines/" + invoice_id_temp;
     }

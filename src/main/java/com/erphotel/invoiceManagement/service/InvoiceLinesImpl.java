@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InvoiceLinesImpl implements InvoiceLinesService{
@@ -28,10 +29,15 @@ public class InvoiceLinesImpl implements InvoiceLinesService{
     }
 
     @Override
-    public List<InvoiceLinesDomain> findAllById(int invoice_id) {
-        return null;
+    public Optional<InvoiceLinesDomain> findById(int invoice_line_id) {
+
+        return invoiceLinesDAO.findById(invoice_line_id);
     }
 
 
-
 }
+
+
+
+
+
