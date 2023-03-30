@@ -20,5 +20,7 @@ public interface RoomService {
     public void delete(Room room);
     
     public Room getRoom(Room room);
+    
+    public List<Room> getByKeyword(String keyword);
 
 }

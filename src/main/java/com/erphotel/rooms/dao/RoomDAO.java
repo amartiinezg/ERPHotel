@@ -5,7 +5,10 @@
 package com.erphotel.rooms.dao;
 
 import com.erphotel.rooms.domain.Room;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +17,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RoomDAO extends JpaRepository<Room, Long>{
+    //Custom query
+    @Query(value = "select * from rooms s where s.room_number like %:keyword% or s.room_type like %:keyword% or s.price like %:keyword%", nativeQuery = true)
+    List<Room> findByKeyword(@Param("keyword") String keyword);
     
 }
