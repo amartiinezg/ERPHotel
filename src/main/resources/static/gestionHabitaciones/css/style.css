@@ -93,14 +93,21 @@ select,
   grid-area: select;
   justify-self: end;
 }
+.select {
+    margin-bottom: 15px;
+}
 
 .select::after {
     content: "";
+    position: absolute;
+    right: 0;
+    top: 74%;
     width: 0.8em;
     height: 0.5em;
-    margin-right: 10px;
+    margin-right: 45px;
     background-color: #495057;
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(180deg);
     }   
 
 
