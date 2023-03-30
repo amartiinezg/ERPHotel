@@ -45,10 +45,23 @@ public class ConfigurationAutentificator {
 
         return http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/person/**", "/**").hasAnyAuthority("recepcio", "neteja", "staff")
+                .requestMatchers("/**").hasAnyAuthority("recepcio", "neteja", "staff")
                 .anyRequest().authenticated())
                 .formLogin((form) -> form.loginPage("/login").permitAll())
                 .exceptionHandling((exception) -> exception.accessDeniedPage("/errors/error403"))
                 .build();
     }
 }
+/**
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        return http.authorizeHttpRequests((requests) -> requests
+                .requestMatchers(staticResources).permitAll()
+                .requestMatchers("/person/**").hasAnyAuthority("recepcio", "neteja", "staff"))
+                .authorizeHttpRequests((requests) -> requests
+                .requestMatchers("/**").hasAnyAuthority("staff")
+                .anyRequest().authenticated())
+                .formLogin((form) -> form.loginPage("/login").permitAll())
+                .exceptionHandling((exception) -> exception.accessDeniedPage("/errors/error403"))
+                .build();
+    }**/

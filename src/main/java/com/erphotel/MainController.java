@@ -22,7 +22,7 @@ public class MainController {
 
     @GetMapping("/")
     public String loginScreen() {
-        return "home";
+        return "person";
     }
 
     @GetMapping("/hotel_booking")
@@ -37,7 +37,6 @@ public class MainController {
 
     @GetMapping("/home")
     public String home(Model model) {
-            return "home";
-
+            return "person";
     }
 }

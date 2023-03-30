@@ -11,8 +11,11 @@
             <a class="navbar-brand" href="#"> Control de personas</a>
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <a th:href="@{/person/new}" class="btn btn-primary btn-sm mb3">Nuevo</a>
+                <a th:href="@{/person/new}" class="btn btn-primary btn-sm mb3" style="margin-right: 20px">Nueva Persona</a>
+                
+                <a th:href="@{/employee/new}" class="btn btn-primary btn-sm mb3">Nuevo Trabajador</a>
             </div>
+            
         </nav>
 
         <div class="container" th:if="${personas != null and !personas.isEmpty()}">

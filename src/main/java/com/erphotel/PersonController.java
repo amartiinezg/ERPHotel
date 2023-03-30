@@ -24,11 +24,18 @@ public class PersonController {
         return "person";
     }
 
-    @GetMapping("/person/new") 
+    @GetMapping("/person/new")
     public String mostrarFormularioDeRegistrtarPersona(Model modelo) {
         PersonDomain persona = new PersonDomain();
         modelo.addAttribute("persona", persona);
         return "newPerson";
+    }
+
+    @GetMapping("/employee/new")
+    public String mostrarFormularioDeRegistrtarTrabajador(Model modelo) {
+        PersonDomain persona = new PersonDomain();
+        modelo.addAttribute("persona", persona);
+        return "newEmployee";
     }
 
     @PostMapping("/actualizarPersona/{person_id}")
@@ -56,3 +63,4 @@ public class PersonController {
         return "redirect:/persona";
     }
 }
+
