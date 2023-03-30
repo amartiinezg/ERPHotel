@@ -9,6 +9,7 @@ import com.erphotel.rooms.services.RoomService;
 
 import java.util.List;
 import java.util.Comparator;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +27,14 @@ public class RoomController {
 
     @Autowired
     private RoomService roomService;
+    
+    private List<Room> roomList = new ArrayList<Room>();
 
     @RequestMapping(path = {"/rooms", "rooms/search"})
-    public String mainRoom(Model model, String keyword) {
+    public String mainRoom(Model model, String keyword, String order) {
+        System.out.println(order);
         if (keyword == null) {
-            List<Room> roomList = roomService.roomList();
+            roomList = roomService.roomList();
             roomList.sort(new Comparator<Room>() {
                 @Override
                 public int compare(Room t, Room t1) {
@@ -65,6 +69,7 @@ public class RoomController {
 
     @GetMapping("/cleaningStatus")
     public String cleaningStatus(Model model) {
+        Integer a = null;
         List<Room> roomList = roomService.roomList();
         roomList.sort(new Comparator<Room>() {
             @Override
@@ -80,6 +85,7 @@ public class RoomController {
 
         roomList.removeIf(o -> o.isIs_clean());
         model.addAttribute("roomList", roomList);
+        model.addAttribute("order", a);
 
         return "cleaningStatus";
     }
@@ -116,6 +122,12 @@ public class RoomController {
     public String saveRoom(@ModelAttribute("room") Room room) {
         roomService.save(room);
         return "redirect:/rooms";
+    }
+
+    @PostMapping("/sortList")
+    public String sortList(@ModelAttribute("order") Integer order) {
+        return "redirect:/rooms";
+
     }
 
     @PostMapping("/updateRoom/{room_id}")
