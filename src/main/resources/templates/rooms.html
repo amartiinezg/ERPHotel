@@ -19,11 +19,11 @@
     <body>
         <div class="filter">
             <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
-                <select id="standard-select" onchange="this.form.submit()">
+                <select id="standard-select" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
                     <option disabled selected hidden>Ordenar por...</option>
-                    <option th:value="${order}" name ="order" value="PriceAsc">Precio: de más barato a más caro</option>
-                    <option th:value="${order}" value="PriceDesc">Precio: de más caro a más barato</option>
-                    <option th:value="${order}" value="Status">Disponibilidad</option>
+                    <option value="PriceAsc">Precio: de más barato a más caro</option>
+                    <option value="PriceDesc">Precio: de más caro a más barato</option>
+                    <option value="Status">Disponibilidad</option>
                 </select>
             </form>
         </div>

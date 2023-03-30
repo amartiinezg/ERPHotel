@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -27,25 +28,74 @@ public class RoomController {
 
     @Autowired
     private RoomService roomService;
-    
+
     private List<Room> roomList = new ArrayList<Room>();
 
     @RequestMapping(path = {"/rooms", "rooms/search"})
-    public String mainRoom(Model model, String keyword, String order) {
-        System.out.println(order);
+    public String mainRoom(Model model, String keyword, @ModelAttribute("order") String order) {
         if (keyword == null) {
             roomList = roomService.roomList();
-            roomList.sort(new Comparator<Room>() {
-                @Override
-                public int compare(Room t, Room t1) {
-                    if (t.getRoom_number() < t1.getRoom_number()) {
-                        return -1;
-                    } else if (t.getRoom_number() > t1.getRoom_number()) {
-                        return 1;
-                    }
-                    return 0;
-                }
-            });
+
+            switch (order) {
+                case "PriceAsc":
+                    roomList.sort(new Comparator<Room>() {
+                        @Override
+                        public int compare(Room t, Room t1) {
+                            if (t.getPrice()< t1.getPrice()) {
+                                return -1;
+                            } else if (t.getPrice() > t1.getPrice()) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    });
+                    break;
+                    
+                case "PriceDesc":
+                    roomList.sort(new Comparator<Room>() {
+                        @Override
+                        public int compare(Room t, Room t1) {
+                            if (t.getPrice() > t1.getPrice()) {
+                                return -1;
+                            } else if (t.getPrice() < t1.getPrice()) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    });
+                    
+                    break;
+                    
+                case "Status":
+                    roomList.sort(new Comparator<Room>() {
+                        @Override
+                        public int compare(Room t, Room t1) {
+                            if (t.isStatus()) {
+                                return -1;
+                            } else if (!t.isStatus()) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    });
+                    
+                    break;
+                    
+                default:
+                    roomList.sort(new Comparator<Room>() {
+                        @Override
+                        public int compare(Room t, Room t1) {
+                            if (t.getRoom_number() < t1.getRoom_number()) {
+                                return -1;
+                            } else if (t.getRoom_number() > t1.getRoom_number()) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    });
+                    break;
+                    
+            }
 
             model.addAttribute("roomList", roomList);
         } else {
