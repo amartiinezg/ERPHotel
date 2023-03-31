@@ -14,7 +14,9 @@ btnDashboard.onclick = function () {
 }
 btnAddBooking.onclick = function (){
   zonaIframe.innerHTML = '<iframe src="hotel_booking" width="100%" height="100%"></iframe>';
+
 }
 btnManageInvoices.onclick = function (){
   zonaIframe.innerHTML = '<iframe src="invoice" width="100%" height="100%"></iframe>';
+  window.history.pushState({}, '', 'http://localhost:8080/invoice');
 }

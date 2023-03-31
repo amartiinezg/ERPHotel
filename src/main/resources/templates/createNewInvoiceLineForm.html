@@ -23,11 +23,15 @@
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="dropdown-input-field">Servicio</label></div>
                     <div class="col-sm-4 input-column">
 
-                        <select th:class="form-select"  aria-label="Default select example"th:field="*{invoice_line_type}">
-                            <option selected th:value="*{invoice_line_type}"></option>
-                            <option th:each="service : ${services}" th:value="${service.name()}" th:text="${service.name()}">
-                            </option>
+                        <select id="servicelist" th:field="*{invoice_line_type}">
+                            <option th:value="CajaFuerte" th:text="CajaFuerte"></option>
+                            <option th:value="Restaurante" th:text="Restaurante"></option>
+                            <option th:value="MiniBar" th:text="MiniBar"></option>
+                            <option th:value="Bar" th:text="Bar"></option>
+                            <option th:value="OtrosServicios" th:text="OtrosServicios"></option>
                         </select>
+
+
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
                         <script>
                             var select = document.getElementById("service");

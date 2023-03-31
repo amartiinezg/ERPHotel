@@ -53,12 +53,6 @@ public class InvoiceController {
     return "redirect:/invoice";
     }
 
-    @GetMapping ("/editInvoice/{invoice_id}")
-    public String editInvoice (@PathVariable int invoice_id, Model model){
-        Optional<InvoiceDomain> invoiceDomain = invoiceService.findByInvoiceID(invoice_id);
-        model.addAttribute("invoice", invoiceDomain);
-        return "editInvoiceForm";
-    }
 
     @GetMapping ("/deleteInvoice/{invoice_id}")
     private String deleteInvoice(@PathVariable int invoice_id, Model model){
@@ -85,10 +79,17 @@ public class InvoiceController {
         return "invoiceLine";
     }
 
-    @GetMapping ("/editInvoiceLine/{invoice_line_id}")
-    private String editInvoiceLines(Model model, @PathVariable int invoice_line_id){
-       Optional<InvoiceLinesDomain> invoiceLinesDomain = invoiceLinesService.findById(invoice_line_id);
+    @GetMapping ("/editInvoice/{invoice_id}")
+    public String editInvoice (@PathVariable int invoice_id, Model model){
+        Optional<InvoiceDomain> invoiceDomain = invoiceService.findByInvoiceID(invoice_id);
+        model.addAttribute("invoice", invoiceDomain);
+        return "editInvoiceForm";
+    }
 
+    @GetMapping ("/editInvoiceLine/{invoice_line_id}")
+    private String editInvoiceLines(@PathVariable int invoice_line_id, Model model){
+       Optional<InvoiceLinesDomain> invoiceLinesDomain = invoiceLinesService.findById(invoice_line_id);
+        model.addAttribute("invoice_id", invoice_id_temp);
         model.addAttribute("invoiceLine", invoiceLinesDomain);
         return "createNewInvoiceLineForm";
     }
