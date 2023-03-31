@@ -129,17 +129,7 @@
                   <ul>
                     <li class="menu-item">
                       <a href="#">
-                        <span class="menu-title">Pie chart</span>
-                      </a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="#">
-                        <span class="menu-title">Line chart</span>
-                      </a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="#">
-                        <span class="menu-title">Bar chart</span>
+                        <span class="menu-title" id="btn-manageInvoices">Gestionar Facturas</span>
                       </a>
                     </li>
                   </ul>
@@ -247,6 +237,31 @@
   <script src='https://unpkg.com/@popperjs/core@2'></script>
   <script src="/homeScript.js"></script>
   <script src="/functions/widgets.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificar si el navegador soporta document.featurePolicy
+      if (document.featurePolicy) {
+        // El navegador soporta document.featurePolicy
+        const allowedFeatures = document.featurePolicy.allowedFeatures();
+        if (allowedFeatures.includes('document-domain')) {
+          // El permiso ya ha sido otorgado
+          alert('El permiso de iframe ha sido otorgado.');
+        } else {
+          // El permiso no ha sido otorgado
+          document.featurePolicy.requestPermission('document-domain').then(function(permissionStatus) {
+            if (permissionStatus === 'granted') {
+              // Código para cargar el iframe
+            } else {
+              // Código para manejar el caso en que el permiso no es otorgado
+            }
+          });
+        }
+      } else {
+        // El navegador no soporta document.featurePolicy
+        alert('Lo siento, tu navegador no soporta document.featurePolicy.');
+      }
+    });
+  </script>
 </body>
 
 </html>

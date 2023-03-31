@@ -12,4 +12,6 @@ public interface PersonService {
     public void borrar (PersonDomain persona);
 
     public PersonDomain localizarPersona (PersonDomain persona);
+
+  public List<PersonDomain> findPersonByName(String name);
 }

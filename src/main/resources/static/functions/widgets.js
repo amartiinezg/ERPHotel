@@ -1,24 +1,22 @@
+var botonIframe = document.getElementById("btn_statusRoom");
 var zonaIframe = document.getElementById("ModuleWidget");
 var btnDashboard = document.getElementById("btn_dashboard");
 var btnAddBooking = document.getElementById("btn_addBooking");
-var btnStatusRoom = document.getElementById("btn_statusRoom");
-var btnAddRoom = document.getElementById("btn_addRoom");
-var btnCleaningStatus = document.getElementById("btn_cleaningStatus");
+var btnManageInvoices = document.getElementById("btn-manageInvoices")
 
 
 
-btnStatusRoom.onclick = function () {
-  zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="100%"></iframe>';
+botonIframe.onclick = function () {
+  zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="900"></iframe>';
 };
-btnAddRoom.onclick = function () {
-  zonaIframe.innerHTML = '<iframe src="newRoom" width="100%" height="100%"></iframe>';
-};
-btnCleaningStatus.onclick = function () {
-  zonaIframe.innerHTML = '<iframe src="cleaningStatus" width="100%" height="100%"></iframe>';
-}
 btnDashboard.onclick = function () {
   zonaIframe.innerHTML = '';
 }
 btnAddBooking.onclick = function (){
   zonaIframe.innerHTML = '<iframe src="hotel_booking" width="100%" height="100%"></iframe>';
+
+}
+btnManageInvoices.onclick = function (){
+  zonaIframe.innerHTML = '<iframe src="invoice" width="100%" height="100%"></iframe>';
+  window.history.pushState({}, '', 'http://localhost:8080/invoice');
 }

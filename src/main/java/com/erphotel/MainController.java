@@ -55,4 +55,20 @@ public class MainController {
             return "redirect:/";
         }
     }
+
+    @GetMapping ("/MakeInvoice")
+    public static String makeInvoice(){
+        return "invoice";
+    }
+
+    @GetMapping ("/testing")
+    public static String testing(){
+        return "createNewInvoiceForm";
+    }
+
+    @GetMapping ("/testing2")
+    public static String testing2(){
+        return "createNewInvoiceLineForm";
+    }
+
 }
