@@ -5,6 +5,8 @@ import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +19,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping({"/Person", "/person", "/personas", "/persona"})
-    public String listPerson(Model model) {
+    public String listPerson(Model model, @AuthenticationPrincipal User username) {
 
         List<PersonDomain> personas = personService.listPersonas();
         model.addAttribute("personas", personas);
@@ -25,42 +27,42 @@ public class PersonController {
     }
 
     @GetMapping("/person/new")
-    public String mostrarFormularioDeRegistrtarPersona(Model modelo) {
+    public String mostrarFormularioDeRegistrtarPersona(Model modelo, @AuthenticationPrincipal User username) {
         PersonDomain persona = new PersonDomain();
         modelo.addAttribute("persona", persona);
         return "newPerson";
     }
 
     @GetMapping("/employee/new")
-    public String mostrarFormularioDeRegistrtarTrabajador(Model modelo) {
+    public String mostrarFormularioDeRegistrtarTrabajador(Model modelo, @AuthenticationPrincipal User username) {
         PersonDomain persona = new PersonDomain();
         modelo.addAttribute("persona", persona);
         return "newEmployee";
     }
 
     @PostMapping("/actualizarPersona/{person_id}")
-    public String actualizarPersona(PersonDomain persona) {
+    public String actualizarPersona(PersonDomain persona, @AuthenticationPrincipal User username) {
         personService.salvar(persona);
         return "redirect:/persona";
     }
 
     @GetMapping("/person/{person_id}")
-    public String eliminarPerson(PersonDomain persona) {
+    public String eliminarPerson(PersonDomain persona, @AuthenticationPrincipal User username) {
         personService.borrar(persona);
         return "redirect:/person";
     }
 
     @GetMapping("/person/editPerson/{person_id}")
-    public String cambiarPersona(PersonDomain persona, Model model) {
+    public String cambiarPersona(PersonDomain persona, Model model, @AuthenticationPrincipal User username) {
         persona = personService.localizarPersona(persona);
         model.addAttribute("persona", persona);
         return "editPerson";
     }
 
     @PostMapping("/savePersona")
-    public String guardarPersona(@ModelAttribute("persona") PersonDomain persona) {
+    public String guardarPersona(@ModelAttribute("persona") PersonDomain persona, @AuthenticationPrincipal User username) {
         personService.salvar(persona);
-        return "redirect:/persona";
+        return "redirect:/person";
     }
 }
 

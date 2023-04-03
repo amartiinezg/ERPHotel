@@ -11,6 +11,6 @@ public class ConfigurationIdentification implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry register) {
         register.addViewController("/").setViewName("index");
         register.addViewController("/login");
-        register.addViewController("/errors/error403").setViewName("/errors/error403");
+        register.addViewController("/error/error403").setViewName("/error/error403");
     }
 }
