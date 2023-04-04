@@ -37,22 +37,36 @@ public class ConfigurationAutentificator {
         "/css/**",
         "/images/**",
         "/fonts/**",
-        "/scripts/**"};
+        "/scripts/**",
+        "/error/**"};
 
     //L'indica al sistema que el mètode és un Bean, en aquest cas perquè crea un objecte de la classe HttpSecurity
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
+                
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/","/home/**","/person/**"
-                ,"/rooms/**","/hotel_booking/**").hasAnyAuthority("recepcio", "neteja", "staff")
+                .requestMatchers("/", "/home/**", "/person/**", "/savePersona",
+                        "/rooms/**", "/hotel_booking/**").hasAnyAuthority("recepcio", "neteja", "staff")
                 .requestMatchers("/**").hasAnyAuthority("staff")
                 .anyRequest().authenticated()
                 )
-                .formLogin((form) -> form.loginPage("/login").permitAll())
-                .exceptionHandling((exception) -> exception.accessDeniedPage("/error403"))
+                
+                .formLogin((form) -> form
+                .loginPage("/login")
+                .permitAll()
+                )
+                
+                .logout((logout) -> logout.
+                permitAll()
+                )
+                
+                .exceptionHandling((exception) -> exception
+                .accessDeniedPage("/error/error403")
+                )
+                
                 .build();
     }
 }

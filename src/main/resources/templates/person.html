@@ -12,10 +12,17 @@
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <a th:href="@{/person/new}" class="btn btn-primary btn-sm mb3" style="margin-right: 20px">Nueva Persona</a>
-                
+
                 <a th:href="@{/employee/new}" class="btn btn-primary btn-sm mb3">Nuevo Trabajador</a>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="POST">
+                            <button type="submit" class="btn btn-warning btn-sm mb3">Logout</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
-            
         </nav>
 
         <div class="container" th:if="${personas != null and !personas.isEmpty()}">
@@ -34,7 +41,7 @@
                         <th>Apellido</th>
                         <th>Telefono</th>
                         <th>Dni</th>
-                        <th>Acciones</th>
+                        <th sec:authorize="hasAnyAuthority('staff')">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,10 +50,10 @@
                         <td th:text="${persona.surname}"> Muestra apellidos </td>
                         <td th:text="${persona.phone_number}"> Muestra telefono </td>
                         <td th:text="${persona.dni}"> Muestra Dni </td>
-                        <td>
-                            <a th:href="@{/person/editPerson/{person_id}(person_id=${persona.person_id})}" class="btn btn-info">Editar</a>
-                            <a th:href="@{/person/} + ${persona.person_id}" class="btn btn-danger">Eliminar</a>
-                        </td>
+                        <td sec:authorize="hasAnyAuthority('staff')">
+                            <a th:href="@{/person/editPerson/{person_id}(person_id=${persona.person_id})}" class="btn btn-info" sec:authorize="hasAnyAuthority('staff')">Editar</a>
+                            <a th:href="@{/person/} + ${persona.person_id}" class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')">Eliminar</a>
+                        </td>   
 
                     </tr>
                 </tbody>
