@@ -45,28 +45,23 @@ public class ConfigurationAutentificator {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
-                
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/", "/home/**", "/person/**", "/savePersona",
+                .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
                         "/rooms/**", "/hotel_booking/**").hasAnyAuthority("recepcio", "neteja", "staff")
                 .requestMatchers("/**").hasAnyAuthority("staff")
                 .anyRequest().authenticated()
                 )
-                
                 .formLogin((form) -> form
                 .loginPage("/login")
                 .permitAll()
                 )
-                
                 .logout((logout) -> logout.
                 permitAll()
                 )
-                
                 .exceptionHandling((exception) -> exception
                 .accessDeniedPage("/error/error403")
                 )
-                
                 .build();
     }
 }

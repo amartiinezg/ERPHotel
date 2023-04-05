@@ -7,24 +7,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <a class="navbar-brand" href="#"> Control de personas</a>
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <a th:href="@{/person/new}" class="btn btn-primary btn-sm mb3" style="margin-right: 20px">Nueva Persona</a>
-
-                <a th:href="@{/employee/new}" class="btn btn-primary btn-sm mb3">Nuevo Trabajador</a>
-
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <form th:action="@{/logout}" method="POST">
-                            <button type="submit" class="btn btn-warning btn-sm mb3">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
         <div class="container" th:if="${personas != null and !personas.isEmpty()}">
             <div class="row" style="text-align:center">
                 <h1 class="text-center">Lista de personas</h1>
