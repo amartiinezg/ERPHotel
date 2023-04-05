@@ -8,6 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +24,7 @@ class TestCRUDPersonaTest {
     String surname = "Sánchez";
     String number = "622451059";
     String dni = "47929975E";
+    String newName = "Pepe";
     @BeforeEach
     void setUp() {
         personDomain.setName(name);
@@ -33,17 +35,28 @@ class TestCRUDPersonaTest {
 
     }
 
+  @Order(1)
     @DisplayName("Junit test for add Persona object")
     @Test
-    public void addPersona(){
+    public void testA(){
         personServiceImplemented.salvar(personDomain);
        Assertions.assertThat(personServiceImplemented.localizarPersona(personDomain)).isNotNull();
     }
 
+@Order(2)
+    @DisplayName("Junit test for modify Person")
+    @Test
+    public void testB(){
+        personDomain = personServiceImplemented.findPersonByName(name).get(0);
+        personDomain.setName(newName);
+        personServiceImplemented.salvar(personDomain);
+        Assertions.assertThat(personServiceImplemented.localizarPersona(personDomain)).isNotNull();
+    }
+    @Order(3)
     @DisplayName("Junit test for delete Persona Object")
     @Test
-    public void deletePersona(){
-        personDomain = personServiceImplemented.findPersonByName(name).get(0);
+    public void testC(){
+        personDomain = personServiceImplemented.findPersonByName(newName).get(0);
         personServiceImplemented.borrar(personDomain);
         Assertions.assertThat(personServiceImplemented.localizarPersona(personDomain)).isNull();
     }
