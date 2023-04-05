@@ -87,31 +87,27 @@ select {
   border-radius: 0.25rem;
 }
 
-.select {
-  width: 100%;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: #fff;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-  display: grid;
-  grid-template-areas: "select";
-  align-items: center;
-  margin-bottom: 20px;
-}
 
 select,
 .select:after {
   grid-area: select;
   justify-self: end;
 }
+.select {
+    margin-bottom: 15px;
+}
 
 .select::after {
     content: "";
+    position: absolute;
+    right: 0;
+    top: 74%;
     width: 0.8em;
     height: 0.5em;
-    margin-right: 10px;
+    margin-right: 45px;
     background-color: #495057;
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(180deg);
     }   
 
 
@@ -120,6 +116,34 @@ select::-ms-expand {
 }
 
 .bolded { font-weight: bold; }
+
+.search-bar{
+    margin-bottom: 50px;
+}
+
+.filter {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 30%;
+}
+
+
+select::-ms-expand {
+  display: none;
+}
+
+.filter::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: #555;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: rotate(180deg);
+}
 
 hr {
   -webkit-box-sizing: content-box;
@@ -2211,6 +2235,12 @@ fieldset:disabled a.btn {
   background-color: #17a2b8;
   border-color: #17a2b8; 
   margin-bottom: 10px;
+}
+
+.btn-info-search {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8; 
 }
   .btn-info:hover {
     color: #fff;
