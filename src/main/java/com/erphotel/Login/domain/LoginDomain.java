@@ -1,17 +1,32 @@
 package com.erphotel.Login.domain;
 
-import jakarta.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.Data;
+
+
+@Data
 @Entity
-@Table (name = "personas")
-public class LoginDomain {
+@Table (name = "employees")
+public class LoginDomain implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String dni;
-
+    @Column(name = "employee_id")
+    private Long employee_id;
+    private Date contract_start;
+    @NotEmpty
+    private String username;
+    @NotEmpty
+    private String password;
+    @OneToMany
+    @JoinColumn(name="employee_id")
+    private List<RolDomain> rols;
 
 }
