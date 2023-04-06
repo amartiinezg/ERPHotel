@@ -47,7 +47,8 @@ public class ConfigurationAutentificator {
         return http
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
+
+                .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
                         "/rooms/**", "/hotel_booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
                 .requestMatchers("/**").hasAnyAuthority("staff")
                 .anyRequest().authenticated()

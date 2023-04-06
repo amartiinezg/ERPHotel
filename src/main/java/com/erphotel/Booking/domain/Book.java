@@ -17,8 +17,8 @@ public class Book implements Serializable {
     private Long book_id;
     private Date check_in;
     private Date check_out;
-    private String pay_method;
-    private Integer number_people;
-    private Integer room_id;
+    private int number_people;
+
+    private int room_id;
 }
 
