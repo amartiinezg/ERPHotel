@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -20,11 +20,11 @@
         <div class="table-responsive table table-hover table-bordered results">
             <table class="table table-hover table-bordered">
                 <thead class="bill-header cs">
-                    <tr>
+                    <tr >
                         <th id="trs-hd-1" class="col-lg-1">Línea Factura</th>
                         <th id="trs-hd-2" class="col-lg-2">Servicio</th>
                         <th id="trs-hd-3" class="col-lg-3">Fecha</th>
-                        <th id="trs-hd-4" class="col-lg-3">Controles</th>
+                        <th sec:authorize="hasAnyAuthority('staff')" id="trs-hd-4" class="col-lg-3">Controles</th>
 
                     </tr>
                 </thead>
@@ -36,7 +36,7 @@
                     <td th:text="${invoiceLine.invoice_line_id}"></td>
                     <td th:text="${invoiceLine.invoice_line_type}"></td>
                     <td th:text="${invoiceLine.invoice_line_date}"></td>
-                    <td>
+                    <td sec:authorize="hasAnyAuthority('staff')">
                         <a th:href="@{/editInvoiceLine/} + ${invoiceLine.invoice_line_id}" class="btn btn-success">Modificar</a>
                         <a class="btn btn-danger" th:onclick="deleteInvoiceLine([[${invoiceLine.invoice_line_id}]])" href="#">Eliminar</a>
 

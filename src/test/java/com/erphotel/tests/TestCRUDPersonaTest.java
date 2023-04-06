@@ -22,8 +22,8 @@ class TestCRUDPersonaTest {
     PersonDomain personDomain = new PersonDomain();
     String name = "Adam";
     String surname = "Sánchez";
-    String number = "622451059";
-    String dni = "47929975E";
+    String number = "651232425";
+    String dni = "47929975A";
     String newName = "Pepe";
     @BeforeEach
     void setUp() {

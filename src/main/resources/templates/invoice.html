@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -39,8 +39,8 @@
                         <td th:text="${invoice.invoice_quantity}"></td>
                         <td th:text="${invoice.pay_method}"></td>
                         <td>
-                            <a  th:href="@{/editInvoice/} + ${invoice.invoice_id}" class="btn btn-success">Modificar</a>
-                            <a class="btn btn-danger" th:onclick="deleteInvoice([[${invoice.invoice_id}]])" href="#">Eliminar</a>
+                            <a  th:href="@{/editInvoice/} + ${invoice.invoice_id}" class="btn btn-success" sec:authorize="hasAnyAuthority('staff')">Modificar</a>
+                            <a class="btn btn-danger" th:onclick="deleteInvoice([[${invoice.invoice_id}]])" href="#"  sec:authorize="hasAnyAuthority('staff')">Eliminar</a>
                             <a th:href="@{/invoiceLines/} + ${invoice.invoice_id}" class="btn btn-info">Ver Lineas</a>
 
 

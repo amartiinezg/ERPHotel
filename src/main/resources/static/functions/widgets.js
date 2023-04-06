@@ -6,7 +6,7 @@ var btnAddRoom = document.getElementById("btn_addRoom");
 var btnCleaningStatus = document.getElementById("btn_cleaningStatus");
 var btnShowPerson = document.getElementById("btn_showPersons");
 var btnAddPerson = document.getElementById("btn_addPerson");
-
+var btnInvoices = document.getElementById("btn_invoices")
 
 
 btnStatusRoom.onclick = function () {
@@ -29,4 +29,8 @@ btnShowPerson.onclick = function () {
 };
 btnAddPerson.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="person/new" width="100%" height="100%"></iframe>';
+};
+
+btnInvoices.onclick = function (){
+  zonaIframe.innerHTML = '<iframe src="invoice" width="100%" height="100%"></iframe>'
 };
