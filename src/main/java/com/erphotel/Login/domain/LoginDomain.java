@@ -1,5 +1,6 @@
 package com.erphotel.Login.domain;
 
+import com.erphotel.personManagement.domain.PersonDomain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.List;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-
 
 @Data
 @Entity
