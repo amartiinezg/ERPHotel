@@ -1,4 +1,4 @@
-package com.erphotel.Login.controller;
+package com.erphotel.AuthSecurity.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

@@ -1,4 +1,4 @@
-package com.erphotel.Login.controller;
+package com.erphotel.AuthSecurity.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,7 @@ public class ConfigurationAutentificator {
     public void autenticacio(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
+    
     String[] staticResources = {
         "/css/**",
         "/images/**",
@@ -47,7 +48,6 @@ public class ConfigurationAutentificator {
         return http
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-
                 .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
                         "/rooms/**", "/hotel_booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
                 .requestMatchers("/**").hasAnyAuthority("staff")

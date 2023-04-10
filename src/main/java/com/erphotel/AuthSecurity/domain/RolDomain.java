@@ -1,4 +1,4 @@
-package com.erphotel.Login.domain;
+package com.erphotel.AuthSecurity.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;

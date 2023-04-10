@@ -1,5 +1,7 @@
 package com.erphotel;
 
+import com.erphotel.AuthSecurity.controller.RolService;
+import com.erphotel.AuthSecurity.domain.RolDomain;
 import org.springframework.ui.Model;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
@@ -17,6 +19,9 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+    
+    @Autowired
+    private RolService rolService;
 
     @GetMapping({"/Person", "/person", "/personas", "/persona"})
     public String listPerson(Model model, @AuthenticationPrincipal User username) {
@@ -35,8 +40,11 @@ public class PersonController {
 
     @GetMapping("/employee/new")
     public String mostrarFormularioDeRegistrtarTrabajador(Model modelo, @AuthenticationPrincipal User username) {
-        PersonDomain persona = new PersonDomain();
-        modelo.addAttribute("persona", persona);
+        List<PersonDomain> personas = personService.listPersonas();
+        List<RolDomain> rols = rolService.listRols();
+        modelo.addAttribute("personas", personas);
+        modelo.addAttribute("rols", rols);
+
         return "newEmployee";
     }
 
@@ -65,4 +73,3 @@ public class PersonController {
         return "redirect:/person";
     }
 }
-

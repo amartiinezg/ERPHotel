@@ -1,10 +1,10 @@
-package com.erphotel.Login.controller;
+package com.erphotel.AuthSecurity.controller;
 
 import java.util.ArrayList;
 
-import com.erphotel.Login.dao.LoginDAO;
-import com.erphotel.Login.domain.LoginDomain;
-import com.erphotel.Login.domain.RolDomain;
+import com.erphotel.AuthSecurity.dao.LoginDAO;
+import com.erphotel.AuthSecurity.domain.LoginDomain;
+import com.erphotel.AuthSecurity.domain.RolDomain;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

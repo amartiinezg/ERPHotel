@@ -1,4 +1,4 @@
-package com.erphotel.Login.domain;
+package com.erphotel.AuthSecurity.domain;
 
 import com.erphotel.personManagement.domain.PersonDomain;
 import java.io.Serializable;

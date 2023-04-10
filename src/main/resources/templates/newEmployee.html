@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/Employee/style.css">
         <script defer src="/Employee/index.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     </head>
     <body>
         <div class="container">
@@ -20,29 +23,23 @@
                     <div class="error"></div>
                 </div>            
                 <div class="input-control">
-                    <label for="role">Rol</label>
-                    <select id="role" name="role">
-                        <option value="staff">Staff</option>
-                        <option value="recepcion">Recepción</option>
-                        <option value="limpieza">Limpieza</option>
+                    <label for="role">Seleccione un Rol:</label>
+                    <select id="rol" name="rol">
+                        <option value="">-- Seleccione --</option>
+                        <option th:each="rol : ${rols}" 
+                                th:value="${rol.name}" 
+                                th:text="${rol.name}"></option>
                     </select>
                     <div class="error"></div>
-                </div>
+                </div>          
                 <div class="input-control">
-                    <label for="id">ID</label>
+                    <label for="id">Seleccione un ID:</label>
                     <select id="id" name="id">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
+                        <option value="">-- Seleccione --</option>
+                        <option th:each="persona : ${personas}" 
+                                th:value="${persona.person_id}" 
+                                th:text="${persona.person_id}"></option>
                     </select>
-                    <div class="error"></div>
                 </div>
                 <div class="input-control">
                     <label for="start-date">Inicio del contrato</label>
