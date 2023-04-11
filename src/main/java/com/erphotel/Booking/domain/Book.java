@@ -1,7 +1,6 @@
 package com.erphotel.Booking.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,10 +14,9 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long book_id;
-    private Date check_in;
-    private Date check_out;
-    private int number_people;
-
-    private int room_id;
+    private String check_in;
+    private String check_out;
+    private Integer number_people;
+    private Integer room_id;
 }
 
