@@ -105,6 +105,7 @@ h2.heading {
 .controls input[type="number"],
 .controls input[type="date"],
 .controls input[type="tel"],
+.controls input[type="password"],
 .controls textarea,
 .controls button,
 .controls select {
@@ -125,38 +126,34 @@ h2.heading {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.controls input[type="text"]:focus, .controls input[type="text"]:hover,
-.controls input[type="email"]:focus,
+.controls input[type="text"]:hover,
 .controls input[type="email"]:hover,
-.controls input[type="number"]:focus,
 .controls input[type="number"]:hover,
-.controls input[type="date"]:focus,
 .controls input[type="date"]:hover,
-.controls input[type="tel"]:focus,
 .controls input[type="tel"]:hover,
-.controls textarea:focus,
+.controls input[type="password"]:hover,
 .controls textarea:hover,
-.controls button:focus,
 .controls button:hover,
-.controls select:focus,
 .controls select:hover {
   outline: none;
   border-color: #9FB1C1;
 }
-.controls input[type="text"]:focus + label, .controls input[type="text"]:hover + label,
-.controls input[type="email"]:focus + label,
+.controls input[type="text"]:label, .controls input[type="text"]:hover + label,
+.controls input[type="email"]:label,
 .controls input[type="email"]:hover + label,
-.controls input[type="number"]:focus + label,
+.controls input[type="number"]:label,
 .controls input[type="number"]:hover + label,
-.controls input[type="date"]:focus + label,
+.controls input[type="date"]:label,
 .controls input[type="date"]:hover + label,
-.controls input[type="tel"]:focus + label,
+.controls input[type="tel"]:label,
 .controls input[type="tel"]:hover + label,
-.controls textarea:focus + label,
+.controls input[type="password"]:label,
+.controls input[type="password"]:hover + label,
+.controls textarea:label,
 .controls textarea:hover + label,
-.controls button:focus + label,
+.controls button:label,
 .controls button:hover + label,
-.controls select:focus + label,
+.controls select:label,
 .controls select:hover + label {
   color: #bdcc00;
   cursor: text;
