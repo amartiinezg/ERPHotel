@@ -1,6 +1,5 @@
 package com.erphotel.Login.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration //Indica al sistema que és una classe de configuració
 @EnableWebSecurity //Habilita la seguretat web
-@Slf4j
 public class ConfigurationAutentificator {
 
     @Autowired

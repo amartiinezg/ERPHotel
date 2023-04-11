@@ -1,6 +1,5 @@
 package com.erphotel.Login.domain;
 
-import com.erphotel.personManagement.domain.PersonDomain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
