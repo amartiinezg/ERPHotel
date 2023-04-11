@@ -32,4 +32,9 @@ public class PersonServiceImplemented implements PersonService {
     public PersonDomain localizarPersona(PersonDomain persona) {
       return personaDAO.findById(persona.getPerson_id()).orElse(null);
     }
+
+    @Override
+    public List<PersonDomain> findPersonByName(String name) {
+        return personaDAO.findByName(name);
+    }
 }

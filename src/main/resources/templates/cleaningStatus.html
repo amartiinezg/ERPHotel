@@ -23,8 +23,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-wrap" th:if="${roomList != null and !roomList.empty}">
+                    <div class="col-md-12" th:switch="${roomList != null and !roomList.empty}">
+                        <div class="table-wrap" th:case="true">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -33,7 +33,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="room : ${roomList}" th:if="${room.is_clean == false}">
+                                    <tr th:each="room : ${roomList}">
                                         <td th:text="${room.room_number}" class ="bolded"></td>
                                         <td>
                                             <a th:href="@{/room/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
@@ -43,9 +43,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div th:case="false" class="alert alert-info" role="alert">
+                            Todas las habitaciones estan limpias!
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <script src="js/jquery.min.js"></script>

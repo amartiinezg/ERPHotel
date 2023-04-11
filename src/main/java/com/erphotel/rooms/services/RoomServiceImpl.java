@@ -16,15 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
  * @author alejandro
  */
 @Service
-public class RoomServiceImpl implements RoomService{
-    
+public class RoomServiceImpl implements RoomService {
+
     @Autowired
     private RoomDAO roomDAO;
 
     @Override
     @Transactional(readOnly = true)
     public List<Room> roomList() {
-        return (List<Room>)roomDAO.findAll();
+        return (List<Room>) roomDAO.findAll();
     }
 
     @Override
@@ -45,4 +45,10 @@ public class RoomServiceImpl implements RoomService{
         return roomDAO.findById(room.getRoom_id()).orElse(null);
     }
     
+    @Override
+    @Transactional
+    public List<Room> getByKeyword(String keyword) {
+        return roomDAO.findByKeyword(keyword);
+    }
+
 }
