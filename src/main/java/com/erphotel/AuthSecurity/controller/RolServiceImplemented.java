@@ -26,4 +26,9 @@ public class RolServiceImplemented implements RolService {
     return (List<RolDomain>) rolDAO.findAll();
     }
 
+    @Override
+    public void salvar(RolDomain rol) {
+        rolDAO.save(rol);
+    }
+
 }

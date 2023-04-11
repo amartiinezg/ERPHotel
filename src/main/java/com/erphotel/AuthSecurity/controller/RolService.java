@@ -11,8 +11,10 @@ import java.util.List;
  *
  * @author Alex
  */
-public interface RolService  {
+public interface RolService {
 
     public List<RolDomain> listRols();
-    
+
+    public void salvar(RolDomain rol);
+
 }

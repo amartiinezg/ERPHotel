@@ -17,10 +17,9 @@ public class LoginDomain implements Serializable {
     private static final long serialVersionUID=1L;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private Long employee_id;
-    private Date contract_start;
+    private String contract_start;
     @NotEmpty
     private String username;
     @NotEmpty

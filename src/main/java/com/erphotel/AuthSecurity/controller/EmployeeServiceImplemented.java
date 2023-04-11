@@ -6,27 +6,30 @@ package com.erphotel.AuthSecurity.controller;
 
 import com.erphotel.AuthSecurity.dao.LoginDAO;
 import com.erphotel.AuthSecurity.domain.LoginDomain;
+import com.erphotel.AuthSecurity.domain.RolDomain;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Alex
  */
-public class EmployeeServiceImplemented implements EmployeeService{
+@Service
+public class EmployeeServiceImplemented implements EmployeeService {
 
     @Autowired
     private LoginDAO loginDAO;
-    
-    @Override
-    public List<LoginDomain> listEmployee() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
-    public void salvar(LoginDomain employee) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<LoginDomain> listEmployee() {
+        return (List<LoginDomain>) loginDAO.findAll();
     }
+@Override
+public void salvar(LoginDomain employee) {
+    loginDAO.save(employee);
+}
 
     @Override
     public void borrar(LoginDomain employee) {
@@ -42,5 +45,5 @@ public class EmployeeServiceImplemented implements EmployeeService{
     public List<LoginDomain> findEmployeeByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
