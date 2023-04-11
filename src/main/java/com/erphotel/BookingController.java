@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.erphotel.Booking.domain.Book;
+import com.erphotel.Booking.domain.Guest;
 import com.erphotel.Booking.service.BookService;
+import com.erphotel.Booking.service.GuestService;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
 import com.erphotel.rooms.domain.Room;
@@ -25,6 +27,9 @@ public class BookingController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    GuestService guestService;
 
     @Autowired
     RoomService roomService;
@@ -41,7 +46,7 @@ public class BookingController {
     }
 
     @PostMapping("/processFormBooking")
-    public String create(@ModelAttribute("persona") PersonDomain persona, @ModelAttribute("reserva") Book book,
+    public String create(@ModelAttribute("persona") PersonDomain persona, @ModelAttribute("reserva") Book book, @ModelAttribute("huesped") Guest guest,
             @RequestParam("room_type") String roomType, @RequestParam("nonselected") String existentGuest) {
         List<Room> rooms = roomService.roomList();
         while (book.getRoom_id() == null) {
@@ -56,12 +61,19 @@ public class BookingController {
                 }
             }
         }
+
         if (!existentGuest.equals("blank")) {
             bookService.save(book);
+            guest.setPerson_id(persona.getPerson_id().intValue());;
+            guestService.save(guest);
             return "book_confirm";
         } else {
             personService.salvar(persona);
             bookService.save(book);
+            System.out.println(guest + guest.getBoard());
+            guest.setPerson_id(persona.getPerson_id().intValue());
+            guestService.save(guest);
+
             return "book_confirm";
         }
     }
