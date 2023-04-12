@@ -38,7 +38,7 @@
                         <select class="floatLabel" id="rol" name="rol" th:field="*{rols}">
                             <option value="">-- Seleccione --</option>
                             <option th:each="rol : ${rols}" 
-                                    th:value="${rol.id_rol}" 
+                                    th:value="${rol.id}" 
                                     th:text="${rol.name}"></option>
                         </select>
                         <label for="fruit">Seleccione un Rol</label>

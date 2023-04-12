@@ -7,6 +7,7 @@ import com.erphotel.AuthSecurity.domain.RolDomain;
 import org.springframework.ui.Model;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -41,17 +42,10 @@ public class PersonController {
         return "newPerson";
     }
 
-    @GetMapping("/employee/new1")
-    public String createEmployee(Model modelo, @AuthenticationPrincipal User username) {
-        LoginDomain employee = new LoginDomain();
-        modelo.addAttribute("employee", employee);
-        return "newPerson";
-    }
-
     @GetMapping("/employee/new")
     public String mostrarFormularioDeRegistrtarTrabajador(Model modelo, @AuthenticationPrincipal User username) {
         List<PersonDomain> personas = personService.listPersonas();
-        List<RolDomain> rols = rolService.listRols();
+        List<RolDomain> rols = rolService.listDistinctRols();
         LoginDomain employee = new LoginDomain();
         modelo.addAttribute("personas", personas);
         modelo.addAttribute("rols", rols);
@@ -86,14 +80,22 @@ public class PersonController {
 
     @PostMapping("/saveEmployee")
     public String guardarEmployee(@ModelAttribute("employee") LoginDomain employee, @AuthenticationPrincipal User username) {
-        List<RolDomain> rols = employee.getRols();  
-        employeeService.salvar(employee);
-        for (RolDomain rol : rols) {
-            RolDomain rolSalvar = new RolDomain();
-            rolSalvar.setId_rol(0);
-            rolSalvar.setName(rol.getName());
-            rolService.salvar(rolSalvar);
+        if (username.getUsername() != employee.getUsername()) {
+            LoginDomain newEmployee = new LoginDomain();
+            newEmployee.setEmployee_id(employee.getEmployee_id());
+            newEmployee.setContract_start(employee.getContract_start());
+            newEmployee.setUsername(employee.getUsername());
+            newEmployee.setPassword(employee.getPassword());
+            employeeService.salvar(newEmployee);
+            for (RolDomain rol : employee.getRols()) {
+                RolDomain rolDomain = new RolDomain();
+                rolDomain.setId_rol(rol.getId_rol());
+                rolDomain.setName(rol.getName());
+                newEmployee.getRols().add(rolDomain);
+                rolService.guardarRol(rolDomain.getId_rol(), rolDomain.getName(), employee.getEmployee_id());
+            }
         }
-        return "redirect:/person";}
-    
+        return "redirect:/person";
+    }
+
 }

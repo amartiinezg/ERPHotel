@@ -26,10 +26,11 @@ public class EmployeeServiceImplemented implements EmployeeService {
     public List<LoginDomain> listEmployee() {
         return (List<LoginDomain>) loginDAO.findAll();
     }
-@Override
-public void salvar(LoginDomain employee) {
-    loginDAO.save(employee);
-}
+
+    @Override
+    public void salvar(LoginDomain employee) {
+        loginDAO.save(employee);
+    }
 
     @Override
     public void borrar(LoginDomain employee) {
