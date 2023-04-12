@@ -67,7 +67,7 @@
                                         <td th:if="${room.is_clean == true}">Limpia</td>
                                         <td th:if="${room.is_clean} == false">No limpia</td>
                                         <td>
-                                            <a th:href="@{/room/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
+                                            <a th:href="@{/rooms/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
                                             <a th:href="@{/rooms/delete/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
                                         </td>
 

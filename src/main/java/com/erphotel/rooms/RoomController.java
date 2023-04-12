@@ -160,7 +160,7 @@ public class RoomController {
         return "redirect:/rooms/cleaningStatus";
     }
 
-    @GetMapping("/room/edit/{room_id}")
+    @GetMapping("/rooms/edit/{room_id}")
     public String editRoom(Room room, Model model) {
         room = roomService.getRoom(room);
         model.addAttribute("room", room);
