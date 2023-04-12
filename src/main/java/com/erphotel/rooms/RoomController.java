@@ -168,7 +168,7 @@ public class RoomController {
 
     }
 
-    @PostMapping("/saveRoom")
+    @PostMapping("/rooms/saveRoom")
     public String saveRoom(@ModelAttribute("room") Room room) {
         roomService.save(room);
         return "redirect:/rooms";
