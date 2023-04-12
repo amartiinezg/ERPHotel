@@ -36,7 +36,7 @@
                 </div>
                 <div class="search-bar" style="text-align: center;">
                     <form th:action="@{/rooms/search}" method="get">
-                        <input class="search" type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por número, tipo de habitación y precio..." size="50" >
+                        <input class="search" type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por número y tipo de habitación..." size="50" >
                         <button type="submit" class="btn btn-info-search" >Search</button>
                         <button type="submit" class="btn btn-info-search" >Reset</button>
                     </form>
