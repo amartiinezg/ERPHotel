@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +33,9 @@ public class BookingController {
     PersonService personService;
 
     @Autowired
+    JdbcTemplate jdbcTemplate;
+    
+    @Autowired
     InvoiceService invoiceService;
 
     @Autowired
@@ -49,13 +54,24 @@ public class BookingController {
         return "hotel_booking";
     }
 
+    @GetMapping("/books")
+    public void booksWidget(Model model) {
+            String sql = "SELECT b.book_id, b.check_in, b.check_out, b.number_people, r.room_number "
+            + "FROM books b "
+            + "JOIN rooms r ON b.room_id = r.room_id;";
+        List<Book> bookList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Book.class));
+        System.out.println(bookList.get(0).toString() + bookList.toString());
+        model.addAttribute("bookList", bookList);
+
+    }
+
     @GetMapping("/book_confirm")
     public void bookingWidget() {
     }
 
     @PostMapping("/processFormBooking")
-    public String create(@ModelAttribute("persona") PersonDomain persona, @ModelAttribute("reserva") Book book, 
-    @ModelAttribute("huesped") Guest guest, @ModelAttribute("factura") InvoiceDomain invoice,
+    public String create(@ModelAttribute("persona") PersonDomain persona, @ModelAttribute("reserva") Book book,
+            @ModelAttribute("huesped") Guest guest, @ModelAttribute("factura") InvoiceDomain invoice,
             @RequestParam("room_type") String roomType, @RequestParam("nonselected") String existentGuest) {
         List<Room> rooms = roomService.roomList();
         while (book.getRoom_id() == null) {

@@ -18,5 +18,6 @@ public class Book implements Serializable {
     private String check_out;
     private Integer number_people;
     private Integer room_id;
+    private Integer room_number;
 }
 

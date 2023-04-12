@@ -47,7 +47,7 @@ public class ConfigurationAutentificator {
                 .requestMatchers(staticResources).permitAll()
 
                 .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
-                        "/rooms/**", "/hotel_booking/**", "/processFormBooking/**","/book_confirm/**").hasAnyAuthority("recepcion", "limpieza", "staff")
+                        "/rooms/**", "/hotel_booking/**", "/books/**","/processFormBooking/**","/book_confirm/**").hasAnyAuthority("recepcion", "limpieza", "staff")
                 .requestMatchers("/**").hasAnyAuthority("staff")
                 .anyRequest().authenticated()
                 )
