@@ -9,9 +9,9 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="../gestionHabitaciones/css/style.css">
+        <link rel="stylesheet" href="/gestionHabitaciones/css/style.css">
 
-        <link rel="stylesheet" href="../static/gestionHabitaciones/css/style.css">
+        <link rel="stylesheet" href="/static/gestionHabitaciones/css/style.css">
 
     </head>
     <body>
@@ -36,7 +36,7 @@
                                     <tr th:each="room : ${roomList}">
                                         <td th:text="${room.room_number}" class ="bolded"></td>
                                         <td>
-                                            <a th:href="@{/rooms/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
+                                            <a th:href="@{/rooms/cleaning/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
                                         </td>
 
                                     </tr>
