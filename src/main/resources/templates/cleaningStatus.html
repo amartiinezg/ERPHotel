@@ -36,7 +36,7 @@
                                     <tr th:each="room : ${roomList}">
                                         <td th:text="${room.room_number}" class ="bolded"></td>
                                         <td>
-                                            <a th:href="@{/room/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
+                                            <a th:href="@{/rooms/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
                                         </td>
 
                                     </tr>

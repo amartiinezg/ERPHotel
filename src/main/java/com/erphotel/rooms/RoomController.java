@@ -117,7 +117,7 @@ public class RoomController {
         return "rooms";
     }
 
-    @GetMapping("/cleaningStatus")
+    @GetMapping("/rooms/cleaningStatus")
     public String cleaningStatus(Model model) {
         Integer a = null;
         List<Room> roomList = roomService.roomList();
@@ -140,24 +140,24 @@ public class RoomController {
         return "cleaningStatus";
     }
 
-    @GetMapping("/newRoom")
+    @GetMapping("/rooms/newRoom")
     public String addRoom(Model model) {
         model.addAttribute("room", new Room());
         return "newRoom";
     }
 
-    @GetMapping("/room/delete/{room_id}")
+    @GetMapping("/rooms/delete/{room_id}")
     public String deleteRoom(Room room) {
         roomService.delete(room);
         return "redirect:/rooms";
     }
 
-    @GetMapping("/room/editCleaning/{room_id}")
+    @GetMapping("/rooms/editCleaning/{room_id}")
     public String editCleaningStatus(Room room) {
         room = roomService.getRoom(room);
         room.setIs_clean(true);
         roomService.save(room);
-        return "redirect:/cleaningStatus";
+        return "redirect:/rooms/cleaningStatus";
     }
 
     @GetMapping("/room/edit/{room_id}")

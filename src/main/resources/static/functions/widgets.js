@@ -13,10 +13,10 @@ btnStatusRoom.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="100%"></iframe>';
 };
 btnAddRoom.onclick = function () {
-    zonaIframe.innerHTML = '<iframe src="newRoom" width="100%" height="100%"></iframe>';
+    zonaIframe.innerHTML = '<iframe src="/rooms/newRoom" width="100%" height="100%"></iframe>';
 };
 btnCleaningStatus.onclick = function () {
-    zonaIframe.innerHTML = '<iframe src="cleaningStatus" width="100%" height="100%"></iframe>';
+    zonaIframe.innerHTML = '<iframe src="/rooms/cleaningStatus" width="100%" height="100%"></iframe>';
 };
 btnDashboard.onclick = function () {
     zonaIframe.innerHTML = '';
