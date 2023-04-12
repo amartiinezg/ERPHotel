@@ -14,7 +14,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
                     <h1 class="text-center">Editar habitaciones</h1>
                     <div class="card-body">
-                        <form th:action="@{/updateRoom/{room_id}(room_id=${room.room_id})}" th:object="${room}" method="POST">
+                        <form th:action="@{/rooms/updateRoom/{room_id}(room_id=${room.room_id})}" th:object="${room}" method="POST">
                             <div class="form-group">
                                 <label>Num. habitación : </label>
                                 <input type="number" min="0" th:field="*{room_number}" name="nombre" class="form-control" placeholder="Inserte el número de la habitación " required>

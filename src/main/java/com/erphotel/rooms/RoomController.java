@@ -174,13 +174,13 @@ public class RoomController {
         return "redirect:/rooms";
     }
 
-    @PostMapping("/sortList")
+    @PostMapping("/rooms/sortList")
     public String sortList(@ModelAttribute("order") Integer order) {
         return "redirect:/rooms";
 
     }
 
-    @PostMapping("/updateRoom/{room_id}")
+    @PostMapping("/rooms/updateRoom/{room_id}")
     public String updateRoom(Room room) {
         roomService.save(room);
         return "redirect:/rooms";
