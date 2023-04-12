@@ -45,11 +45,14 @@ public class PersonController {
     @GetMapping("/employee/new")
     public String mostrarFormularioDeRegistrtarTrabajador(Model modelo, @AuthenticationPrincipal User username) {
         List<PersonDomain> personas = personService.listPersonas();
+        List<LoginDomain> employessList = employeeService.listEmployee();
         List<RolDomain> rols = rolService.listDistinctRols();
+        personas.removeIf(p -> employessList.stream().anyMatch(e -> e.getEmployee_id() == p.getPerson_id()));
         LoginDomain employee = new LoginDomain();
         modelo.addAttribute("personas", personas);
         modelo.addAttribute("rols", rols);
         modelo.addAttribute("employee", employee);
+        modelo.addAttribute("employessList", employessList);
         return "newEmployee";
     }
 
