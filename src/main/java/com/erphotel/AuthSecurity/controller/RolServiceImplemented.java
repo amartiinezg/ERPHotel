@@ -8,9 +8,11 @@ import com.erphotel.AuthSecurity.dao.RolDAO;
 import com.erphotel.AuthSecurity.domain.RolDomain;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,6 +53,20 @@ public class RolServiceImplemented implements RolService {
     @Transactional
     @Override
     public List<RolDomain> listDistinctRols() {
-        return rolDAO.findDistinctRols();
+        List<RolDomain> listadoRolUnique = new ArrayList<>();
+        String query = "SELECT MIN(id) as id, MIN(id_rol) as id_rol, name\n"
+                + "FROM rols\n"
+                + "GROUP BY name;";
+        List<Object[]> result = em.createNativeQuery(query).getResultList();
+        for (Object[] obj : result) {
+            RolDomain rol = new RolDomain();
+            int i = (int) obj[0];
+            rol.setId((long) i);
+            int c = (int) obj[1];
+            rol.setId_rol((long) c);
+            rol.setName((String) obj[2]);
+            listadoRolUnique.add(rol);
+        }
+        return listadoRolUnique;
     }
 }

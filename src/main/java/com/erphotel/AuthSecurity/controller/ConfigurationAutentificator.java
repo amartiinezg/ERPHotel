@@ -33,7 +33,7 @@ public class ConfigurationAutentificator {
     public void autenticacio(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
-    
+
     String[] staticResources = {
         "/css/**",
         "/images/**",
@@ -48,9 +48,11 @@ public class ConfigurationAutentificator {
         return http
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/", "home", "/home/**","/booking/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
+                .requestMatchers("/", "home", "/home/**", "/booking/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
                         "/rooms/**", "/hotel_booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
                 .requestMatchers("/**").hasAnyAuthority("staff")
+               .requestMatchers("/", "home", "/home/**","/gestionHabitaciones/**", "/booking/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**",
+                        "/rooms/**", "/hotel_booking/**").hasAnyAuthority( "limpieza")
                 .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
