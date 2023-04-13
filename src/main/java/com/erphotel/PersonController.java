@@ -62,7 +62,6 @@ public class PersonController {
         modelo.addAttribute("rols", rols);
         modelo.addAttribute("employee", employee);
         modelo.addAttribute("employessList", employessList);
-
         return "newEmployee";
     }
 

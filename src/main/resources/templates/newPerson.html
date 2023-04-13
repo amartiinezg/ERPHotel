@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <form th:action="@{/savePersona}" th:object="${persona}" method="POST">
+        <form th:action="@{/savePersona}" th:object="${persona}" method="POST" onsubmit="return validateForm()">
             <!--  General -->
             <h2 class="heading">Añadir Persona</h2>
             <div class="form-group">
@@ -50,6 +50,30 @@
             <script
             src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.min.js'></script>
             <script src="/booking/script.js"></script>
+            <script>
+            // Expresión regular para verificar DNI español
+            var dniRegex = /^[0-9]{8}[A-Za-z]$/;
+            // Expresión regular para verificar número de teléfono
+            var phoneRegex = /^[0-9]{9}$/;
+
+            // Función que se ejecuta cuando se envía el formulario
+            function validateForm() {
+                // Obtener los valores de DNI y número de teléfono
+                var dni = document.getElementById("dni").value;
+                var phone = document.getElementById("phone").value;
+
+                // Verificar si los valores son válidos
+                if (!dniRegex.test(dni)) {
+                    alert("Por favor, introduce un DNI válido (8 dígitos y 1 letra)");
+                    return false;
+                }
+                if (!phoneRegex.test(phone)) {
+                    alert("Por favor, introduce un número de teléfono válido (9 dígitos)");
+                    return false;
+                }
+                return true;
+            }
+            </script>
         </form>
     </body>
 

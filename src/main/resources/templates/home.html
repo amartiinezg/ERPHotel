@@ -193,7 +193,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li id="usermenu" class="menu-item sub-menu" text-align="center" style="margin-top: 100%">
+                                <li id="usermenu" class="menu-item sub-menu" text-align="center">
                                     <a href="#">
                                         <span class="menu-icon">
                                             <i class="">&#127940;</i>
@@ -248,26 +248,6 @@
         <script src='https://unpkg.com/@popperjs/core@2'></script>
         <script src="/homeScript.js"></script>
         <script src="/functions/widgets.js"></script>
-        <script>
-                                                    const usermenu = document.querySelector('#usermenu');
-                                                    const usermenuLink = usermenu.querySelector('a');
-                                                    const subMenu = usermenu.querySelector('.sub-menu-list');
-                                                    let isSubMenuOpen = false;
-
-                                                    usermenuLink.addEventListener('click', (event) => {
-                                                        event.preventDefault();
-                                                        usermenu.style.marginTop = '50%';
-                                                        if (isSubMenuOpen) {
-                                                            usermenu.style.marginTop = '100%';
-                                                            subMenu.style.display = 'none';
-                                                            isSubMenuOpen = false;
-                                                        } else {
-                                                            subMenu.style.display = 'block';
-                                                            isSubMenuOpen = true;
-                                                        }
-                                                    });
-        </script>
-
     </body>
 
 </html>
