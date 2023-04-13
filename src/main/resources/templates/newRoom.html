@@ -13,19 +13,19 @@
 
         <form th:action="@{/rooms/saveRoom}" th:object="${room}" method="POST">
             <!--  General -->
-            <h2 class="heading">Añadir Persona</h2>
+            <h2 class="heading">Añadir habitación</h2>
             <div class="form-group">
                 <div class="grid">
                     <div class="col-1-2">
                         <div class="controls">
                             <input type="number" min="0" th:field="*{room_number}" name="nombre" class="floatLabel" placeholder="Inserte el número de la habitación " required>
-                            <label>Num. habitación : </label>
+                            <label>Num. habitación: </label>
                         </div>
                     </div>
                     <div class="col-1-2">
                         <div class="controls">
                             <input type="number" min="0" step="0.01" th:field="*{price}" name="dni" class="floatLabel" placeholder="Inserte el precio de la habitación " required>
-                            <label>Precio : </label>
+                            <label>Precio: </label>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         <option value="Habitacion compartida">Habitacion compartida</option>
                         <option value="Suite principal">Suite principal</option>
                     </select>
-                    <label>Tipo de habitacion : </label>
+                    <label>Tipo de habitacion: </label>
                 </div>
                 <div class="controls">               
                     <button type="submit" value="Submit" style="color:white">Finalizar</button>
