@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +33,7 @@ public class BookingController {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
-    
+
     @Autowired
     InvoiceService invoiceService;
 
@@ -56,11 +55,7 @@ public class BookingController {
 
     @GetMapping("/books")
     public void booksWidget(Model model) {
-            String sql = "SELECT b.book_id, b.check_in, b.check_out, b.number_people, r.room_number "
-            + "FROM books b "
-            + "JOIN rooms r ON b.room_id = r.room_id;";
-        List<Book> bookList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Book.class));
-        System.out.println(bookList.get(0).toString() + bookList.toString());
+        List<Book> bookList = bookService.listBooks();
         model.addAttribute("bookList", bookList);
 
     }
@@ -74,11 +69,11 @@ public class BookingController {
             @ModelAttribute("huesped") Guest guest, @ModelAttribute("factura") InvoiceDomain invoice,
             @RequestParam("room_type") String roomType, @RequestParam("nonselected") String existentGuest) {
         List<Room> rooms = roomService.roomList();
-        while (book.getRoom_id() == null) {
+        while (book.getRoom() == null) {
             for (Room room : rooms) {
                 if (room.getRoom_type().equals(roomType)) {
                     if (room.isStatus() != false) {
-                        book.setRoom_id((int) room.getRoom_id());
+                        book.setRoom(room);
                         room.setStatus(false);
                         roomService.save(room);
                         break;
