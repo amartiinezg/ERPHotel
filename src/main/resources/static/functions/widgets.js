@@ -12,9 +12,6 @@ var btnInvoice = document.getElementById("btn_invoices")
 btnStatusRoom.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="rooms" width="100%" height="100%"></iframe>';
 };
-btnAddRoom.onclick = function () {
-    zonaIframe.innerHTML = '<iframe src="/rooms/newRoom" width="100%" height="100%"></iframe>';
-};
 btnCleaningStatus.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="/rooms/cleaning/cleaningStatus" width="100%" height="100%"></iframe>';
 };
@@ -30,9 +27,12 @@ btnShowPerson.onclick = function () {
 btnAddPerson.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="/person/new" width="100%" height="100%"></iframe>';
 };
-btnAddEmployee.onclick = function () {
-    zonaIframe.innerHTML = '<iframe src="/employee/new" width="100%" height="100%"></iframe>';
-};
 btnInvoice.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="/invoice" width="100%" height="100%"></iframe>';
+};
+btnAddRoom.onclick = function () {
+    zonaIframe.innerHTML = '<iframe src="/rooms/newRoom" width="100%" height="100%"></iframe>';
+};
+btnAddEmployee.onclick = function () {
+    zonaIframe.innerHTML = '<iframe src="/employee/new" width="100%" height="100%"></iframe>';
 };
