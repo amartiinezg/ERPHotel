@@ -1,6 +1,6 @@
-package com.erphotel.Login.dao;
+package com.erphotel.AuthSecurity.dao;
 
-import com.erphotel.Login.domain.LoginDomain;
+import com.erphotel.AuthSecurity.domain.LoginDomain;
 import org.springframework.data.repository.CrudRepository;
 
 public interface LoginDAO extends CrudRepository<LoginDomain, Long> {

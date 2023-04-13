@@ -1,4 +1,4 @@
-package com.erphotel.Login.controller;
+package com.erphotel.AuthSecurity.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
