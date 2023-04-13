@@ -11,40 +11,46 @@
 
         <link rel="stylesheet" href="/gestionHabitaciones/css/style.css">
 
-
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/booking/style.css">
 
     </head>
     <body>
         <div class="filter">
-            <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
-                <select id="standard-select" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
-                    <option disabled selected hidden>Ordenar por...</option>
-                    <option value="PriceAsc">Precio: de más barato a más caro</option>
-                    <option value="PriceDesc">Precio: de más caro a más barato</option>
-                    <option value="Status">Disponibilidad</option>
-                </select>
-            </form>
+            <div class="controls">
+                <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
+                    <select class="standard-select floatLabel" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
+                        <option disabled selected hidden>Ordenar por...</option>
+                        <option value="PriceAsc">Precio: de más barato a más caro</option>
+                        <option value="PriceDesc">Precio: de más caro a más barato</option>
+                        <option value="Status">Disponibilidad</option>
+                    </select>
+                </form>
+            </div>
         </div>
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section bolded">Información de las habitaciones</h2>
+                        <h2 class="heading">Lista de personas</h2>
                     </div>
                 </div>
+                <!--
                 <div class="search-bar" style="text-align: center;">
                     <form th:action="@{/rooms/search}" method="get">
-                        <input class="search" type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por número, tipo de habitación y precio..." size="50" >
+                        <input class="search" type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por número y tipo de habitación..." size="50" >
                         <button type="submit" class="btn btn-info-search" >Search</button>
                         <button type="submit" class="btn btn-info-search" >Reset</button>
                     </form>
                 </div>
+                -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-wrap" th:if="${roomList != null and !roomList.empty}">
-                            <table class="table table-striped">
-                                <thead>
+                            <table class="table table-striped table-bordered">
+                                <thead class="form-group">
                                     <tr>
                                         <th>Nº habitación</th>
                                         <th>Tipo de habitación</th>
@@ -66,19 +72,20 @@
                                         <td th:if="${room.is_clean == true}">Limpia</td>
                                         <td th:if="${room.is_clean} == false">No limpia</td>
                                         <td>
-                                            <a th:href="@{/room/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
-                                            <a th:href="@{/room/delete/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
+                                            <a th:href="@{/rooms/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
+                                            <a th:href="@{/rooms/delete/} + ${room.room_id}" class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')">Eliminar</a>
                                         </td>
 
                                     </tr>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <script src="js/jquery.min.js"></script>
         <script src="js/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>

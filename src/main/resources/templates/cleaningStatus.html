@@ -9,9 +9,14 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="../gestionHabitaciones/css/style.css">
+        <link rel="stylesheet" href="/gestionHabitaciones/css/style.css">
 
-        <link rel="stylesheet" href="../static/gestionHabitaciones/css/style.css">
+        <link rel="stylesheet" href="/static/gestionHabitaciones/css/style.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/booking/style.css">
 
     </head>
     <body>
@@ -19,13 +24,13 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section bolded">Habitaciones por limpiar</h2>
+                         <h2 class="heading">Habitaciones por limpiar</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12" th:switch="${roomList != null and !roomList.empty}">
                         <div class="table-wrap" th:case="true">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Nº habitación</th>
@@ -36,7 +41,7 @@
                                     <tr th:each="room : ${roomList}">
                                         <td th:text="${room.room_number}" class ="bolded"></td>
                                         <td>
-                                            <a th:href="@{/room/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
+                                            <a th:href="@{/rooms/cleaning/editCleaning/} + ${room.room_id}" class="btn btn-danger">Eliminar</a>
                                         </td>
 
                                     </tr>
