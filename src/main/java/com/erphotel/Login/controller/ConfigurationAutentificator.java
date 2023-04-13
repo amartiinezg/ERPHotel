@@ -39,8 +39,8 @@ public class ConfigurationAutentificator {
                 .headers().frameOptions().disable().and()
                 .authorizeHttpRequests((requests) -> requests
                 .requestMatchers(staticResources).permitAll()
+                .requestMatchers("/rooms/cleaning/**").hasAnyAuthority("limpieza" , "staff")
                 .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/hotel_booking/**").hasAnyAuthority("recepcion", "staff", "limpieza")
-                .requestMatchers("/rooms/cleaning/**").hasAnyAuthority("limpieza")
                 .requestMatchers("/**").hasAnyAuthority("staff")
                 .anyRequest().authenticated()
                 )
