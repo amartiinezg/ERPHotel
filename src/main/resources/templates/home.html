@@ -45,9 +45,6 @@
                                             <i class="ri-contacts-book-2-fill"></i>
                                         </span>
                                         <span class="menu-title">Clientes</span>
-                                        <span class="menu-suffix">
-                                            <span class="badge primary">Crypto Zone</span>
-                                        </span>
                                     </a>
                                     <div class="sub-menu-list">
                                         <ul>
@@ -198,10 +195,12 @@
                                 </li>
                                 <li id="usermenu" class="menu-item sub-menu" text-align="center" style="margin-top: 100%">
                                     <a href="#">
-                                        <span class="">&#127940;</span>
+                                        <span class="menu-icon">
+                                            <i class="">&#127940;</i>
+                                        </span>
                                         <span class="menu-title">Usuario</span>
                                         <span class="menu-suffix">
-                                            <span class="badge secondary">Y si nos vamos al rust...</span>
+                                            <span class="badge secondary" th:text="${#authentication.getName().toUpperCase()}"></span>
                                         </span>
                                     </a>
                                     <div class="sub-menu-list">

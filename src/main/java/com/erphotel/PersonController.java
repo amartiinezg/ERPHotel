@@ -10,8 +10,11 @@ import com.erphotel.personManagement.service.PersonService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,12 +23,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PersonController {
 
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Autowired
     private PersonService personService;
     @Autowired
     private EmployeeService employeeService;
     @Autowired
     private RolService rolService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping({"/Person", "/person", "/personas", "/persona"})
     public String listPerson(Model model, @AuthenticationPrincipal User username) {
@@ -105,7 +115,7 @@ public class PersonController {
             newEmployee.setEmployee_id(employee.getEmployee_id());
             newEmployee.setContract_start(employee.getContract_start());
             newEmployee.setUsername(employee.getUsername());
-            newEmployee.setPassword(employee.getPassword());
+            newEmployee.setPassword(passwordEncoder.encode(employee.getPassword()));
             employeeService.salvar(newEmployee);
             for (RolDomain rol : employee.getRols()) {
                 RolDomain rolDomain = new RolDomain();
