@@ -20,21 +20,28 @@
 
 var nameid = document.getElementById("name");
 var surname = document.getElementById("surname");
+var phone_number = document.getElementById("phone");
+var dni = document.getElementById("dni");
 var guestSelector = document.getElementById("guestSelection");
-var persona = document.getElementById("divPerson")
 guestSelector.addEventListener("change", () => {
-	var nameText = guestSelector.options[guestSelector.selectedIndex].text.split(" ")[0];
-	var surnameText = guestSelector.options[guestSelector.selectedIndex].text.split(" ")[1];
-	if (nameText !== '') {
-		persona.innerHTML("SHAJhsd");
-		nameid.value = nameText;
-		surname.value = surnameText;
+	if (guestSelector.selectedIndex !== 0) {
+		nameid.value = guestSelector.options[guestSelector.selectedIndex].getAttribute("name");
+		surname.value = guestSelector.options[guestSelector.selectedIndex].getAttribute("surname");
+		phone_number.value = guestSelector.options[guestSelector.selectedIndex].getAttribute("phone_number");
+		dni.value = guestSelector.options[guestSelector.selectedIndex].getAttribute("dni");
+
 		nameid.nextElementSibling.classList.add("active");
 		surname.nextElementSibling.classList.add("active");
+		phone_number.nextElementSibling.classList.add("active");
+		dni.nextElementSibling.classList.add("active");
 	} else {
 		nameid.value = '';
 		surname.value = '';
+		phone_number.value = '';
+		dni.value = '';
 		nameid.nextElementSibling.classList.remove("active");
 		surname.nextElementSibling.classList.remove("active");
+		phone_number.nextElementSibling.classList.remove("active");
+		dni.nextElementSibling.classList.remove("active");
 	}
 });
