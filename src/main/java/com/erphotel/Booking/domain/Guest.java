@@ -18,7 +18,7 @@ public class Guest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long guest_id;
-    private String board;
+    private String board_id;
     private Integer person_id;
 
     // Setters
@@ -26,21 +26,20 @@ public class Guest implements Serializable {
         this.guest_id = guest_id;
     }
 
-    public void setBoard(String board) {
-        this.board = board;
+    public void setBoard(String board_id) {
+        this.board_id = board_id;
     }
 
     public void setPerson_id(Integer person_id) {
         this.person_id = person_id;
     }
 
-    // Getters
     public Long getGuest_id() {
         return guest_id;
     }
 
     public String getBoard() {
-        return board;
+        return board_id;
     }
 
     public Integer getPerson_id() {

@@ -23,5 +23,5 @@ public class InvoiceDomain implements Serializable {
 
     @OneToMany (mappedBy = "invoice_id", cascade = CascadeType.ALL)
     List<InvoiceLinesDomain> invoiceLinesDomainList;
-
+    
 }

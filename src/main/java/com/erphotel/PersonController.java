@@ -7,7 +7,6 @@ import com.erphotel.AuthSecurity.domain.RolDomain;
 import org.springframework.ui.Model;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
