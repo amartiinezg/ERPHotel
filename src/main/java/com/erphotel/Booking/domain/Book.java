@@ -2,6 +2,8 @@ package com.erphotel.Booking.domain;
 
 import java.io.Serializable;
 
+import com.erphotel.rooms.domain.Room;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,7 +19,10 @@ public class Book implements Serializable {
     private String check_in;
     private String check_out;
     private Integer number_people;
-    private Integer room_id;
-    private Integer room_number;
+
+    @OneToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
+
 }
 
