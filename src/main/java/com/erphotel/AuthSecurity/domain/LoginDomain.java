@@ -1,8 +1,6 @@
 package com.erphotel.AuthSecurity.domain;
 
-import com.erphotel.personManagement.domain.PersonDomain;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.*;

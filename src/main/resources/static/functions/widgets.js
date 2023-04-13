@@ -1,6 +1,7 @@
 var zonaIframe = document.getElementById("ModuleWidget");
 var btnDashboard = document.getElementById("btn_dashboard");
 var btnAddBooking = document.getElementById("btn_addBooking");
+var btnBooks = document.getElementById("btn_books");
 var btnStatusRoom = document.getElementById("btn_statusRoom");
 var btnAddRoom = document.getElementById("btn_addRoom");
 var btnCleaningStatus = document.getElementById("btn_cleaningStatus");
@@ -23,6 +24,9 @@ btnDashboard.onclick = function () {
 };
 btnAddBooking.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="hotel_booking" width="100%" height="100%"></iframe>';
+};
+btnBooks.onclick = function () {
+    zonaIframe.innerHTML = '<iframe src="books" width="100%" height="100%"></iframe>';
 };
 btnShowPerson.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="person" width="100%" height="100%"></iframe>';

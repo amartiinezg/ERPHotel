@@ -6,8 +6,6 @@ package com.erphotel.AuthSecurity.controller;
 
 import com.erphotel.AuthSecurity.dao.LoginDAO;
 import com.erphotel.AuthSecurity.domain.LoginDomain;
-import com.erphotel.AuthSecurity.domain.RolDomain;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
