@@ -28,6 +28,25 @@ function validateCheckOutDate() {
   }
 
 
+function validateCheckOutDate() {
+	var checkInDate = new Date(document.getElementById("arrive").value);
+	var checkOutDate = new Date(document.getElementById("depart").value);
+	if (checkOutDate < checkInDate) {
+	  alert("La fecha de salida debe ser posterior a la fecha de llegada.");
+	  document.getElementById("depart").value = document.getElementById("arrive").value;
+	}
+  }
+
+
+function validateCheckOutDate() {
+	var checkInDate = new Date(document.getElementById("arrive").value);
+	var checkOutDate = new Date(document.getElementById("depart").value);
+	if (checkOutDate < checkInDate) {
+	  alert("La fecha de salida debe ser posterior a la fecha de llegada.");
+	  document.getElementById("depart").value = document.getElementById("arrive").value;
+	}
+  }
+
 var nameid = document.getElementById("name");
 var surname = document.getElementById("surname");
 var phone_number = document.getElementById("phone");
