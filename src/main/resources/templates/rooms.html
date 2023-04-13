@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="/gestionHabitaciones/css/style.css">
-        
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
@@ -19,14 +19,16 @@
     </head>
     <body>
         <div class="filter">
-            <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
-                <select class="standard-select" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
-                    <option disabled selected hidden>Ordenar por...</option>
-                    <option value="PriceAsc">Precio: de más barato a más caro</option>
-                    <option value="PriceDesc">Precio: de más caro a más barato</option>
-                    <option value="Status">Disponibilidad</option>
-                </select>
-            </form>
+            <div class="controls">
+                <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
+                    <select class="standard-select floatLabel" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
+                        <option disabled selected hidden>Ordenar por...</option>
+                        <option value="PriceAsc">Precio: de más barato a más caro</option>
+                        <option value="PriceDesc">Precio: de más caro a más barato</option>
+                        <option value="Status">Disponibilidad</option>
+                    </select>
+                </form>
+            </div>
         </div>
         <section class="ftco-section">
             <div class="container">
@@ -35,6 +37,7 @@
                         <h2 class="heading">Lista de personas</h2>
                     </div>
                 </div>
+                <!--
                 <div class="search-bar" style="text-align: center;">
                     <form th:action="@{/rooms/search}" method="get">
                         <input class="search" type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por número y tipo de habitación..." size="50" >
@@ -42,6 +45,7 @@
                         <button type="submit" class="btn btn-info-search" >Reset</button>
                     </form>
                 </div>
+                -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-wrap" th:if="${roomList != null and !roomList.empty}">
@@ -75,7 +79,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+
                         </div>
                     </div>
                 </div>
