@@ -20,6 +20,8 @@ public interface EmployeeService {
 
     public LoginDomain localizarEmployee (LoginDomain employee);
 
-  public List<LoginDomain> findEmployeeByName(String name);
+    public List<LoginDomain> findEmployeeByName(String name);
+  
+    public LoginDomain findEmployeeById(long id);
   
 }

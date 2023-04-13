@@ -9,6 +9,7 @@ import com.erphotel.AuthSecurity.domain.LoginDomain;
 import com.erphotel.AuthSecurity.domain.RolDomain;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ public class EmployeeServiceImplemented implements EmployeeService {
 
     @Override
     public void borrar(LoginDomain employee) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        loginDAO.delete(employee);
     }
 
     @Override
@@ -45,6 +46,13 @@ public class EmployeeServiceImplemented implements EmployeeService {
     @Override
     public List<LoginDomain> findEmployeeByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public LoginDomain findEmployeeById(long id) {
+        Optional<LoginDomain> loginDomainOptional = loginDAO.findById(id);
+        LoginDomain employee = (LoginDomain) loginDomainOptional.orElse(null);
+        return employee;
     }
 
 }

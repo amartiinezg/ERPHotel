@@ -45,6 +45,15 @@ public class RolServiceImplemented implements RolService {
                 .executeUpdate();
     }
 
+    @Transactional
+    @Override
+    public void borrar(long id) {
+        String query = "DELETE FROM rols WHERE id = :id";
+        em.createNativeQuery(query)
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
     @Override
     public void salvar(RolDomain rol) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

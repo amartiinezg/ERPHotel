@@ -17,7 +17,9 @@ public interface RolService {
 
     public void salvar(RolDomain rol);
 
+    public void borrar(long id);
+
     public void guardarRol(long id_rol, String name, long employee_id);
-    
-   public List<RolDomain> listDistinctRols();
+
+    public List<RolDomain> listDistinctRols();
 }
