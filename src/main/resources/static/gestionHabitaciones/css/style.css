@@ -101,6 +101,9 @@ select,
     position: absolute;
     right: 0%;
     top: 0%;    
+    padding-left: 10px;
+    padding-bottom: 0% !important;
+    padding-top: 0% !important;
 }
 
 .standard-select::after{
