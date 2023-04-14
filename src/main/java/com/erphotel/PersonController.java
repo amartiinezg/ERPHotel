@@ -7,6 +7,7 @@ import com.erphotel.AuthSecurity.domain.RolDomain;
 import org.springframework.ui.Model;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonService;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -100,8 +102,11 @@ public class PersonController {
     }
 
     @PostMapping("/savePersona")
-    public String guardarPersona(@ModelAttribute("persona") PersonDomain persona, @AuthenticationPrincipal User username
-    ) {
+    public String guardarPersona(@Valid @ModelAttribute("persona") PersonDomain persona, @AuthenticationPrincipal User username,
+             BindingResult result) {
+        if (result.hasErrors()) {
+            return "newPerson";
+        }
         personService.salvar(persona);
         return "redirect:/person";
     }

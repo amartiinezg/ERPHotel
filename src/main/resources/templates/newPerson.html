@@ -7,35 +7,39 @@
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/booking/style.css">
-
     </head>
     <body>
 
-        <form th:action="@{/savePersona}" th:object="${persona}" method="POST" onsubmit="return validateForm()">
+        <form th:action="@{/savePersona}" th:object="${persona}" method="POST">
+
             <!--  General -->
             <h2 class="heading">Añadir Persona</h2>
             <div class="form-group">
                 <div class="grid">
                     <div class="col-1-2">
                         <div class="controls">
-                            <input type="text" id="name" class="floatLabel" name="name" th:field="*{name}" required>
+                            <input type="text" id="name" class="floatLabel" name="name" th:field="*{name}">
                             <label for="name">Nombre</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
                         </div>
                     </div>
                     <div class="col-1-2">
                         <div class="controls">
-                            <input type="text" id="surname" class="floatLabel" name="surname" th:field="*{surname}" required>
+                            <input type="text" id="surname" class="floatLabel" name="surname" th:field="*{surname}">
                             <label for="surname">Apellidos</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></small>
                         </div>
                     </div>
                 </div>
                 <div class="controls">
-                    <input type="tel" id="phone" class="floatLabel" name="phone" th:field="*{phone_number}" required>
+                    <input type="tel" id="phone" class="floatLabel" name="phone" th:field="*{phone_number}" >
                     <label for="phone">Teléfono</label>
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}"></small>
                 </div>
                 <div class="controls">
-                    <input type="text" id="dni" class="floatLabel" name="dni" th:field="*{dni}" required>
+                    <input type="text" id="dni" class="floatLabel" name="dni" th:field="*{dni}">
                     <label for="dni">DNI</label>
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
                 </div>
                 <div class="controls">               
                     <button type="submit" value="Submit" style="color:white">Finalizar</button>
@@ -50,30 +54,6 @@
             <script
             src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.min.js'></script>
             <script src="/booking/script.js"></script>
-            <script>
-            // Expresión regular para verificar DNI español
-            var dniRegex = /^[0-9]{8}[A-Za-z]$/;
-            // Expresión regular para verificar número de teléfono
-            var phoneRegex = /^[0-9]{9}$/;
-
-            // Función que se ejecuta cuando se envía el formulario
-            function validateForm() {
-                // Obtener los valores de DNI y número de teléfono
-                var dni = document.getElementById("dni").value;
-                var phone = document.getElementById("phone").value;
-
-                // Verificar si los valores son válidos
-                if (!dniRegex.test(dni)) {
-                    alert("Por favor, introduce un DNI válido (8 dígitos y 1 letra)");
-                    return false;
-                }
-                if (!phoneRegex.test(phone)) {
-                    alert("Por favor, introduce un número de teléfono válido (9 dígitos)");
-                    return false;
-                }
-                return true;
-            }
-            </script>
         </form>
     </body>
 
