@@ -73,7 +73,7 @@
                                         <td th:if="${room.is_clean} == false">No limpia</td>
                                         <td>
                                             <a th:href="@{/rooms/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
-                                            <a th:href="@{/rooms/delete/} + ${room.room_id}" class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')">Eliminar</a>
+                                            <a class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')" th:onclick="deleteRoom([[${room.room_id}]])">Eliminar</a>
                                         </td>
 
                                     </tr>
@@ -87,6 +87,10 @@
             </div>
         </section>
 
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src ="/gestionHabitaciones/js/alertJS.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>
