@@ -55,13 +55,10 @@
                                             </li>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span class="menu-title">Reservas</span>
+                                                    <span id="btn_books" class="menu-title">Reservas</span>
                                                 </a>
                                             </li>
                                             <li class="menu-item sub-menu">
-                                                <a href="#">
-                                                    <span class="menu-title">Forms</span>
-                                                </a>
                                                 <div class="sub-menu-list">
                                                     <ul>
                                                         <li class="menu-item">
@@ -115,6 +112,7 @@
                                         </ul>
                                     </div>
                                 </li>
+
                                 <li class="menu-item sub-menu">
                                     <a href="#">
                                         <span class="menu-icon">
@@ -132,6 +130,7 @@
                                         </ul>
                                     </div>
                                 </li>
+
                                 <li class="menu-item sub-menu">
                                     <a href="#">
                                         <span class="menu-icon">
@@ -141,29 +140,25 @@
                                     </a>
                                     <div class="sub-menu-list">
                                         <ul>
-                                            <li class="menu-item">
-                                            <li class="menu-item">
+                                            <li class="menu-item" sec:authorize="hasAnyAuthority('staff')">
                                                 <a href="#">
                                                     <span id="btn_addRoom" class="menu-title">Añadir habitación</span>
                                                 </a>
                                             </li>
-                                            <a href="#">
-                                                <span id="btn_statusRoom" class="menu-title">Estado de habitaciones</span>
-                                            </a>
+                                            <li class="menu-item">
+                                                <a href="#">
+                                                    <span id="btn_statusRoom" class="menu-title">Estado de habitaciones</span>
+                                                </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="#">
                                                     <span id="btn_cleaningStatus" class="menu-title">Estado de la limpieza</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-item">
-                                                <a href="#">
-                                                    <span class="menu-title">Eliminar habitación</span>
-                                                </a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </li>
+
                                 <li class="menu-item sub-menu">
                                     <a href="#">
                                         <span class="menu-icon">
@@ -208,11 +203,6 @@
                                             <li class="menu-item">
                                                 <a href="#">
                                                     <span class="menu-title" id="btn_userProfil">Perfil de usuario</span>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="#">
-                                                    <span class="menu-title" id="btn_addEmployee">Cambiar Contraseña</span>
                                                 </a>
                                             </li>
                                             <li class="menu-item">

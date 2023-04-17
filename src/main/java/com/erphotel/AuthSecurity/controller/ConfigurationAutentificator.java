@@ -1,6 +1,4 @@
 package com.erphotel.AuthSecurity.controller;
-
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,9 +8,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
 @Configuration
 @EnableWebSecurity
-@Slf4j
 public class ConfigurationAutentificator {
 
     @Autowired
@@ -24,34 +22,34 @@ public class ConfigurationAutentificator {
     }
 
     String[] staticResources = {
-            "/css/**",
-            "/images/**",
-            "/fonts/**",
-            "/scripts/**",
-            "/error/**"
+        "/css/**",
+        "/images/**",
+        "/fonts/**",
+        "/scripts/**",
+        "/error/**",
+        "/static/**"
     };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .headers().frameOptions().disable().and()
-
+                .headers().frameOptions().disable()
+                .and()
                 .authorizeHttpRequests((requests) -> requests
-
                         .requestMatchers(staticResources).permitAll()
                         .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/rooms/**", "/hotel_booking/**", "/booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
                         .requestMatchers("/**").hasAnyAuthority("staff")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll()
+                .loginPage("/login")
+                .permitAll()
                 )
                 .logout((logout) -> logout.
-                        permitAll()
+                permitAll()
                 )
                 .exceptionHandling((exception) -> exception
-                        .accessDeniedPage("/error/error403")
+                .accessDeniedPage("/error/error403")
                 )
                 .build();
     }

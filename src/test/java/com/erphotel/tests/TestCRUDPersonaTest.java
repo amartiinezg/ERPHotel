@@ -3,7 +3,6 @@ package com.erphotel.tests;
 import com.erphotel.personManagement.domain.PersonDomain;
 import com.erphotel.personManagement.service.PersonServiceImplemented;
 
-import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
