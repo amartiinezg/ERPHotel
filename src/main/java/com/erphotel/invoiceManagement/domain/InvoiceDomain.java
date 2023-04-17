@@ -16,7 +16,7 @@ public class InvoiceDomain implements Serializable {
     @Id
     private int invoice_id;
     private Date invoice_date;
-    private int invoice_status;
+    private String invoice_status;
     private float invoice_quantity;
     @Enumerated (EnumType.STRING)
     private PayMethodsEnum pay_method;
