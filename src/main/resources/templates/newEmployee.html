@@ -15,34 +15,22 @@
             <h2 class="heading">Registro</h2>
             <div class="form-group">
                 <div class="controls">
-                    <input type="username" id="username" class="floatLabel" name="username" th:field="*{username}">
+                    <input type="username" id="username" class="floatLabel" name="username" th:field="*{username}" required>
                     <label for="username">Usuario</label>
-                    <div class="error-container">
-                        <small class="form-text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
-                    </div>
                 </div>
                 <div class="controls">
-                    <input type="password" id="password" class="floatLabel" name="password" th:field="*{password}">
+                    <input type="password" id="password" class="floatLabel" name="password" th:field="*{password}" required>
                     <label for="password">Contraseña</label>
-                    <div class="error-container">
-                        <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
-                    </div>
                 </div>
 
                 <div class="controls">
-                    <input type="password" id="confirm-password" class="floatLabel" name="confirm-password">
+                    <input type="password" id="confirm-password" class="floatLabel" name="confirm-password" required>
                     <label for="confirm-password">Repetir contraseña</label>
-                    <div class="error-container">
-                        <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
-                    </div>
                 </div>
                 <div class="col-1-3 col-1-3-sm">
                     <div class="controls">
-                        <input type="date" id="contract_start" class="floatLabel" name="contract_start" value="<?php echo date('Y-m-d'); ?>" th:field="*{contract_start}">
+                        <input type="date" id="contract_start" class="floatLabel" name="contract_start" value="<?php echo date('Y-m-d'); ?>" th:field="*{contract_start}" required>
                         <label for="contract_start" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Inicio del contrato</label>
-                        <div class="error-container">
-                            <small class="form-text text-danger" th:if="${#fields.hasErrors('contract_start')}" th:errors="*{contract_start}"></small>
-                        </div>
                     </div>
                 </div>
                 <div class="col-1-3 col-1-3-sm">
