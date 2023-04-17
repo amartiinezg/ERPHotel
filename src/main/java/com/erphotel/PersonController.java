@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @Controller
 public class PersonController {
 
@@ -70,9 +69,13 @@ public class PersonController {
         return "newEmployee";
     }
 
+    @Validated
     @PostMapping("/actualizarPersona/{person_id}")
-    public String actualizarPersona(PersonDomain persona, @AuthenticationPrincipal User username
+    public String actualizarPersona(@Valid @ModelAttribute("persona") PersonDomain persona, BindingResult result
     ) {
+        if (result.hasErrors()) {
+            return "editPerson";
+        }
         personService.salvar(persona);
         return "redirect:/persona";
     }
@@ -106,7 +109,7 @@ public class PersonController {
 
     @Validated
     @PostMapping("/savePersona")
-    public String guardarPersona(@Valid @ModelAttribute("persona") PersonDomain persona,BindingResult result) {
+    public String guardarPersona(@Valid @ModelAttribute("persona") PersonDomain persona, BindingResult result) {
         if (result.hasErrors()) {
             return "newPerson";
         }
@@ -114,9 +117,23 @@ public class PersonController {
         return "redirect:/person";
     }
 
+    @Validated
     @PostMapping("/saveEmployee")
-    public String guardarEmployee(@ModelAttribute("employee") LoginDomain employee, @AuthenticationPrincipal User username
+    public String guardarEmployee(@Valid @ModelAttribute("employee") LoginDomain employee, BindingResult result, @AuthenticationPrincipal User username, Model modelo
     ) {
+        List<PersonDomain> persones = personService.listPersonas();
+        List<LoginDomain> employessList = employeeService.listEmployee();
+        List<RolDomain> rols = rolService.listDistinctRols();
+        persones.removeIf(p -> employessList.stream().anyMatch(e -> e.getEmployee_id() == p.getPerson_id()));
+
+        // Obtener la lista actualizada de empleados después de crear uno nuevo
+        if (result.hasErrors()) {
+            modelo.addAttribute("personas", persones);
+            modelo.addAttribute("rols", rols);
+            modelo.addAttribute("employee", employee);
+            modelo.addAttribute("employessList", employessList);
+            return "newEmployee";
+        }
         if (!username.getUsername().equals(employee.getUsername())) {
             LoginDomain newEmployee = new LoginDomain();
             newEmployee.setEmployee_id(employee.getEmployee_id());
