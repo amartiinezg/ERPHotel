@@ -54,6 +54,7 @@ public class ConfigurationAutentificator {
                 .build();
     }
 
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

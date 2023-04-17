@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{editinvoicelineform.title.message}"></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/booking/style.css">
+</head>
+<body>
+<form th:object="${invoiceLine}" th:action="@{/saveInvoiceLine/}+${invoice_id}" method="post">
+  <h2 class="heading" th:text="#{editinvoicelineform.title.message}"></h2>
+  <input th:field="*{invoice_line_id}" type="hidden">
+
+
+  <!-- Selector -->
+
+  <div class="controls">
+    <i class="fa fa-sort"></i>
+    <select id="service" class="floatLabel" aria-label="Default select example" th:field="*{invoice_line_type}">
+      <option th:value="CajaFuerte" th:text="#{invoicelineform.service.message1}"></option>
+      <option th:value="Restaurante" th:text="#{invoicelineform.service.message2}"></option>
+      <option th:value="MiniBar" th:text="#{invoicelineform.service.message3}"></option>
+      <option th:value="Bar" th:text="#{invoicelineform.service.message4}"></option>
+      <option th:value="OtrosServicios" th:text="#{invoicelineform.service.message5}"></option>
+    </select>
+    <label for="service" th:text="#{invoicelineform.label.message}"></label>
+  </div>
+
+
+  <!-- Input de fecha -->
+
+  <div class="controls">
+    <input id="fecha" class="floatLabel" type="date" th:field="*{invoice_line_date}">
+    <label for="fecha" th:text="#{invoicelineform.datelabel.message}"></label>
+  </div>
+
+
+  <!-- Input numérico decimal -->
+
+  <div class="controls">
+    <input id="precio" class="floatLabel" type="number" step="0.01">
+    <label for="precio" th:text="#{invoicelineform.pricelabel.message}"></label>
+  </div>
+
+
+  <div class="controls">
+    <button type="submit" value="Submit" style="color:white">
+      <strong th:text="#{invoiceform.savebutton.message}">Guardar</strong>
+    </button>
+  </div>
+</form>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="/invoiceManager/js/main.js"></script>
+<script src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery-ui-autocomplete.js'></script>
+<script src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.js'></script>
+<script src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.min.js'></script>

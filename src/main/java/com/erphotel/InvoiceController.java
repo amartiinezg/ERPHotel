@@ -49,7 +49,7 @@ public class InvoiceController {
     @PostMapping("/saveInvoice")
     public String saveNewInvoice(@ModelAttribute ("invoice") InvoiceDomain invoiceEntity, Model model){
         invoiceService.save(invoiceEntity);
-    return "redirect:/invoice";
+        return "redirect:/invoice";
     }
 
 
@@ -71,9 +71,9 @@ public class InvoiceController {
 
     @GetMapping ("/invoiceLines/{invoice_id}")
     private String invoiceLines(@PathVariable int invoice_id, Model model){
-      Optional<InvoiceDomain> invoiceDomain = invoiceService.findByInvoiceID(invoice_id);
-      List<InvoiceLinesDomain> invoiceLinesList = invoiceDomain.get().getInvoiceLinesDomainList();
-      invoice_id_temp = invoice_id;
+        Optional<InvoiceDomain> invoiceDomain = invoiceService.findByInvoiceID(invoice_id);
+        List<InvoiceLinesDomain> invoiceLinesList = invoiceDomain.get().getInvoiceLinesDomainList();
+        invoice_id_temp = invoice_id;
         model.addAttribute("invoiceList", invoiceLinesList);
         return "invoiceLine";
     }
@@ -87,10 +87,10 @@ public class InvoiceController {
 
     @GetMapping ("/editInvoiceLine/{invoice_line_id}")
     private String editInvoiceLines(@PathVariable int invoice_line_id, Model model){
-       Optional<InvoiceLinesDomain> invoiceLinesDomain = invoiceLinesService.findById(invoice_line_id);
+        Optional<InvoiceLinesDomain> invoiceLinesDomain = invoiceLinesService.findById(invoice_line_id);
         model.addAttribute("invoice_id", invoice_id_temp);
         model.addAttribute("invoiceLine", invoiceLinesDomain);
-        return "createNewInvoiceLineForm";
+        return "editInvoiceLineForm";
     }
 
     @GetMapping ("/newInvoiceLine")
@@ -110,6 +110,8 @@ public class InvoiceController {
         invoiceLinesService.save(invoiceLinesDomain);
         return "redirect:/invoiceLines/" + invoice_id_temp;
     }
+
+
 
 
 }

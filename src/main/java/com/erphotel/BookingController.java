@@ -88,7 +88,7 @@ public class BookingController {
             guestService.save(guest);
             invoice.setInvoice_id(book.getBook_id().intValue());
             invoice.setInvoice_date(Date.valueOf(LocalDate.now()));
-            invoice.setInvoice_status(0);
+            invoice.setInvoice_status("Pendiente");
             invoice.setInvoice_quantity(0);
             invoice.setPay_method(PayMethodsEnum.Tarjeta);
             invoiceService.save(invoice);
@@ -100,7 +100,7 @@ public class BookingController {
             guestService.save(guest);
             invoice.setInvoice_id(book.getBook_id().intValue());
             invoice.setInvoice_date(Date.valueOf(LocalDate.now()));
-            invoice.setInvoice_status(0);
+            invoice.setInvoice_status("Pendiente");
             invoice.setInvoice_quantity(0);
             invoice.setPay_method(PayMethodsEnum.Tarjeta);
             invoiceService.save(invoice);
