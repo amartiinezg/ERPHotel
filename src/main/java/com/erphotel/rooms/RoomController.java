@@ -116,7 +116,7 @@ public class RoomController {
         return "rooms";
     }
 
-    @GetMapping("/cleaningStatus")
+    @GetMapping("/rooms/cleaning/cleaningStatus")
     public String cleaningStatus(Model model) {
         Integer a = null;
         List<Room> roomList = roomService.roomList();
@@ -139,27 +139,27 @@ public class RoomController {
         return "cleaningStatus";
     }
 
-    @GetMapping("/newRoom")
+    @GetMapping("/rooms/newRoom")
     public String addRoom(Model model) {
         model.addAttribute("room", new Room());
         return "newRoom";
     }
 
-    @GetMapping("/room/delete/{room_id}")
+    @GetMapping("/rooms/delete/{room_id}")
     public String deleteRoom(Room room) {
         roomService.delete(room);
         return "redirect:/rooms";
     }
 
-    @GetMapping("/room/editCleaning/{room_id}")
+    @GetMapping("/rooms/cleaning/editCleaning/{room_id}")
     public String editCleaningStatus(Room room) {
         room = roomService.getRoom(room);
         room.setIs_clean(true);
         roomService.save(room);
-        return "redirect:/cleaningStatus";
+        return "redirect:/rooms/cleaning/cleaningStatus";
     }
 
-    @GetMapping("/room/edit/{room_id}")
+    @GetMapping("/rooms/edit/{room_id}")
     public String editRoom(Room room, Model model) {
         room = roomService.getRoom(room);
         model.addAttribute("room", room);
@@ -167,19 +167,19 @@ public class RoomController {
 
     }
 
-    @PostMapping("/saveRoom")
+    @PostMapping("/rooms/saveRoom")
     public String saveRoom(@ModelAttribute("room") Room room) {
         roomService.save(room);
         return "redirect:/rooms";
     }
 
-    @PostMapping("/sortList")
+    @PostMapping("/rooms/sortList")
     public String sortList(@ModelAttribute("order") Integer order) {
         return "redirect:/rooms";
 
     }
 
-    @PostMapping("/updateRoom/{room_id}")
+    @PostMapping("/rooms/updateRoom/{room_id}")
     public String updateRoom(Room room) {
         roomService.save(room);
         return "redirect:/rooms";

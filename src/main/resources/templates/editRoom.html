@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
     <head>
-        <meta charset="utf-8">
-        <title>Registro de personas</title>
-        <!-- CSS only -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="/gestionHabitaciones/css/style.css">
+        <meta charset="UTF-8">
+        <title>CodePen - Basic hotel booking form</title>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/booking/style.css">
+
     </head>
     <body>
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-                    <h1 class="text-center">Editar habitaciones</h1>
-                    <div class="card-body">
-                        <form th:action="@{/updateRoom/{room_id}(room_id=${room.room_id})}" th:object="${room}" method="POST">
-                            <div class="form-group">
-                                <label>Num. habitación : </label>
-                                <input type="number" min="0" th:field="*{room_number}" name="nombre" class="form-control" placeholder="Inserte el número de la habitación " required>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label>Precio : </label>
-                                    <input type="number" min="0" step="0.01" th:field="*{price}" name="dni" class="form-control" placeholder="Inserte el precio de la habitación " required>
-                                </div>  
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tipo de habitacion : </label>
-                                <div class="select">
-                                    <select id="standard-select" th:field="*{room_type}">
-                                        <option value="Habitacion matrimonial">Habitacion matrimonial</option>
-                                        <option value="Habitacion familiar">Habitacion familiar</option>
-                                        <option value="Habitacion compartida">Habitacion compartida</option>
-                                        <option value="Suite principal">Suite principal</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Estado de la caja fuerte : </label>
-                                <div class="select">
-                                    <select id="standard-select" th:field="*{safe}">
-                                        <option value="true">Contratada</option>
-                                        <option value="false">No contratada</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Estado de la limpieza : </label>
-                                <div class="select">
-                                    <select id="standard-select" th:field="*{is_clean}">
-                                        <option value="true">Limpia</option>
-                                        <option value="false">Aún por limpiar</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Estado : </label>
-                                <div class="select">
-                                    <select id="standard-select" th:field="*{status}">
-                                        <option value="true">Libre</option>
-                                        <option value="false">Ocupada</option>
-                                    </select>
-                                </div>
-
-                                <div class="box-footer">
-                                    <button class="btn btn-success">Guardar</button>
-                                </div>
-                            </div>
-                        </form>
+        <form th:action="@{/rooms/updateRoom/{room_id}(room_id=${room.room_id})}" th:object="${room}" method="POST">
+            <!--  General -->
+            <h2 class="heading">Editar habitación</h2>
+            <div class="form-group">
+                <div class="grid">
+                    <div class="col-1-2">
+                        <div class="controls">
+                            <input type="number" min="0" th:field="*{room_number}" name="nombre" class="floatLabel" placeholder="Inserte el número de la habitación " required>
+                            <label>Num. habitación : </label>
+                        </div>
+                    </div>
+                    <div class="col-1-2">
+                        <div class="controls">
+                            <input type="number" min="0" step="0.01" th:field="*{price}" name="dni" class="floatLabel" placeholder="Inserte el precio de la habitación " required>
+                            <label>Precio: </label>
+                        </div>
                     </div>
                 </div>
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                    <select class="floatLabel" th:field="*{room_type}" id="filter-select-form">
+                        <option value="Habitacion matrimonial">Habitacion matrimonial</option>
+                        <option value="Habitacion familiar">Habitacion familiar</option>
+                        <option value="Habitacion compartida">Habitacion compartida</option>
+                        <option value="Suite principal">Suite principal</option>
+                    </select>
+                    <label>Tipo de habitacion: </label>
+                </div>
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                    <select class="floatLabel" th:field="*{safe}" id="filter-select-form">
+                        <option value="true">Contratada</option>
+                        <option value="false">No contratada</option>
+                    </select>
+                    <label>Estado de la caja fuerte: </label>
+                </div>
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                    <select class="floatLabel" th:field="*{is_clean}" id="filter-select-form">
+                        <option value="true">Limpia</option>
+                        <option value="false">Aún por limpiar</option>
+                    </select>
+                    <label>Estado de la limpieza: </label>
+                </div>
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                        <select class="floatLabel" th:field="*{status}" id="filter-select-form">
+                            <option value="true">Libre</option>
+                            <option value="false">Ocupada</option>
+                        </select>
+                        <label>Estado: </label>
+                </div>
+                <div class="controls">               
+                    <button type="submit" value="Submit" style="color:white">Finalizar</button>
+                </div>
             </div>
-        </div>
+
+            <!-- partial -->
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery-ui-autocomplete.js'></script>
+            <script
+            src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.js'></script>
+            <script
+            src='https://raw.githubusercontent.com/andiio/selectToAutocomplete/master/jquery.select-to-autocomplete.min.js'></script>
+            <script src="/booking/script.js"></script>
+        </form>
     </body>
+
 </html>
