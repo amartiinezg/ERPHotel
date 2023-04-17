@@ -19,4 +19,10 @@ public class MainController {
     public String home(Model model, @AuthenticationPrincipal User username) {
         return "home";
     }
+    
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) {
+        return "dashboard";
+    }
+    
 }

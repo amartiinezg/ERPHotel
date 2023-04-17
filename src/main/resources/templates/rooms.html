@@ -18,23 +18,20 @@
 
     </head>
     <body>
-        <div class="filter">
-            <div class="controls">
-                <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
-                    <select class="standard-select floatLabel" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
-                        <option disabled selected hidden>Ordenar por...</option>
-                        <option value="PriceAsc">Precio: de más barato a más caro</option>
-                        <option value="PriceDesc">Precio: de más caro a más barato</option>
-                        <option value="Status">Disponibilidad</option>
-                    </select>
-                </form>
-            </div>
-        </div>
-        <section class="ftco-section">
+        <form>
+
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 text-center mb-5">
                         <h2 class="heading">Lista de personas</h2>
+                        <div class="filter">
+                            <div class="controls">
+                                <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
+                                    <select class="standard-select floatLabel" name ="order" th:modelAttribute="order" onchange="this.form.submit()">
+                                        <option disabled selected hidden>Ordenar por...</option>
+                                        <option value="PriceAsc">Precio: de más barato a más caro</option>
+                                        <option value="PriceDesc">Precio: de más caro a más barato</option>
+                                        <option value="Status">Disponibilidad</option>
+                                    </select>
+                                </form>
                     </div>
                 </div>
                 <!--
@@ -89,7 +86,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </form>
+
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

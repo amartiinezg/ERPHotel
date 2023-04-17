@@ -33,13 +33,13 @@ public class ConfigurationAutentificator {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .headers().frameOptions().disable().and()
+                .headers().frameOptions().disable()
+                .and()
                 .authorizeHttpRequests((requests) -> requests
-                .requestMatchers(staticResources).permitAll()
-                .requestMatchers("/homeScript.js","/rooms/cleaning/**", "/gestionHabitaciones/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/", "home", "/home/**").hasAnyAuthority("limpieza", "staff", "recepcion")
-                .requestMatchers("/", "home", "/home/**", "/rooms/**","/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/hotel_booking/**").hasAnyAuthority("recepcion", "staff")
-                .requestMatchers("/**").hasAnyAuthority("staff")
-                .anyRequest().authenticated()
+                        .requestMatchers(staticResources).permitAll()
+                        .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/rooms/**", "/hotel_booking/**", "/booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
+                        .requestMatchers("/**").hasAnyAuthority("staff")
+                        .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                 .loginPage("/login")
@@ -53,6 +53,7 @@ public class ConfigurationAutentificator {
                 )
                 .build();
     }
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
