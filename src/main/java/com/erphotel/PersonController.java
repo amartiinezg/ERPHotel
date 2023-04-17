@@ -18,9 +18,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @Controller
 public class PersonController {
@@ -101,9 +104,9 @@ public class PersonController {
         return "editPerson";
     }
 
+    @Validated
     @PostMapping("/savePersona")
-    public String guardarPersona(@Valid @ModelAttribute("persona") PersonDomain persona, @AuthenticationPrincipal User username,
-             BindingResult result) {
+    public String guardarPersona(@Valid @ModelAttribute("persona") PersonDomain persona,BindingResult result) {
         if (result.hasErrors()) {
             return "newPerson";
         }

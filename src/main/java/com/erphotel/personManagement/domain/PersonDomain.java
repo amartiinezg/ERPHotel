@@ -20,7 +20,7 @@ public class PersonDomain implements Serializable {
     private Long person_id;
     @NotBlank(message = "El nombre es obligatorio")
     private String name;
-    @NotNull(message = "El apellido es obligatorio")
+    @NotBlank(message = "El apellido es obligatorio")
     private String surname;
     @Pattern(regexp = "^[0-9]{9}$", message = "Por favor, introduce un número de teléfono válido (9 dígitos)")
     private String phone_number;
