@@ -27,7 +27,8 @@ public class ConfigurationAutentificator {
         "/fonts/**",
         "/scripts/**",
         "/error/**",
-        "/static/**"
+        "/static/**",
+        "/language/**"
     };
 
     @Bean
@@ -37,7 +38,7 @@ public class ConfigurationAutentificator {
                 .and()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(staticResources).permitAll()
-                        .requestMatchers("/", "home", "/home/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/rooms/**", "/hotel_booking/**", "/booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
+                        .requestMatchers("/", "home", "/home/**","/dashboard/**", "/person/**", "/savePersona", "/homeScript.js", "/invoiceManager/**", "/invoice/**", "/invoiceLines/**", "/assets/**", "/homeStyle.css", "/error/**", "/functions/**", "/rooms/**", "/hotel_booking/**", "/booking/**").hasAnyAuthority("recepcion", "limpieza", "staff")
                         .requestMatchers("/**").hasAnyAuthority("staff")
                         .anyRequest().authenticated()
                 )
