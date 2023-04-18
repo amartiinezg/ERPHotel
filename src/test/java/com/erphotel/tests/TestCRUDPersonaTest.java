@@ -19,11 +19,11 @@ class TestCRUDPersonaTest {
     PersonServiceImplemented personServiceImplemented;
 
     PersonDomain personDomain = new PersonDomain();
-    String name = "Adam";
+    String name = "Aleya ";
     String surname = "Sánchez";
-    String number = "651232425";
-    String dni = "47929975A";
-    String newName = "Pepe";
+    String number = "651232432";
+    String dni = "47929975H";
+    String newName = "Federico";
     @BeforeEach
     void setUp() {
         personDomain.setName(name);

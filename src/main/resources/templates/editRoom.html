@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>CodePen - Basic hotel booking form</title>
+        <title></title>
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/booking/style.css">
@@ -13,58 +13,58 @@
 
         <form th:action="@{/rooms/updateRoom/{room_id}(room_id=${room.room_id})}" th:object="${room}" method="POST">
             <!--  General -->
-            <h2 class="heading">Editar habitación</h2>
+            <h2 class="heading" th:text="#{editroom.heading}"></h2>
             <div class="form-group">
                 <div class="grid">
                     <div class="col-1-2">
                         <div class="controls">
                             <input type="number" min="0" th:field="*{room_number}" name="nombre" class="floatLabel" placeholder="Inserte el número de la habitación " required>
-                            <label>Num. habitación : </label>
+                            <label th:text="#{editroom.label1}"></label>
                         </div>
                     </div>
                     <div class="col-1-2">
                         <div class="controls">
                             <input type="number" min="0" step="0.01" th:field="*{price}" name="dni" class="floatLabel" placeholder="Inserte el precio de la habitación " required>
-                            <label>Precio: </label>
+                            <label th:text="#{editroom.label2}"> </label>
                         </div>
                     </div>
                 </div>
                 <div class="controls">
                     <i class="fa fa-sort"></i>
                     <select class="floatLabel" th:field="*{room_type}" id="filter-select-form">
-                        <option value="Habitacion matrimonial">Habitacion matrimonial</option>
-                        <option value="Habitacion familiar">Habitacion familiar</option>
-                        <option value="Habitacion compartida">Habitacion compartida</option>
-                        <option value="Suite principal">Suite principal</option>
+                        <option value="Habitacion matrimonial" th:text="#{editroom.roomtype1}"></option>
+                        <option value="Habitacion familiar" th:text="#{editroom.roomtype2}"></option>
+                        <option value="Habitacion compartida" th:text="#{editroom.roomtype3}"></option>
+                        <option value="Suite principal" th:text="#{editroom.roomtype4}"></option>
                     </select>
-                    <label>Tipo de habitacion: </label>
+                    <label th:text="#{editroom.label3}"></label>
                 </div>
                 <div class="controls">
                     <i class="fa fa-sort"></i>
                     <select class="floatLabel" th:field="*{safe}" id="filter-select-form">
-                        <option value="true">Contratada</option>
-                        <option value="false">No contratada</option>
+                        <option value="true" th:text="#{editroom.safestatus1}"></option>
+                        <option value="false" th:text="#{editroom.safestatus2}"></option>
                     </select>
-                    <label>Estado de la caja fuerte: </label>
+                    <label th:text="#{editroom.label4}"> </label>
                 </div>
                 <div class="controls">
                     <i class="fa fa-sort"></i>
                     <select class="floatLabel" th:field="*{is_clean}" id="filter-select-form">
-                        <option value="true">Limpia</option>
-                        <option value="false">Aún por limpiar</option>
+                        <option value="true" th:text="#{editroom.cleanstatus1}"></option>
+                        <option value="false" th:text="#{editroom.cleanstatus2}"></option>
                     </select>
-                    <label>Estado de la limpieza: </label>
+                    <label th:text="#{editroom.label5}"> </label>
                 </div>
                 <div class="controls">
                     <i class="fa fa-sort"></i>
                         <select class="floatLabel" th:field="*{status}" id="filter-select-form">
-                            <option value="true">Libre</option>
-                            <option value="false">Ocupada</option>
+                            <option value="true" th:text="#{editroom.status1}">Libre</option>
+                            <option value="false" th:text="#{editroom.status2}"></option>
                         </select>
-                        <label>Estado: </label>
+                        <label th:text="#{editroom.label6}"> </label>
                 </div>
                 <div class="controls">               
-                    <button type="submit" value="Submit" style="color:white">Finalizar</button>
+                    <button type="submit" value="Submit" style="color:white" th:text="#{finalizarbutton.text}"></button>
                 </div>
             </div>
 
