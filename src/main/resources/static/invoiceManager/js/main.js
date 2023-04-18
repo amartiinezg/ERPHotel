@@ -25,7 +25,9 @@
     // just add a class of "floatLabel to the input field!"
     floatLabel(".floatLabel");
 })(jQuery);
-if (window.location.pathname.includes('/editInvoice/') || window.location.pathname.match(/\/editInvoiceLine\/\d+/)) {
+if (window.location.pathname.includes('/editInvoice/') || window.location.pathname.match(/\/editInvoiceLine\/\d+/)
+    || window.location.pathname.match(/\/rooms\/edit\/\d+/)
+    || window.location.pathname.match(/\/rooms\/cleaning\/editCleaning\/\d+/)) {
     var inputs = document.querySelectorAll(".floatLabel");
 
 
