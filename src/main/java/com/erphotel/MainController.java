@@ -10,6 +10,10 @@ import org.springframework.security.core.userdetails.User;
 @Controller
 public class MainController {
 
+    @GetMapping ("/testing")
+    public String testingScreen(){
+        return "testing";
+    }
     @GetMapping("/")
     public String loginScreen(Model model, @AuthenticationPrincipal User username) {
         return "home";
