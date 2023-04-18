@@ -40,3 +40,6 @@ btnAddRoom.onclick = function () {
 btnAddEmployee.onclick = function () {
     zonaIframe.innerHTML = '<iframe src="/employee/new" width="100%" height="100%"></iframe>';
 };
+document.addEventListener("DOMContentLoaded", () => {
+     zonaIframe.innerHTML = '<iframe src="dashboard" width="100%" height="100%"></iframe>';
+});
