@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
     <head>
         <title>Información de las habitaciones</title>
         <meta charset="utf-8">
@@ -21,7 +21,7 @@
         <form>
 
             <div class="container">
-                        <h2 class="heading">Lista de personas</h2>
+                        <h2 class="heading">Lista Habitaciones</h2>
                         <div class="filter">
                             <div class="controls">
                                 <form th:action="@{/rooms/search}" method="get" id="filter-select-form">
@@ -50,12 +50,12 @@
                                 <table class="table table-striped table-bordered">
                                     <thead class="form-group">
                                         <tr>
-                                            <th>Nº habitación</th>
-                                            <th>Tipo de habitación</th>
-                                            <th>Precio</th>
-                                            <th>Caja fuerte</th>
-                                            <th>Estado</th>
-                                            <th>Estado limpieza</th>
+                                            <th th:text="#{editroom.label1}"></th>
+                                            <th th:text="#{editroom.label3}"></th>
+                                            <th th:text="#{invoicelineform.pricelabel.message}"></th>
+                                            <th th:text="#{rooms.text1}"></th>
+                                            <th th:text="#{rooms.text2}"></th>
+                                            <th th:text="#{home.page.cleanning.status}"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,15 +63,15 @@
                                             <td th:text="${room.room_number}" class ="bolded"></td>
                                             <td th:text="${room.room_type}"></td>
                                             <td th:text="${room.price + '€'}"></td>
-                                            <td th:if="${room.safe == true}">Contratada</td>
-                                            <td th:if="${room.safe == false}">No contratada</td>
-                                            <td th:if="${room.status == true}">Libre</td>
-                                            <td th:if="${room.status} == false">Ocupada</td>
-                                            <td th:if="${room.is_clean == true}">Limpia</td>
-                                            <td th:if="${room.is_clean} == false">No limpia</td>
+                                            <td th:if="${room.safe == true}" th:text="#{editroom.safestatus1}"></td>
+                                            <td th:if="${room.safe == false}" th:text="#{editroom.safestatus2}"></td>
+                                            <td th:if="${room.status == true}" th:text="#{editroom.status1}"></td>
+                                            <td th:if="${room.status} == false" th:text="#{editroom.status2}"></td>
+                                            <td th:if="${room.is_clean == true}" th:text="#{editroom.cleanstatus1}"></td>
+                                            <td th:if="${room.is_clean} == false" th:text="#{rooms.text3}"></td>
                                             <td>
-                                                <a th:href="@{/rooms/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info">Editar</a>
-                                                <a class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')" th:onclick="deleteRoom([[${room.room_id}]])">Eliminar</a>
+                                                <a th:href="@{/rooms/edit/{room_id}(room_id=${room.room_id})}" class="btn btn-info" th:text="#{modify.button.text}"></a>
+                                                <a class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')" th:onclick="deleteRoom([[${room.room_id}]])" th:text="#{delete.button.text}"></a>
                                             </td>
 
                                         </tr>
@@ -80,7 +80,7 @@
 
                             </div>
 
-                            <div th:case="false" class="alert alert-info" role="alert">¡Debes añadir una habitación primero antes de consultar el estado!</div>
+                            <div th:case="false" class="alert alert-info" role="alert" th:text="#{rooms.error}"></div>
 
                         </div>
                     </div>

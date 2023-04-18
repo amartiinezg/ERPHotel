@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Información de las habitaciones</title>
+    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -32,7 +32,7 @@
     <div class="container" >
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-                <h2 class="heading">Listado Facturas</h2>
+                <h2 class="heading" th:text="#{invoice.heading}"></h2>
             </div>
         </div>
         <!--
@@ -50,12 +50,12 @@
                     <table class="table table-striped table-bordered">
                         <thead class="form-group">
                         <tr>
-                            <th >ID Factura</th>
-                            <th >Fecha Factura</th>
-                            <th >Estado</th>
-                            <th >Cantidad</th>
-                            <th >Método de pago</th>
-                            <th >Acciones</th>
+                            <th th:text="#{invoice.th1}"></th>
+                            <th th:text="#{invoice.th2}"></th>
+                            <th th:text="#{invoice.th3}"></th>
+                            <th th:text="#{invoice.th4}"></th>
+                            <th th:text="#{invoice.th5}"></th>
+                            <th th:text="#{invoice.th6}"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -66,9 +66,9 @@
                             <td th:text="${invoice.invoice_quantity}"></td>
                             <td th:text="${invoice.pay_method}"></td>
                             <td>
-                                <a  th:href="@{/editInvoice/} + ${invoice.invoice_id}" class="btn btn-success" sec:authorize="hasAnyAuthority('staff')">Modificar</a>
-                                <a class="btn btn-danger" th:onclick="deleteInvoice([[${invoice.invoice_id}]])" href="#"  sec:authorize="hasAnyAuthority('staff')">Eliminar</a>
-                                <a th:href="@{/invoiceLines/} + ${invoice.invoice_id}" class="btn btn-info">Ver Lineas</a>
+                                <a  th:href="@{/editInvoice/} + ${invoice.invoice_id}" class="btn btn-success" sec:authorize="hasAnyAuthority('staff')" th:text="#{modify.button.text}"></a>
+                                <a class="btn btn-danger" th:onclick="deleteInvoice([[${invoice.invoice_id}]])" href="#"  sec:authorize="hasAnyAuthority('staff')" th:text="#{delete.button.text}"></a>
+                                <a th:href="@{/invoiceLines/} + ${invoice.invoice_id}" class="btn btn-info" th:text="#{button.viewlines}"></a>
 
 
                             </td>
@@ -88,8 +88,7 @@
 
 <div th:if="${invoices.size()==0}">
     <script>alert('No hay facturas, para crear una tienes que hacerlo en reservas.');</script>
-    <p>
-        No tienes facturas disponibles, las facturas se crean al crear reservas primero.
+    <p th:text="#{invoice.error.message}">
     </p>
 </div>
 </div>

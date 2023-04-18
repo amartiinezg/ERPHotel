@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="es">
     <head>
         <meta charset="utf-8">
         <title>Listado de personas</title>
@@ -7,13 +7,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/booking/style.css"
+        <link rel="stylesheet" href="/booking/style.css">
               </head>
     <body>
 
         <form action="">
             <div class="container" th:if="${personas != null and !personas.isEmpty()}">
-                <h2 class="heading">Lista de personas</h2>
+                <h2 class="heading" th:text="#{home.page.personas.menu1}"></h2>
                 <div class="row">
                 </div>
                 <div class="row">
@@ -23,12 +23,12 @@
                     <thead class="form-group">
                         <tr>
 
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Teléfono</th>
-                            <th>Dni</th>
-                            <th>Identificador</th>
-                            <th sec:authorize="hasAnyAuthority('staff')">Acciones</th>
+                            <th th:text="#{booking.name}"></th>
+                            <th th:text="#{booking.surname}"></th>
+                            <th th:text="#{booking.number}"></th>
+                            <th th:text="#{booking.dni}"></th>
+                            <th th:text="#{person.text1}">Identificador</th>
+                            <th sec:authorize="hasAnyAuthority('staff')" th:text="#{person.text2}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,8 +40,8 @@
                             <td th:text="${persona.dni}"> Muestra Dni </td>
                             <td th:text="${persona.person_id}"> Muestra id </td>
                             <td sec:authorize="hasAnyAuthority('staff')">
-                                <a th:href="@{/person/editPerson/{person_id}(person_id=${persona.person_id})}" class="btn btn-info" sec:authorize="hasAnyAuthority('staff')">Editar</a>
-                                <a th:href="@{/person/} + ${persona.person_id}" class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')">Eliminar</a>
+                                <a th:href="@{/person/editPerson/{person_id}(person_id=${persona.person_id})}" class="btn btn-info" sec:authorize="hasAnyAuthority('staff')" th:text="#{modify.button.text}"></a>
+                                <a th:href="@{/person/} + ${persona.person_id}" class="btn btn-danger" sec:authorize="hasAnyAuthority('staff')" th:text="#{delete.button.text}"></a>
                             </td>   
                         </tr>
                     </tbody>

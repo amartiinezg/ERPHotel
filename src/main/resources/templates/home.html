@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:sec="http://www.w3.org/1999/xhtml">
 
     <head>
         <meta charset="UTF-8">
-        <title>ERPHotel</title>
+        <title th:text="#{home.page.title}"></title>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css'>
         <link rel='stylesheet' href='https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css'>
         <link rel='stylesheet'
@@ -23,20 +23,20 @@
                 <div class="sidebar-layout">
                     <div class="sidebar-header">
                         <div class="pro-sidebar-logo">
-                            <div>ERP</div>
-                            <h2>Hotel</h2>
+                            <div th:text="#{home.page.title2}"></div>
+                            <h2 th:text="#{home.page.title3}"></h2>
                         </div>
                     </div>
                     <div class="sidebar-content">
                         <nav class="menu open-current-submenu">
                             <ul>
-                                <li class="menu-header"><span>GENERAL</span></li>
+                                <li class="menu-header"><span th:text="#{home.page.text1}"></span></li>
                                 <li class="menu-item">
                                     <a href="#">
                                         <span class="menu-icon">
                                             <i class="ri-dashboard-fill"></i>
                                         </span>
-                                        <span id="btn_dashboard" class="menu-title">Dashboard</span>
+                                        <span id="btn_dashboard" class="menu-title" th:text="#{home.page.dashboard}"></span>
                                     </a>
                                 </li>
                                 <li class="menu-item sub-menu">
@@ -44,18 +44,18 @@
                                         <span class="menu-icon">
                                             <i class="ri-contacts-book-2-fill"></i>
                                         </span>
-                                        <span class="menu-title">Clientes</span>
+                                        <span class="menu-title" th:text="#{home.page.clients}"></span>
                                     </a>
                                     <div class="sub-menu-list">
                                         <ul>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_addBooking" class="menu-title">Añadir Reserva</span>
+                                                    <span id="btn_addBooking" class="menu-title" th:text="#{home.page.add.booking}"></span>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_books" class="menu-title">Reservas</span>
+                                                    <span id="btn_books" class="menu-title" th:text="#{home.page.bookings}"></span>
                                                 </a>
                                             </li>
                                             <li class="menu-item sub-menu">
@@ -63,33 +63,33 @@
                                                     <ul>
                                                         <li class="menu-item">
                                                             <a href="#">
-                                                                <span class="menu-title">Input</span>
+                                                                <span class="menu-title" th:text="#{home.page.input}"></span>
                                                             </a>
                                                         </li>
                                                         <li class="menu-item">
                                                             <a href="#">
-                                                                <span class="menu-title">Select</span>
+                                                                <span class="menu-title" th:text="#{home.page.select}"></span>
                                                             </a>
                                                         </li>
                                                         <li class="menu-item sub-menu">
                                                             <a href="#">
-                                                                <span class="menu-title">More</span>
+                                                                <span class="menu-title" th:text="#{home.page.more}"></span>
                                                             </a>
                                                             <div class="sub-menu-list">
                                                                 <ul>
                                                                     <li class="menu-item">
                                                                         <a href="#">
-                                                                            <span class="menu-title">CheckBox</span>
+                                                                            <span class="menu-title" th:text="#{home.page.check.box}"></span>
                                                                         </a>
                                                                     </li>
                                                                     <li class="menu-item">
                                                                         <a href="#">
-                                                                            <span class="menu-title">Radio</span>
+                                                                            <span class="menu-title" th:text="#{home.page.radio}"></span>
                                                                         </a>
                                                                     </li>
                                                                     <li class="menu-item sub-menu">
                                                                         <a href="#">
-                                                                            <span class="menu-title">Want more ?</span>
+                                                                            <span class="menu-title" th:text="#{home.page.want.more}"></span>
                                                                             <span class="menu-suffix">&#x1F914;</span>
                                                                         </a>
                                                                         <div class="sub-menu-list">
@@ -97,7 +97,7 @@
                                                                                 <li class="menu-item">
                                                                                     <a href="#">
                                                                                         <span class="menu-prefix">&#127881;</span>
-                                                                                        <span class="menu-title">You made it </span>
+                                                                                        <span class="menu-title" th:text="#{home.page.you.made.it}"></span>
                                                                                     </a>
                                                                                 </li>
                                                                             </ul>
@@ -118,13 +118,13 @@
                                         <span class="menu-icon">
                                             <i class="ri-money-euro-box-line"></i>
                                         </span>
-                                        <span class="menu-title">Facturación</span>
+                                        <span class="menu-title" th:text="#{home.page.billing}"></span>
                                     </a>
                                     <div class="sub-menu-list">
                                         <ul>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_invoices" class="menu-title">Gestionar Facturas</span>
+                                                    <span id="btn_invoices" class="menu-title" th:text="#{home.page.manage.invoices}">Gestionar Facturas</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -136,23 +136,23 @@
                                         <span class="menu-icon">
                                             <i class="ri-home-5-line"></i>
                                         </span>
-                                        <span class="menu-title">Habitaciones</span>
+                                        <span class="menu-title" th:text="#{home.page.rooms}"></span>
                                     </a>
                                     <div class="sub-menu-list">
                                         <ul>
                                             <li class="menu-item" sec:authorize="hasAnyAuthority('staff')">
                                                 <a href="#">
-                                                    <span id="btn_addRoom" class="menu-title">Añadir habitación</span>
+                                                    <span id="btn_addRoom" class="menu-title" th:text="#{home.page.add.room}"></span>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_statusRoom" class="menu-title">Estado de habitaciones</span>
+                                                    <span id="btn_statusRoom" class="menu-title" th:text="#{home.page.room.status}"></span>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_cleaningStatus" class="menu-title">Estado de la limpieza</span>
+                                                    <span id="btn_cleaningStatus" class="menu-title" th:text="#{home.page.cleanning.status}"></span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -166,23 +166,23 @@
                                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                                             </svg>
                                         </span>
-                                        <span class="menu-title">Personas</span>
+                                        <span class="menu-title" th:text="#{home.page.personas.title}"></span>
                                     </a>
                                     <div class="sub-menu-list">
                                         <ul>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_showPersons" class="menu-title">Listado de personas</span>
+                                                    <span id="btn_showPersons" class="menu-title" th:text="#{home.page.personas.menu1}"></span>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="#">
-                                                    <span id="btn_addPerson" class="menu-title">Añadir persona</span>
+                                                    <span id="btn_addPerson" class="menu-title" th:text="#{home.page.personas.menu2}"></span>
                                                 </a>
                                             </li>
                                             <li class="menu-item" sec:authorize="hasAnyAuthority('staff')">
                                                 <a href="#">
-                                                    <span id="btn_addEmployee" class="menu-title">Añadir trabajador</span>
+                                                    <span id="btn_addEmployee" class="menu-title" th:text="#{home.page.personas.menu3}"></span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -193,7 +193,7 @@
                                         <span class="menu-icon">
                                             <i class="">&#127940;</i>
                                         </span>
-                                        <span class="menu-title">Usuario</span>
+                                        <span class="menu-title" th:text="#{home.page.user.title}"></span>
                                         <span class="menu-suffix">
                                             <span class="badge secondary" th:text="${#authentication.getName().toUpperCase()}"></span>
                                         </span>
@@ -202,7 +202,7 @@
                                         <ul>
                                             <li class="menu-item">
                                                 <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">
-                                                    <span class="menu-title">Cerrar sesión</span>
+                                                    <span class="menu-title" th:text="#{home.page.user.logout}"></span>
                                                 </a>
                                                 <form id="logout-form" th:action="@{/logout}" method="POST" style="display:none;">
                                                 </form>

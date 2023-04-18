@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>CodePen - Basic hotel booking form</title>
+        <title></title>
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/booking/style.css">
@@ -13,12 +13,12 @@
 
         <form th:action="@{/actualizarPersona/{person_id}(person_id=${persona.person_id})}" th:object="${persona}" method="POST">
             <!--  General -->
-            <h2 class="heading">Modificar Persona</h2>
+            <h2 class="heading" th:text="#{editperson.heading.message}"></h2>
             <div class="form-group">
                 <div class="grid">
                     <div class="col-1-2">
                         <div class="controls">
-                            <div style="color: #4b4b4b">Nombre</div>
+                            <div style="color: #4b4b4b" th:text="#{editperson.name.text}"></div>
                             <input type="text" id="name" class="floatLabel" name="name" th:field="*{name}">   
                             <div class="error-container">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-1-2">
                         <div class="controls">
-                            <div style="color: #4b4b4b">Apellido</div>
+                            <div style="color: #4b4b4b" th:text="#{editperson.surname.text}"></div>
                             <input type="text" id="surname" class="floatLabel" name="surname" th:field="*{surname}">
                             <div class="error-container">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></small>
@@ -36,21 +36,21 @@
                     </div>
                 </div>
                 <div class="controls">
-                    <div style="color: #4b4b4b">Teléfono</div>
+                    <div style="color: #4b4b4b" th:text="#{editperson.number.text}"></div>
                     <input type="tel" id="phone" class="floatLabel" name="phone" th:field="*{phone_number}">
                     <div class="error-container">
                         <small class="form-text text-danger" th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}"></small>
                     </div>
                 </div>
                 <div class="controls">
-                    <div style="color: #4b4b4b">Dni</div>
+                    <div style="color: #4b4b4b" th:text="#{editperson.dni.text}"></div>
                     <input type="text" id="dni" class="floatLabel" name="dni" th:field="*{dni}">
                     <div class="error-container">
                         <small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
                     </div>
                 </div>
                 <div class="controls">               
-                    <button type="submit" value="Submit" style="color:white">Guardar</button>
+                    <button type="submit" value="Submit" style="color:white" th:text="#{save.button.text}"></button>
                 </div>
             </div>
 

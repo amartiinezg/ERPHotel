@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>CodePen - Basic hotel booking form</title>
+        <title></title>
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/booking/style.css">
@@ -13,34 +13,34 @@
 
         <form th:action="@{/rooms/saveRoom}" th:object="${room}" method="POST">
             <!--  General -->
-            <h2 class="heading">Añadir habitación</h2>
+            <h2 class="heading" th:text="#{home.page.add.room}"></h2>
             <div class="form-group">
                 <div class="grid">
                     <div class="col-1-2">
                         <div class="controls">
                             <input type="number" min="0" th:field="*{room_number}" name="nombre" class="floatLabel" placeholder="Inserte el número de la habitación " required>
-                            <label>Num. habitación: </label>
+                            <label th:text="#{editroom.label1}"></label>
                         </div>
                     </div>
                     <div class="col-1-2">
                         <div class="controls">
                             <input type="number" min="0" step="0.01" th:field="*{price}" name="dni" class="floatLabel" placeholder="Inserte el precio de la habitación " required>
-                            <label>Precio: </label>
+                            <label th:text="#{editroom.label2}"> </label>
                         </div>
                     </div>
                 </div>
                 <div class="controls">
                     <i class="fa fa-sort"></i>
                     <select class="floatLabel" th:field="*{room_type}" id="filter-select-form">
-                        <option value="Habitacion matrimonial">Habitacion matrimonial</option>
-                        <option value="Habitacion familiar">Habitacion familiar</option>
-                        <option value="Habitacion compartida">Habitacion compartida</option>
-                        <option value="Suite principal">Suite principal</option>
+                        <option value="Habitacion matrimonial" th:text="#{editroom.roomtype1}"></option>
+                        <option value="Habitacion familiar" th:text="#{editroom.roomtype2}"></option>
+                        <option value="Habitacion compartida" th:text="#{editroom.roomtype3}"></option>
+                        <option value="Suite principal" th:text="#{editroom.roomtype4}">l</option>
                     </select>
-                    <label>Tipo de habitacion: </label>
+                    <label th:text="#{editroom.label3}"> </label>
                 </div>
                 <div class="controls">               
-                    <button type="submit" value="Submit" style="color:white">Finalizar</button>
+                    <button type="submit" value="Submit" style="color:white" th:text="#{finalizarbutton.text}"></button>
                 </div>
             </div>
 
