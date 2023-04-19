@@ -11,6 +11,14 @@
 
 ## Introduction[![](https://raw.githubusercontent.com/amartiinezg/areg-sdk/master/docs/img/pin.svg)](#introduction)
 
-**AREG** (_Automated Real-time Event Grid_) is a powerful and lightweight cross-platform communication engine designed to facilitate seamless data transmission in IoT [fog- and mist-network](https://csrc.nist.gov/publications/detail/sp/500-325/final). AREG creates a grid of services using interface-centric approach, allowing multiple connected devices and software nodes to operate like thin distributed servers and clients. It automates real-time data transmission, utilizing both Client-Server and Publish-Subscribe models to ensure efficient and reliable communication between connected software nodes.
+**ERPHotel** (Gestión de Reservas de hoteles) El proyecto de GitHub es un sistema ERP (Enterprise Resource Planning) para la gestión de reservas en un hotel. Permite a los clientes hacer reservas en línea y a los empleados del hotel administrar y actualizar la información de las reservas, habitaciones, clientes, trabajadores, y facturación.
+
+La aplicación está desarrollada en Java y utiliza el framework Spring Boot para la creación de servicios RESTful. También utiliza una base de datos MySQL para el almacenamiento de los datos.
+
+La interfaz de usuario es intuitiva y fácil de usar, con un diseño atractivo y responsive que se adapta a cualquier dispositivo. Los trabajadores pueden ver la disponibilidad de habitaciones y tarifas, hacer reservas y cancelarlas. Los empleados pueden ver y actualizar la información de las reservas, gestionar el check-in y check-out de los huéspedes y generar facturas.
+
+El proyecto utiliza Git para el control de versiones y GitHub como plataforma de alojamiento. Los colaboradores pueden hacer pull requests para revisar y aprobar cambios en el código.
+
+En resumen, este proyecto de GitHub es un sistema ERP de gestión de reservas de hotel, desarrollado en Java con Spring Boot, MySQL y Git, que permite a los clientes hacer reservas en línea y a los empleados del hotel administrar y actualizar la información de las reservas y los huéspedes.
 
 ---
