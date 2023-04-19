@@ -1,6 +1,6 @@
 # ERPHotel
 <h1 align="center" style="display: block; font-size: 2.5em; font-weight: bold; margin-block-start: 1em; margin-block-end: 1em;">
-<a name="logo" href="https://www.aregtech.com"><img align="center" src="https://user-images.githubusercontent.com/99869396/233022823-12dc0ac1-aa07-4828-b97e-5a55a33f9669.png" alt="AREG SDK Home" style="width:100%;height:100%"/></a>
+<a name="logo" href="https://www.aregtech.com"><img align="center" src="https://user-images.githubusercontent.com/99869396/233023228-7d7b1d5d-9e6a-4fb3-af5d-1d484ebf413e.png" alt="AREG SDK Home" style="width:100%;height:100%"/></a>
   <br /><br /><strong>ERPHotel</strong>
 </h1>
 
