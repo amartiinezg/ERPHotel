@@ -1,24 +1,12 @@
-# ERPHotel
-<h1 align="center" style="display: block; font-size: 2.5em; font-weight: bold; margin-block-start: 1em; margin-block-end: 1em;">
-<a name="logo"><img align="center" src="https://user-images.githubusercontent.com/99869396/233023228-7d7b1d5d-9e6a-4fb3-af5d-1d484ebf413e.png" alt="ERPHotel Home" style="width:100%;height:100%"/></a>
-  <br /><br /><strong>ERPHotel</strong>
-</h1>
+# Hotel ERP
 
-[![Stars](https://img.shields.io/github/stars/amartiinezg/ERPHotel?style=social)](https://github.com/amartiinezg/ERPHotel/stargazers)
-[![Fork](https://img.shields.io/github/forks/amartiinezg/ERPHotel?style=social)](https://github.com/amartiinezg/ERPHotel/network/members)
-[![Watchers](https://img.shields.io/github/watchers/amartiinezg/ERPHotel?style=social)](https://github.com/amartiinezg/ERPHotel/watchers)
+![https://github.com/amartiinezg](https://github.com/AlexVallTuru/HotelErp-SpringBoot/blob/master/readme_images/alexhotelErp.jpg)
 
+Estoy encantado de presentarle nuestro sistema de gestión empresarial (ERP) especialmente diseñado para hoteles. Nuestro software ofrece una solución completa y personalizable para ayudar a administrar y optimizar todas las operaciones de su hotel. Este sistema ERP dispone de un sistema de seguridad de usuarios que limita el acceso de los trabajadores en función de sus permisos y roles. Dependiendo del trabajo que desempeñen, los usuarios pueden acceder a ciertas áreas y recursos, mientras que otros estarán restringidos.
 
-## Introducción[![](https://raw.githubusercontent.com/amartiinezg/areg-sdk/master/docs/img/pin.svg)](#introduction)
+## Video Hotel ERP
+[![HotelErpVideo](https://github.com/AlexVallTuru/HotelErp-SpringBoot/blob/master/readme_images/videoHotelErp.jpg)](https://www.youtube.com/watch?v=wy2oUR686r0&ab_channel=AlejandroGonz%C3%A1lezEspejo)
 
-**ERPHotel** (Gestión de Reservas de hoteles) El proyecto de GitHub es un sistema ERP (Enterprise Resource Planning) para la gestión de reservas en un hotel. Permite a los clientes hacer reservas en línea y a los empleados del hotel administrar y actualizar la información de las reservas, habitaciones, clientes, trabajadores, y facturación.
+## Memoria del proyecto
 
-La aplicación está desarrollada en Java y utiliza el framework Spring Boot para la creación de servicios RESTful. También utiliza una base de datos MySQL para el almacenamiento de los datos.
-
-La interfaz de usuario es intuitiva y fácil de usar, con un diseño atractivo y responsive que se adapta a cualquier dispositivo. Los trabajadores pueden ver la disponibilidad de habitaciones y tarifas, hacer reservas y cancelarlas. Los empleados pueden ver y actualizar la información de las reservas, gestionar el check-in y check-out de los huéspedes y generar facturas.
-
-El proyecto utiliza Git para el control de versiones y GitHub como plataforma de alojamiento. Los colaboradores pueden hacer pull requests para revisar y aprobar cambios en el código.
-
-En resumen, este proyecto de GitHub es un sistema ERP de gestión de reservas de hotel, desarrollado en Java con Spring Boot, MySQL y Git, que permite a los clientes hacer reservas en línea y a los empleados del hotel administrar y actualizar la información de las reservas y los huéspedes.
-
----
+[![Doc](https://img.shields.io/badge/DOC-2496ED?style=for-the-badge&logo=microsoftword&logoColor=white&labelColor=101010)](https://docs.google.com/document/d/1bUDZDz2CETTRdBgvvsMG7kdFFDxuPzInAPW-Gsu5ra4/edit?usp=sharing)
