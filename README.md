@@ -9,7 +9,7 @@
 [![Watchers](https://img.shields.io/github/watchers/amartiinezg/ERPHotel?style=social)](https://github.com/amartiinezg/ERPHotel/watchers)
 
 
-## Introduction[![](https://raw.githubusercontent.com/amartiinezg/areg-sdk/master/docs/img/pin.svg)](#introduction)
+## Introducción[![](https://raw.githubusercontent.com/amartiinezg/areg-sdk/master/docs/img/pin.svg)](#introduction)
 
 **ERPHotel** (Gestión de Reservas de hoteles) El proyecto de GitHub es un sistema ERP (Enterprise Resource Planning) para la gestión de reservas en un hotel. Permite a los clientes hacer reservas en línea y a los empleados del hotel administrar y actualizar la información de las reservas, habitaciones, clientes, trabajadores, y facturación.
 
