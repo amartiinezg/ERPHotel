@@ -3,7 +3,6 @@
 <a name="logo" href="https://www.aregtech.com"><img align="center" src="https://user-images.githubusercontent.com/99869396/233022823-12dc0ac1-aa07-4828-b97e-5a55a33f9669.png" alt="AREG SDK Home" style="width:100%;height:100%"/></a>
   <br /><br /><strong>ERPHotel</strong>
 </h1>
-![image](https://user-images.githubusercontent.com/99869396/233022823-12dc0ac1-aa07-4828-b97e-5a55a33f9669.png)
 
 [![Stars](https://img.shields.io/github/stars/amartiinezg/ERPHotel?style=social)](https://github.com/amartiinezg/ERPHotel/stargazers)
 [![Fork](https://img.shields.io/github/forks/amartiinezg/ERPHotel?style=social)](https://github.com/amartiinezg/ERPHotel/network/members)
